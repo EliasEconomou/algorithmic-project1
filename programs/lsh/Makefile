@@ -3,7 +3,7 @@ INCLUDE = ../../include
 SRC = ../../src
 
 CC = g++
-CFLAGS = -Wall -g -I$(INCLUDE)
+CFLAGS = -Wall -g -Werror -I$(INCLUDE)
 LDFLAGS = -lm
 
 OBJS = lsh.o $(SRC)/functions.o
@@ -13,7 +13,7 @@ EXEC = lsh.out
 ARGS = -i datasetfile -q queryfile -k 4 -L 5 -o outputfile -N 1 -R 10000
 
 $(EXEC): $(OBJS) $(LIBS)
-	$(CC) $(OBJS) $(LIBS) -o $(EXEC) $(LDFLAGS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(EXEC) $(LDFLAGS)
 
 clean:
 	rm -f $(OBJS) $(EXEC)

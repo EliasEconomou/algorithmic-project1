@@ -3,16 +3,16 @@ INCLUDE = ../../include
 SRC = ../../src
 
 CC = g++
-CFLAGS = -Wall -g -I$(INCLUDE)
+CFLAGS = -Wall -g -Werror -I$(INCLUDE)
 LDFLAGS = -lm
 
 OBJS = hypercube.o $(SRC)/functions.o
 EXEC = hypercube.out
 
-# ARGS = 
+# ARGS = TODO
 
 $(EXEC): $(OBJS) $(LIBS)
-	$(CC) $(OBJS) $(LIBS) -o $(EXEC) $(LDFLAGS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(EXEC) $(LDFLAGS)
 
 clean:
 	rm -f $(OBJS) $(EXEC)

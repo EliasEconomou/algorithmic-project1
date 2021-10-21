@@ -1,20 +1,19 @@
 
 #include <iostream>
+#include <algorithm>
+#include <fstream>
+#include <sstream>
 #include <string>
 #include <getopt.h>
+#include <vector>
+#include "../../include/functions.hpp"
 
 
 using namespace std;
 
 
 int main(int argc, char** argv) {
-    cout << "You have entered " << argc //todo delete
-         << " arguments:" << "\n";
-  
-    for (int i = 0; i < argc; ++i)
-        cout << i << " " << argv[i] << "\n";
-
-
+    
     //Default values:
     int k = 4; //number of 'h functions'
     int L = 5; //number of hash tables
@@ -40,48 +39,57 @@ int main(int argc, char** argv) {
             case 'i':
             {
                 inputFile = optarg;
-                cout << option << " " << inputFile << endl;
+                //cout << option << " " << inputFile << endl;
                 break;
             }
             case 'q':
             {
                 queryFile = optarg;
-                cout << option << " " << queryFile << endl;
+                //cout << option << " " << queryFile << endl;
                 break;
             }
             case 'k':
             {
                 k = stoi(optarg);
-                cout << option << " " << k << endl;
+                //cout << option << " " << k << endl;
                 break;
             }
             case 'L':
             {
                 L = stoi(optarg);
-                cout << option << " " << L << endl;
+                //cout << option << " " << L << endl;
                 break;
             }
             case 'o':
             {
                 outputFile = optarg;
-                cout << option << " " << outputFile << endl;
+                //cout << option << " " << outputFile << endl;
                 break;
             }
             case 'N':
             {
                 N = stoi(optarg);
-                cout << option << " " << N << endl;
+                //cout << option << " " << N << endl;
                 break;
             }
             case 'R':
                 R = stoi(optarg);
-                cout << option << " " << R << endl;
+                //cout << option << " " << R << endl;
                 break;
             case '?':
                 cout << "Error in arguments" << endl;
 
         }
     }
+
+    vector<vector<double>> data = parsing_lsh();
+    cout << endl << endl;
+    for (int i = 0; i < data.size(); i++) {  //print dataset
+        for (int j = 0; j < (data)[i].size(); j++)
+            cout << (data)[i][j] << " ";
+        cout << endl;
+    }
+
     return 0;
     
     
