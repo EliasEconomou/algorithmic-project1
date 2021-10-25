@@ -84,21 +84,21 @@ int main(int argc, char** argv) {
     }
 
     vector<vector<double>> data = parsing_lsh(inputFile);
-    cout << endl;
-    for (int i = 0; i < data.size(); i++) {  //print dataset
-        for (int j = 0; j < (data)[i].size(); j++)
-            cout << (data)[i][j] << " ";
-        cout << endl;
-    }
+    // cout << endl;
+    // for (int i = 0; i < data.size(); i++) {  //print dataset
+    //     for (int j = 0; j < (data)[i].size(); j++)
+    //         cout << (data)[i][j] << " ";
+    //     cout << endl;
+    // }
     
-    HashTable *ht = new HashTable(10);
-    vector<double> v1 = {1 ,2, 3};
-    vector<double> v2 = {4 ,5, 6};
-    vector<double> v3 = {7 ,8, 9};
-    ht->HTinsert(&v1);
-    ht->HTinsert(&v2);
-    ht->HTinsert(&v3);
-    ht->HTdisplay();
+    HashTable<int> ht(15);
+    vector<int> v1 = {1 ,2, 3};
+    vector<int> v2 = {4 ,5, 6};
+    vector<int> v3 = {7 ,8, 9};
+    
+    ht.HTinsert(&v1);
+    ht.HTinsert(&v2);
+    ht.HTdisplay();
 
 
 

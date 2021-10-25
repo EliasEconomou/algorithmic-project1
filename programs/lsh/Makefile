@@ -3,7 +3,7 @@ INCLUDE = ../../include
 SRC = ../../src
 
 CC = g++
-CFLAGS = -Wall -g -Werror -I$(INCLUDE)
+CFLAGS = -std=c++11 -Wall -g -Werror -I$(INCLUDE)
 LDFLAGS = -lm
 
 OBJS = lsh.o $(SRC)/functions.o $(SRC)/hash_table.o
