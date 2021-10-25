@@ -6,14 +6,13 @@
 #include <vector>
 
 
-template <class T>
+
 class HashNode
 {
-    T * point;
 public:
-    HashNode(T * point);
+    std::vector<double>* point;
+    HashNode(std::vector<double> * p);
 };
-
 
 
 class HashTable
@@ -22,9 +21,9 @@ class HashTable
     std::list<HashNode> *lists; //a list for every bucket
 public:
     HashTable(int bucketsNumber);
- 
+    
     // inserts point into hash table
-    void HTinsert(std::vector<int> *item);
+    void HTinsert(std::vector<double> *item);
  
     // hash function to map values to key
     int hashFunction(int x) {

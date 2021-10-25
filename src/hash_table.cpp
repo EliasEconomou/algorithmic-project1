@@ -3,10 +3,11 @@
 using namespace std;
 
 
-HashNode::HashNode(std::vector<int> * p)
+HashNode::HashNode(std::vector<double> *p)
 {
   point=p;
 }
+
 
 HashTable::HashTable(int bucketNumber)
 {
@@ -14,20 +15,24 @@ HashTable::HashTable(int bucketNumber)
     lists = new std::list<HashNode>[bucketsNumber]; //allocate 'bucketsNumber' lists
 }
  
-void HashTable::HTinsert(std::vector<int> *p)
+
+void HashTable::HTinsert(std::vector<double> *p)
 {
     // int index = hashFunction(key);
     // table[index].push_back(key);
-    HashNode node = HashNode(p);
+    cout << "In insert. \n";
+    HashNode* node = new HashNode(p);
     lists[0].push_back(node);
 }
 
+
 void HashTable::HTdisplay() 
 {
-  for (int i = 0; i < bucketsNumber; i++) {
-      cout << i;
-      HashNode* node;
-      vector<int> temp = ;
-      cout << endl;
-  }
+  // std::cout << << endl;
+  // for (int i = 0; i < bucketsNumber; i++) {
+  //     cout << i;
+  //     HashNode* node;
+  //     // vector<double> temp = node;
+  //     cout << endl;
+  // }
 }
