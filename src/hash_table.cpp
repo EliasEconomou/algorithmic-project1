@@ -12,7 +12,7 @@ HashNode::HashNode(std::vector<double> *p)
 HashTable::HashTable(int bucketNumber)
 {
     this->bucketsNumber = bucketNumber;
-    lists = new std::list<HashNode>[bucketsNumber]; //allocate 'bucketsNumber' lists
+    lists = new std::list<HashNode>[bucketNumber]; //allocate 'bucketsNumber' space for lists
 }
  
 
@@ -20,15 +20,27 @@ void HashTable::HTinsert(std::vector<double> *p)
 {
     // int index = hashFunction(key);
     // table[index].push_back(key);
-    cout << "In insert. \n";
-    HashNode* node = new HashNode(p);
-    lists[0].push_back(node);
+    // cout << "In insert. \n";
+    lists[0].push_back(HashNode(p));
 }
 
 
 void HashTable::HTdisplay() 
 {
-  // std::cout << << endl;
+  for (int k=0 ; k < bucketsNumber ; k++){
+    cout << "In bucket #" << k << " of hashtable: \n" ;
+    for (int i=0 ; i < lists[k].size() ; i++){
+      std::list<HashNode>::iterator current;
+      for (current = lists[k].begin() ; current != lists[k].end() ; ++current ){
+        // std::cout << current->point->size() << endl;
+        for (auto j = current->point->begin() ; j != current->point->end() ; ++j){
+          std::cout << *j << " ";
+        }
+      }
+    }
+    cout << endl;
+  }
+
   // for (int i = 0; i < bucketsNumber; i++) {
   //     cout << i;
   //     HashNode* node;

@@ -11,7 +11,7 @@ class HashNode
 {
 public:
     std::vector<double>* point;
-    HashNode(std::vector<double> * p);
+    HashNode(std::vector<double> *p);
 };
 
 
