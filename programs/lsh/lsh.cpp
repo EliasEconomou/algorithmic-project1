@@ -93,7 +93,11 @@ int main(int argc, char** argv) {
     
     HashTable *ht = new HashTable(10);
     vector<double> v1 = {1 ,2, 3};
+    vector<double> v2 = {4 ,5, 6};
+    vector<double> v3 = {7 ,8, 9};
     ht->HTinsert(&v1);
+    ht->HTinsert(&v2);
+    ht->HTinsert(&v3);
     ht->HTdisplay();
 
 
