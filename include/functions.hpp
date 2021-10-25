@@ -12,7 +12,7 @@ void hello();
 void goodbye(int);
 
 //Parse dataset and return a vector of dataset's vectors.
-std::vector<std::vector<double>> parsing_lsh(void);
+std::vector<std::vector<double>> parsing_lsh(std::string);
 
 
 

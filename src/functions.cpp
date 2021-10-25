@@ -12,29 +12,48 @@ void goodbye(int n) {
 }
 
 
-vector<vector<double>> parsing_lsh(void) {
-    // Allocate the vector of dataset's vectors.
-    vector<vector<double>> vec;
+//Function that returns vector of vectors, having data from the file at filepath "inputFile"
+vector<vector<double>> parsing_lsh(string inputfile){
+    //Creating the vector to be returned
+    vector<vector<double>> vector_of_vectors;
 
-    string inputFile = "../../dataset.txt";
-    
-    ifstream file; 
-    file.open(inputFile); 
-    string line, token;
-    while(getline(file, line, '\n'))
-    {
-        vector<double> row;
-        stringstream ss1(line);
-        //cout << line << endl;
-        getline(ss1, token,' '); //avoid index
-        while (getline(ss1, token,' ')) { //todo tab?????????????????????????????
-            stringstream ss2(token);
-            double num;
-            ss2 >> num;
-            row.push_back(num);
-        } 
-        vec.push_back(row);
+
+    //Opening input file
+    ifstream file;
+    file.open(inputfile);
+    if (file.is_open()==false){
+        std::cout << "Error with given input file name - no file '" << inputfile << "' was found or there was an error opening the file.\n";
+        exit(-1);
     }
-    
-    return vec;
+    string line;
+
+    //sizelim : a size keeping variable to help with keeping consistent amount of dimentions
+    int sizelim = 0;
+
+    //getting line by line
+    while(std::getline(file, line)){
+
+        //getting data from each line and creating vectors to store them
+        istringstream line_stringstream(line);
+        string word;
+        vector<double> entry_vec;
+
+        while(line_stringstream >> word){
+            entry_vec.push_back(stod(word));
+        }
+
+        //Check if same size vectors are created
+        if (sizelim==0){
+            sizelim=entry_vec.size();
+        }
+        if (entry_vec.size()!=sizelim){
+            cout << "Error with input file - inconsistent record size. \n";
+            exit(-1);
+        }
+
+        //Add newly created vector to vector_of_vectors
+        vector_of_vectors.push_back(entry_vec);
+    }
+
+    return vector_of_vectors;
 }
