@@ -6,7 +6,7 @@ CC = g++
 CFLAGS = -std=c++11 -Wall -g -Werror -I$(INCLUDE)
 LDFLAGS = -lm
 
-OBJS = lsh.o $(SRC)/functions.o $(SRC)/hash_table.o
+OBJS = lsh.o $(SRC)/functions.o $(SRC)/hash_table.o $(SRC)/hash_functions.o
 EXEC = lsh.out
 
 # Arguments for make run / make valgrind

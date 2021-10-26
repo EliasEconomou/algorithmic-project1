@@ -13,9 +13,9 @@ void goodbye(int n) {
 
 
 //Function that returns vector of vectors, having data from the file at filepath "inputFile"
-vector<vector<double>> parsing_lsh(string inputfile){
+vector<vector<int>> parsing_lsh(string inputfile){
     //Creating the vector to be returned
-    vector<vector<double>> vector_of_vectors;
+    vector<vector<int>> vector_of_vectors;
 
 
     //Opening input file
@@ -36,7 +36,7 @@ vector<vector<double>> parsing_lsh(string inputfile){
         //getting data from each line and creating vectors to store them
         istringstream line_stringstream(line);
         string word;
-        vector<double> entry_vec;
+        vector<int> entry_vec;
 
         while(line_stringstream >> word){
             entry_vec.push_back(stod(word));
@@ -56,4 +56,28 @@ vector<vector<double>> parsing_lsh(string inputfile){
     }
 
     return vector_of_vectors;
+}
+
+
+double inner_prod(vector<int> v1, vector<double> v2)
+{
+    double innerProduct = 0.0;
+    if(v1.size()!=v2.size()){
+        cout << "Error in inner product, sizes not the same" << endl;
+        return -1;
+    }
+    for (int i = 0; i < v1.size(); i++) {
+        innerProduct = innerProduct + v1[i]*v2[i];
+    }
+    return innerProduct;
+}
+
+
+// Returns a random integer in the specified range.
+int random_number(int begin, int end)
+{
+    random_device rd;
+    mt19937 generator(rd());
+    uniform_int_distribution<int> dis(begin, end);
+    return dis(generator);
 }

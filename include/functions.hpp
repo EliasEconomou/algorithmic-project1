@@ -7,13 +7,18 @@
 #include <sstream>
 #include <fstream>
 #include <vector>
+#include <random>
 
 void hello();
 void goodbye(int);
 
-//Parse dataset and return a vector of dataset's vectors.
-std::vector<std::vector<double>> parsing_lsh(std::string);
+// Parse dataset and return a vector of dataset's vectors.
+std::vector<std::vector<int>> parsing_lsh(std::string);
 
+// Compute the inner product between two vectors.
+double inner_prod(std::vector<int> v1, std::vector<double> v2);
 
+// Returns a random integer in the specified range.
+int random_number(int begin, int end);
 
 #endif

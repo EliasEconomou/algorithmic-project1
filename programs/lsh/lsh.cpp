@@ -8,6 +8,7 @@
 #include <vector>
 #include "../../include/functions.hpp"
 #include "../../include/hash_table.hpp"
+#include "../../include/hash_functions.hpp"
 
 
 using namespace std;
@@ -83,25 +84,32 @@ int main(int argc, char** argv) {
         }
     }
 
-    vector<vector<double>> data = parsing_lsh(inputFile);
-    // cout << endl;
+    vector<vector<int>> data = parsing_lsh(inputFile);
+    // cout << endl; //todo delete these
     // for (int i = 0; i < data.size(); i++) {  //print dataset
     //     for (int j = 0; j < (data)[i].size(); j++)
     //         cout << (data)[i][j] << " ";
     //     cout << endl;
     // }
     
-    HashTable<int> ht(15);
-    vector<int> v1 = {1 ,2, 3};
-    vector<int> v2 = {4 ,5, 6};
-    vector<int> v3 = {7 ,8, 9};
+    // HashTable<int> ht(15); // todo delete these
+    // vector<int> v1 = {1 ,2, 3};
+    // vector<int> v2 = {4 ,5, 6};
+    // vector<int> v3 = {7 ,8, 9};
+    // ht.HTinsert(&v1);
+    // ht.HTinsert(&v2);
+    // ht.HTdisplay();
+
+
+    int dataDimension = data[0].size();
+    vector<int> hValues = compute_hValues(k, data);
+
+    for (int i = 0; i < 4; i++)
+    {
+        cout << hValues[i] << " ";
+    }
+    cout << endl;
     
-    ht.HTinsert(&v1);
-    ht.HTinsert(&v2);
-    ht.HTdisplay();
-
-
-
     return 0;
 
     
