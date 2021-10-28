@@ -1,15 +1,6 @@
-using namespace std;
-
 #include "../include/functions.hpp"
 
-void hello() {
-    cout << "Hello cpp" << endl; 
-}
-
-void goodbye(int n) {
-    for( int i = 0; i < n; ++i )
-    cout << "Goodbye" << endl;
-}
+using namespace std;
 
 
 //Function that returns vector of vectors, having data from the file at filepath "inputFile"
@@ -59,7 +50,47 @@ vector<vector<int>> parsing_lsh(string inputfile){
 }
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// Compute the inner product between two vectors.
 double inner_prod(vector<int> v1, vector<double> v2)
+{
+    double innerProduct = 0.0;
+    if(v1.size()!=v2.size()){
+        cout << "Error in inner product, sizes not the same" << endl;
+        return -1;
+    }
+    for (int i = 0; i < v1.size(); i++) {
+        innerProduct = innerProduct + v1[i]*v2[i];
+    }
+    return innerProduct;
+}
+int inner_prod(vector<int> v1, vector<int> v2)
+{
+    int innerProduct = 0;
+    if(v1.size()!=v2.size()){
+        cout << "Error in inner product, sizes not the same" << endl;
+        return -1;
+    }
+    for (int i = 0; i < v1.size(); i++) {
+        innerProduct = innerProduct + v1[i]*v2[i];
+    }
+    return innerProduct;
+}
+double inner_prod(vector<double> v1, vector<double> v2)
+{
+    double innerProduct = 0.0;
+    if(v1.size()!=v2.size()){
+        cout << "Error in inner product, sizes not the same" << endl;
+        return -1;
+    }
+    for (int i = 0; i < v1.size(); i++) {
+        innerProduct = innerProduct + v1[i]*v2[i];
+    }
+    return innerProduct;
+}
+double inner_prod(vector<double> v1, vector<int> v2)
 {
     double innerProduct = 0.0;
     if(v1.size()!=v2.size()){
@@ -73,6 +104,9 @@ double inner_prod(vector<int> v1, vector<double> v2)
 }
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 // Returns a random integer in the specified range.
 int random_number(int begin, int end)
 {
@@ -81,3 +115,8 @@ int random_number(int begin, int end)
     uniform_int_distribution<int> dis(begin, end);
     return dis(generator);
 }
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+

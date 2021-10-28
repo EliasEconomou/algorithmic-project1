@@ -84,31 +84,33 @@ int main(int argc, char** argv) {
         }
     }
 
-    vector<vector<int>> data = parsing_lsh(inputFile);
-    // cout << endl; //todo delete these
-    // for (int i = 0; i < data.size(); i++) {  //print dataset
-    //     for (int j = 0; j < (data)[i].size(); j++)
-    //         cout << (data)[i][j] << " ";
-    //     cout << endl;
-    // }
     
-    // HashTable<int> ht(15); // todo delete these
-    // vector<int> v1 = {1 ,2, 3};
-    // vector<int> v2 = {4 ,5, 6};
-    // vector<int> v3 = {7 ,8, 9};
-    // ht.HTinsert(&v1);
-    // ht.HTinsert(&v2);
+    vector<vector<int>> data = parsing_lsh(inputFile);
+    int vectorsNumber = data.size();
+    int dimension = data[0].size()-1;
+    hash_info hInfo(k, dimension);
+    
+    
+    vector<HashTable> hashTables;
+    for (int i = 0; i < L; i++)
+    {
+        HashTable ht(vectorsNumber/4);
+        hashTables.push_back(ht);
+    }
+    
+    for (int i = 0; i < L; i++)
+    {
+        for (int j = 0; j < vectorsNumber; j++)
+        {
+            hashTables[i].HTinsert(&data[j], &hInfo);
+        }
+    }
+    
+    
+
+    
     // ht.HTdisplay();
 
-
-    int dataDimension = data[0].size();
-    vector<int> hValues = compute_hValues(k, data);
-
-    for (int i = 0; i < 4; i++)
-    {
-        cout << hValues[i] << " ";
-    }
-    cout << endl;
     
     return 0;
 

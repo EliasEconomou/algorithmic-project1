@@ -4,32 +4,27 @@
 #include <iostream>
 #include <list>
 #include <vector>
+#include "hash_functions.hpp"
 
 
-template <class T>
 class HashNode
 {
 public:
-    std::vector<T> *point;
-    HashNode(std::vector<T> *p);
+    std::vector<int> *point;
+    HashNode(std::vector<int> *p);
 };
 
-template <class T>
 class HashTable
 {
     int bucketsNumber;
-    std::list<HashNode<T> > *lists; //a list for every bucket
+    std::list<HashNode> *lists; //a list for every bucket
 public:
     HashTable(int bucketsNumber);
     
-    // inserts point into hash table
-    void HTinsert(std::vector<T> *item);
- 
-//     // hash function to map values to key
-    int hashFunction(int x) {
-        return (x % bucketsNumber);
-    }
- 
+    // Insert item in hash table
+    void HTinsert(std::vector<int> *p, hash_info *hInfo);
+
+    // Display hash table (debug)
     void HTdisplay();
 };
 

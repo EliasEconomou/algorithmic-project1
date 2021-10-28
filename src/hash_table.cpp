@@ -2,45 +2,60 @@
 
 using namespace std;
 
-template <class T>
-HashNode<T>::HashNode(std::vector<T> *p)
+
+HashNode::HashNode(std::vector<int> *p)
 {
   point=p;
 }
 
-template <class T>
-HashTable<T>::HashTable(int bucketNumber)
+
+
+HashTable::HashTable(int bucketNumber)
 {
-    this->bucketsNumber = bucketNumber;
-    lists = new std::list<HashNode<T> >[bucketNumber]; //allocate 'bucketsNumber' space for lists
+  this->bucketsNumber = bucketNumber;
+  lists = new list<HashNode>[bucketNumber]; //allocate 'bucketsNumber' space for lists
 }
 
-template class HashTable<int>;
-template class HashTable<float>;
-template class HashTable<double>;
 
-template <class T>
-void HashTable<T>::HTinsert(std::vector<T> *p)
+
+
+void HashTable::HTinsert(vector<int> *p, hash_info *hInfo)
 {
-    // int index = hashFunction(key);
-    // table[index].push_back(key);
-    // cout << "In insert. \n";
-    lists[0].push_back(HashNode<T>(p));
+
+  //cout << typeid(*p).name() << endl;
+  vector<int> hValues;
+  int k = hInfo->get_k();
+  for (int i = 0; i < k; i++)
+  {
+    hValues.push_back(compute_hValue(i, *p, hInfo));
+    
+  }
+  for (int i = 0; i < k; i++)
+  {
+    cout << "PVALUE RETURNED " << hValues[i] << " ";
+  }
+  cout << endl << endl;
+  
+  
+  //vector<int> hValues = compute_hValues(p, k,data);
+  lists[0].push_back(HashNode(p));
 }
 
-template <class T>
-void HashTable<T>::HTdisplay() 
+
+
+void HashTable::HTdisplay() 
 {
   for (int k=0 ; k < bucketsNumber ; k++){
     cout << "In bucket #" << k << " of hashtable: \n" ;
-    typename std::list<HashNode<T> >::iterator current;
+    typename list<HashNode>::iterator current;
       for (current = lists[k].begin() ; current != lists[k].end() ; ++current ){
         // std::cout << current->point->size() << endl;
         for (auto j = current->point->begin() ; j != current->point->end() ; ++j){
-          std::cout << *j << " ";
+          cout << *j << " ";
         }
         cout << endl;
       }
     cout << endl;
   }
 }
+

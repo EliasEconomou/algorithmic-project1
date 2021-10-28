@@ -17,6 +17,9 @@ std::vector<std::vector<int>> parsing_lsh(std::string);
 
 // Compute the inner product between two vectors.
 double inner_prod(std::vector<int> v1, std::vector<double> v2);
+int inner_prod(std::vector<int> v1, std::vector<int> v2);
+double inner_prod(std::vector<double> v1, std::vector<double> v2);
+double inner_prod(std::vector<double> v1, std::vector<int> v2);
 
 // Returns a random integer in the specified range.
 int random_number(int begin, int end);
