@@ -1,0 +1,10 @@
+TODO:
+
+-----destructors
+DONE distance
+-----υπολογισμός w
+-----διαχωριζω index από vectors
+-----
+-----
+-----
+-----

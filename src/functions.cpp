@@ -53,6 +53,28 @@ vector<vector<int>> parsing_lsh(string inputfile){
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+// Compute distance between vectors. L=1 for manhattan, L=2 for euclidian.
+double distance(vector<int> v1, vector<int> v2, int L)
+{
+    int v1Dim = v1.size();
+    int v2Dim = v2.size();
+    if (v1Dim!=v2Dim)
+    {
+        cout << "Error, vectors have different size." << endl;
+        return -1;
+    }
+    double sum = 0.0;
+    for (int i = 0; i < v1Dim; i++)
+    {
+        sum += pow(abs(v1[i]-v2[i]), L);
+    }
+    return sqrt(sum);
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 // Compute the inner product between two vectors.
 double inner_prod(vector<int> v1, vector<double> v2)
 {

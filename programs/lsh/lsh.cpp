@@ -89,8 +89,7 @@ int main(int argc, char** argv) {
     int vectorsNumber = data.size();
     int dimension = data[0].size()-1;
     hash_info hInfo(k, dimension);
-    
-    
+
     vector<HashTable> hashTables;
     for (int i = 0; i < L; i++)
     {
@@ -109,10 +108,9 @@ int main(int argc, char** argv) {
         cout << endl << endl;
     }
     
-    
-
-    
     hashTables[0].HTdisplay();
+
+
 
     
     return 0;

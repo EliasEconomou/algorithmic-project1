@@ -15,6 +15,9 @@ void goodbye(int);
 // Parse dataset and return a vector of dataset's vectors.
 std::vector<std::vector<int>> parsing_lsh(std::string);
 
+// Compute distance between vectors. L=1 for manhattan, L=2 for euclidian.
+double distance(std::vector<int> v1, std::vector<int> v2, int L);
+
 // Compute the inner product between two vectors.
 double inner_prod(std::vector<int> v1, std::vector<double> v2);
 int inner_prod(std::vector<int> v1, std::vector<int> v2);
