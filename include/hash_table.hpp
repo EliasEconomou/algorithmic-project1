@@ -10,8 +10,9 @@
 class HashNode
 {
 public:
+    long int ID;
     std::vector<int> *point;
-    HashNode(std::vector<int> *p);
+    HashNode(std::vector<int> *p, int ID);
 };
 
 class HashTable

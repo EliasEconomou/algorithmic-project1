@@ -94,7 +94,7 @@ int main(int argc, char** argv) {
     vector<HashTable> hashTables;
     for (int i = 0; i < L; i++)
     {
-        HashTable ht(vectorsNumber/4);
+        HashTable ht((vectorsNumber/4)+1);
         hashTables.push_back(ht);
     }
     
@@ -104,12 +104,15 @@ int main(int argc, char** argv) {
         {
             hashTables[i].HTinsert(&data[j], &hInfo);
         }
+        hInfo.update_v();
+        hInfo.update_t();
+        cout << endl << endl;
     }
     
     
 
     
-    // ht.HTdisplay();
+    hashTables[0].HTdisplay();
 
     
     return 0;

@@ -120,3 +120,9 @@ int random_number(int begin, int end)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+// Returns modulo of two numbers.
+long int modulo(long int a, long long int b)
+{
+    //cout << "a = " << a << " and b = " << b;
+    return ((a%b)+b)%b;
+}

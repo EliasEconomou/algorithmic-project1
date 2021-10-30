@@ -3,9 +3,10 @@
 using namespace std;
 
 
-HashNode::HashNode(std::vector<int> *p)
+HashNode::HashNode(std::vector<int> *p, int ID)
 {
-  point=p;
+  this->ID = ID;
+  this->point = p;
 }
 
 
@@ -21,8 +22,6 @@ HashTable::HashTable(int bucketNumber)
 
 void HashTable::HTinsert(vector<int> *p, hash_info *hInfo)
 {
-
-  //cout << typeid(*p).name() << endl;
   vector<int> hValues;
   int k = hInfo->get_k();
   for (int i = 0; i < k; i++)
@@ -30,15 +29,12 @@ void HashTable::HTinsert(vector<int> *p, hash_info *hInfo)
     hValues.push_back(compute_hValue(i, *p, hInfo));
     
   }
-  for (int i = 0; i < k; i++)
-  {
-    cout << "PVALUE RETURNED " << hValues[i] << " ";
-  }
-  cout << endl << endl;
-  
+
+  long int ID = compute_IDvalue(hValues, hInfo);
+  int g = compute_gValue(ID, this->bucketsNumber);
   
   //vector<int> hValues = compute_hValues(p, k,data);
-  lists[0].push_back(HashNode(p));
+  lists[g].push_back(HashNode(p, ID));
 }
 
 

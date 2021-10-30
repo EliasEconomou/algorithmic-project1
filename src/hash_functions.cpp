@@ -6,7 +6,7 @@ using namespace std;
 // Returns w (int 3 to 6) // todo w
 int compute_w(void)
 {
-    return 4;
+    return 100;
 }
 
 
@@ -26,6 +26,23 @@ vector<double> compute_t(int k)
         t.push_back(coordinate);
     }
     return t;
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// Clear vector t and add new random values to it.
+void hash_info::update_t()
+{
+    random_device rd;
+    mt19937 generator(rd());
+    for (int i = 0; i < this->k; i++)
+    {
+        uniform_real_distribution<double> d(0.0, float(compute_w()));
+        double coordinate = d(generator);
+        this->t.push_back(coordinate);
+    }
 }
 
 
@@ -60,8 +77,28 @@ vector<vector<double> > compute_v(int k, int d)
     // }
 
     return v;
+}
 
- 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Clear vector v and add new random values to it.
+void hash_info::update_v()
+{
+    this->v.clear(); 
+    random_device rd;
+    mt19937 generator(rd());
+    for (int i = 0; i < this->k; i++)
+    {
+        vector<double> vi;
+        for (int j = 0; j < this->d; j++)
+        {
+            normal_distribution<double> d{0,1};
+            double coordinate = d(generator);
+            vi.push_back(coordinate);
+        }
+        this->v.push_back(vi);
+    }
 }
 
 
@@ -74,10 +111,21 @@ vector<int> compute_r(int k)
     vector<int> r;
     for (int i = 0; i < k; i++)
     {
-        int rValue = random_number(1,100);
+        int rValue = random_number(1,INT32_MAX);
         r.push_back(rValue);
     }
     return r;
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// Returns M to use in g function
+long long int compute_M()
+{
+    long long int M = pow(2,32) - 5;
+    return M;
 }
 
 
@@ -92,6 +140,7 @@ hash_info::hash_info(int k, int d)
     this->v = compute_v(k, d);
     this->t = compute_t(k);
     this->r = compute_r(k);
+    this->M = compute_M();
     
 }
 
@@ -129,6 +178,12 @@ int hash_info::get_d()
     return this->d;
 }
 
+long long int hash_info::get_M()
+{
+    return this->M;
+}
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -161,47 +216,36 @@ int compute_hValue(int i, vector<int> p, hash_info *hInfo)
     hValue = (pv - ti)/w;
     return hValue;
 }
-int compute_hValue(int i, vector<double> p, hash_info *hInfo)
-{
-    int hValue;
-    vector<vector<double> > v = hInfo->get_v();
-    vector<double> vi = v[i];
-    for (int j = 0; j < vi[j]; j++)
-    {
-        cout << vi[j] << " " << endl;
-    }
-    
-    // Creating all k-h functions
-    // Extract vector-point (cordinates), leave out the index
-    auto first = p.begin() + 1;
-    auto last = p.begin() + hInfo->get_d() + 1;
-    vector<double> pRow(first, last);
-    double pv = inner_prod(pRow,vi); //compute inner product p*v
-    
-    vector<double> t = hInfo->get_t();
-    double ti = t[i];
 
-    int w = hInfo->get_w();
-    
-    hValue = (pv - ti)/w;
-    return hValue;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// Returns the ID - value
+long int compute_IDvalue(std::vector<int> hValues, hash_info *hInfo)
+{
+    int k = hInfo->get_k();
+    long int M = hInfo->get_M();
+    vector<int> r = hInfo->get_r();
+    long int ID = 0;
+    if(hValues.size()!=r.size()) {
+        cout << "Error h-values vector must have same dimension (k) as r vector" << endl;
+        return -1;
+    }
+    for (int i = 0; i < k; i++) {
+        long int sum = r[i]*hValues[i];
+        ID += modulo(sum,M);
+    }
+    return ID;
 }
 
 
-// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-// // Returns the ID - value
-// int compute_IDvalue(std::vector<int> hValues)
-// {
-//     int hSize = hValues.size();
-//     vector<int> r;
-//     for (int i = 0; i < hSize; i++)
-//     {
-//         int rValue = random_number(1,100);
-//         r.push_back(rValue);
-//     }
-    
-    
-    
-// }
+// Returns the g hash function - value
+int compute_gValue(long int ID, int bucketNumber)
+{
+    int g = modulo(ID,bucketNumber);
+    return g;
+}
