@@ -84,31 +84,46 @@ int main(int argc, char** argv) {
         }
     }
 
-    
-    vector<vector<int>> data = parsing_lsh(inputFile);
-    int vectorsNumber = data.size();
-    int dimension = data[0].size()-1;
-    hash_info hInfo(k, dimension);
+    vector_of_points data;
 
-    vector<HashTable> hashTables;
-    for (int i = 0; i < L; i++)
+    data = parsing(inputFile);
+    cout << data.points.size() << endl;
+
+    for (int i = 0; i < data.points.size(); i++)
     {
-        HashTable ht((vectorsNumber/4)+1);
-        hashTables.push_back(ht);
-    }
-    
-    for (int i = 0; i < L; i++)
-    {
-        for (int j = 0; j < vectorsNumber; j++)
+        cout << data.points[i].itemID << "  ";
+        for (int j = 0; j < data.points[0].point.size(); j++)
         {
-            hashTables[i].HTinsert(&data[j], &hInfo);
+            cout << data.points[i].point[j] << " ";
         }
-        hInfo.update_v();
-        hInfo.update_t();
-        cout << endl << endl;
+        cout << endl;
     }
     
-    hashTables[0].HTdisplay();
+
+
+    // int vectorsNumber = data1.size();
+    // int dimension = data1[0].size()-1;
+    // hash_info hInfo(k, dimension);
+
+    // vector<HashTable> hashTables;
+    // for (int i = 0; i < L; i++)
+    // {
+    //     HashTable ht((vectorsNumber/4)+1);
+    //     hashTables.push_back(ht);
+    // }
+    
+    // for (int i = 0; i < L; i++)
+    // {
+    //     for (int j = 0; j < vectorsNumber; j++)
+    //     {
+    //         hashTables[i].HTinsert(&data1[j], &hInfo);
+    //     }
+    //     hInfo.update_v();
+    //     hInfo.update_t();
+    //     cout << endl << endl;
+    // }
+    
+    // hashTables[0].HTdisplay();
 
 
 

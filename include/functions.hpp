@@ -9,11 +9,25 @@
 #include <vector>
 #include <random>
 
-void hello();
-void goodbye(int);
+
+class point
+{
+public:
+    int itemID;
+    std::vector<int> point;
+};
+
+
+class vector_of_points
+{
+public:
+    std::vector<point> points;
+};
+
+
 
 // Parse dataset and return a vector of dataset's vectors.
-std::vector<std::vector<int>> parsing_lsh(std::string);
+vector_of_points parsing(std::string);
 
 // Compute distance between vectors. L=1 for manhattan, L=2 for euclidian.
 double distance(std::vector<int> v1, std::vector<int> v2, int L);
