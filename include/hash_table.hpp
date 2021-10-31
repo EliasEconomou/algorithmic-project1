@@ -5,14 +5,16 @@
 #include <list>
 #include <vector>
 #include "hash_functions.hpp"
+#include "functions.hpp"
 
+class Point;
 
 class HashNode
 {
 public:
     long int ID;
-    std::vector<int> *point;
-    HashNode(std::vector<int> *p, int ID);
+    Point *point;
+    HashNode(Point *p, int ID);
 };
 
 class HashTable
@@ -23,7 +25,7 @@ public:
     HashTable(int bucketsNumber);
     
     // Insert item in hash table
-    void HTinsert(std::vector<int> *p, hash_info *hInfo);
+    void HTinsert(Point *p, hash_info *hInfo);
 
     // Display hash table (debug)
     void HTdisplay();

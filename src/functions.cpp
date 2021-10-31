@@ -4,9 +4,9 @@ using namespace std;
 
 
 // Function that returns vector of vectors, having data from the file at filepath "inputFile"
-vector_of_points parsing(string inputFile){
+Vector_of_points parsing(string inputFile){
     
-    vector_of_points data;
+    Vector_of_points data;
 
     //Opening input file
     ifstream file;
@@ -26,14 +26,14 @@ vector_of_points parsing(string inputFile){
         //getting data from each line and creating vectors to store them
         istringstream line_stringstream(line);
         string word;
-        point p;
+        Point p;
 
         line_stringstream >> word; // Read first word - index_ID
    
         p.itemID = stod(word);
         while(line_stringstream >> word) {
             
-            p.point.push_back(stod(word));
+            p.vpoint.push_back(stod(word));
         }
 
         //Check if same size vectors are created // todo

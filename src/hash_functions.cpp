@@ -197,15 +197,15 @@ int compute_hValue(int i, vector<int> p, hash_info *hInfo)
     vector<double> vi = v[i];
     // Creating all k-h functions
     // Extract vector-point (cordinates), leave out the index
-    auto first = p.begin() + 1;
-    auto last = p.begin() + hInfo->get_d() + 1;
-    vector<int> pRow(first, last);
+    // auto first = p.begin() + 1;
+    // auto last = p.begin() + hInfo->get_d() + 1;
+    // vector<int> pRow(first, last);
     // for (size_t j = 0; j < hInfo->get_d(); j++)
     // {
     //     cout << "j : " << j << " - " << "p = " << pRow[j] << " and " << vi[j] << endl;
     // }
     // cout << endl;
-    double pv = inner_prod(pRow,vi); //compute inner product p*v
+    double pv = inner_prod(p,vi); //compute inner product p*v
 
     vector<double> t = hInfo->get_t();
     double ti = t[i];

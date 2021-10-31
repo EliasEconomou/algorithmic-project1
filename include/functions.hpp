@@ -10,24 +10,25 @@
 #include <random>
 
 
-class point
+class Point
 {
 public:
-    int itemID;
-    std::vector<int> point;
+    int itemID; //index id of point
+    std::vector<int> vpoint; //point-vector of coordinates
+    
 };
 
 
-class vector_of_points
+class Vector_of_points
 {
 public:
-    std::vector<point> points;
+    std::vector<Point> points; //vector of points
 };
 
 
 
 // Parse dataset and return a vector of dataset's vectors.
-vector_of_points parsing(std::string);
+Vector_of_points parsing(std::string);
 
 // Compute distance between vectors. L=1 for manhattan, L=2 for euclidian.
 double distance(std::vector<int> v1, std::vector<int> v2, int L);

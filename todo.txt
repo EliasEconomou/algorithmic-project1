@@ -3,7 +3,7 @@ TODO:
 -----destructors
 DONE distance
 -----υπολογισμός w
------διαχωριζω index από vectors
+DONE διαχωριζω index από vectors
 -----
 -----
 -----
