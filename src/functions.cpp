@@ -4,15 +4,15 @@ using namespace std;
 
 
 // Function that returns vector of vectors, having data from the file at filepath "inputFile"
-Vector_of_points parsing(string inputFile){
+Vector_of_points parsing(string fileName){
     
     Vector_of_points data;
 
     //Opening input file
     ifstream file;
-    file.open(inputFile);
+    file.open(fileName);
     if (file.is_open()==false){
-        std::cout << "Error with given input file name - no file '" << inputFile << "' was found or there was an error opening the file.\n";
+        std::cout << "Error with given input file name - no file '" << fileName << "' was found or there was an error opening the file.\n";
         exit(-1);
     }
     string line;
@@ -47,8 +47,9 @@ Vector_of_points parsing(string inputFile){
 
         //Add newly created point to data
         data.points.push_back(p);
+        
     }
-    cout << data.points.size() << endl;
+    file.close();
     return data;
 }
 

@@ -6,7 +6,7 @@ using namespace std;
 // Returns w (int 3 to 6) // todo w
 int compute_w(void)
 {
-    return 100;
+    return 150;
 }
 
 
@@ -29,12 +29,10 @@ vector<double> compute_t(int k)
 }
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 // Clear vector t and add new random values to it.
 void hash_info::update_t()
 {
+    this->t.clear();
     random_device rd;
     mt19937 generator(rd());
     for (int i = 0; i < this->k; i++)
@@ -67,22 +65,11 @@ vector<vector<double> > compute_v(int k, int d)
         v.push_back(vi);
         
     }
-    // for (int i = 0; i < k; i++)
-    // {
-    //     for (int j = 0; j < d; j++)
-    //     {
-    //         cout << v[i][j] << " ";
-    //     }
-    //     cout << endl;
-    // }
-
     return v;
 }
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Clear vector v and add new random values to it.
+// Clear vectors v and add new random values to them.
 void hash_info::update_v()
 {
     this->v.clear(); 
@@ -118,6 +105,18 @@ vector<int> compute_r(int k)
 }
 
 
+// Clear vector r and add new random values to it.
+void hash_info::update_r()
+{
+    this->r.clear();
+    for (int i = 0; i < k; i++)
+    {
+        int rValue = random_number(1,INT32_MAX);
+        this->r.push_back(rValue);
+    }
+}
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -132,10 +131,11 @@ long long int compute_M()
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-hash_info::hash_info(int k, int d)
+hash_info::hash_info(int k, int d, int L)
 {
     this->k = k;
     this->d = d;
+    this->L = L;
     this->w = compute_w();
     this->v = compute_v(k, d);
     this->t = compute_t(k);
@@ -178,7 +178,12 @@ int hash_info::get_d()
     return this->d;
 }
 
-long long int hash_info::get_M()
+int hash_info::get_L()
+{
+    return this->L;
+}
+
+long int hash_info::get_M()
 {
     return this->M;
 }

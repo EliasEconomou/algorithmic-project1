@@ -14,7 +14,7 @@ class HashNode
 public:
     long int ID;
     Point *point;
-    HashNode(Point *p, int ID);
+    HashNode(Point *p, long int ID);
 };
 
 class HashTable
@@ -29,6 +29,10 @@ public:
 
     // Display hash table (debug)
     void HTdisplay();
+
+    int get_bucketsNumber();
+
+    std::list<HashNode> get_bucketList(int g);
 };
 
 

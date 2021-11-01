@@ -3,7 +3,7 @@
 using namespace std;
 
 
-HashNode::HashNode(Point *p, int ID)
+HashNode::HashNode(Point *p, long int ID)
 {
   this->ID = ID;
   this->point = p;
@@ -28,13 +28,10 @@ void HashTable::HTinsert(Point *p, hash_info *hInfo)
   for (int i = 0; i < k; i++)
   {
     hValues.push_back(compute_hValue(i, vp, hInfo));
-    
   }
 
   long int ID = compute_IDvalue(hValues, hInfo);
   int g = compute_gValue(ID, this->bucketsNumber);
-  
-  //vector<int> hValues = compute_hValues(p, k,data);
   lists[g].push_back(HashNode(p, ID));
 }
 
@@ -56,3 +53,16 @@ void HashTable::HTdisplay()
   }
 }
 
+
+
+int HashTable::get_bucketsNumber()
+{
+  return this->bucketsNumber;
+}
+
+
+
+list<HashNode> HashTable::get_bucketList(int g)
+{
+  return this->lists[g];
+}

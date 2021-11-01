@@ -9,6 +9,7 @@
 #include "../../include/functions.hpp"
 #include "../../include/hash_table.hpp"
 #include "../../include/hash_functions.hpp"
+#include "../../include/algorithms.hpp"
 
 
 using namespace std;
@@ -84,29 +85,28 @@ int main(int argc, char** argv) {
         }
     }
 
-    Vector_of_points data;
+    Vector_of_points inputData;
+    inputData = parsing(inputFile);
 
-    data = parsing(inputFile);
-    cout << data.points.size() << endl;
-
-    // for (int i = 0; i < data.points.size(); i++) //print data
+    // for (int i = 0; i < inputData.points.size(); i++) //print data
     // {
-    //     cout << data.points[i].itemID << "  ";
-    //     for (int j = 0; j < data.points[0].vpoint.size(); j++)
+    //     cout << inputData.points[i].itemID << endl;
+    //     for (int j = 0; j < inputData.points[0].vpoint.size(); j++)
     //     {
-    //         cout << data.points[i].vpoint[j] << " ";
+    //         cout << inputData.points[i].vpoint[j] << " ";
     //     }
     //     cout << endl;
     // }
 
-    int vectorsNumber = data.points.size();
-    int dimension = data.points[0].vpoint.size();
-    hash_info hInfo(k, dimension);
+    int vectorsNumber = inputData.points.size();
+    int dimension = inputData.points[0].vpoint.size();
+    int bucketsNumber = vectorsNumber/4;
+    hash_info hInfo(k, dimension, L);
 
     vector<HashTable> hashTables;
     for (int i = 0; i < L; i++)
     {
-        HashTable ht((vectorsNumber/4)+1);
+        HashTable ht(bucketsNumber);
         hashTables.push_back(ht);
     }
     
@@ -114,15 +114,30 @@ int main(int argc, char** argv) {
     {
         for (int j = 0; j < vectorsNumber; j++)
         {
-            hashTables[i].HTinsert(&data.points[j], &hInfo);
+            hashTables[i].HTinsert(&inputData.points[j], &hInfo);
         }
         hInfo.update_v();
         hInfo.update_t();
+        hInfo.update_r();
     }
     
-    hashTables[0].HTdisplay();
+    //hashTables[0].HTdisplay();
 
 
+    Vector_of_points queryData;
+    queryData = parsing(queryFile);
+
+    // for (int i = 0; i < queryData.points.size(); i++) //print data
+    // {
+    //     cout << queryData.points[i].itemID << endl;
+    //     for (int j = 0; j < queryData.points[0].vpoint.size(); j++)
+    //     {
+    //         cout << queryData.points[i].vpoint[j] << " ";
+    //     }
+    //     cout << endl;
+    // }
+
+    Point result = approximate_NN(queryData.points[0],hashTables, &hInfo);
 
     
     return 0;

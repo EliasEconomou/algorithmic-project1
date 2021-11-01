@@ -1,10 +1,10 @@
 TODO:
 
------destructors
+-----ylopoiw destructors
 DONE distance
 -----υπολογισμός w
 DONE διαχωριζω index από vectors
------
------
+-----parshing - check and fix sizelim
+-----vazw class point se diko ths header
 -----
 -----
