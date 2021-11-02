@@ -144,6 +144,21 @@ int main(int argc, char** argv) {
 
     Point trueResult = true_approximate_NN(queryData.points[0], inputData);
     
+    priority_queue<pair<Point,double>,vector<pair<Point,double>>,CompDist> bestPointsDists;
+    bestPointsDists = lsh_approximate_nNN(queryData.points[0], N, hashTables, &hInfo);
+
+
+    for (int i = 0; i < N; i++)
+    {
+        cout << i << " " << endl;
+        cout << "indexID = " << bestPointsDists.top().first.itemID << " - " << bestPointsDists.top().second << endl;
+        bestPointsDists.pop();
+    }
+    
+
+
+
+
     return 0;
 
     
