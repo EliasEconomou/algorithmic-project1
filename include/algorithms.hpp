@@ -26,6 +26,13 @@ Point lsh_approximate_NN(Point q, std::vector<HashTable> hashTables, hash_info *
 
 Point true_approximate_NN(Point q, Vector_of_points inputData);
 
-std::priority_queue<std::pair<Point,double>,std::vector<std::pair<Point,double>>,CompDist> lsh_approximate_nNN(Point q, int N, std::vector<HashTable> hashTables, hash_info *hInfo);
+std::priority_queue<std::pair<Point,double>,std::vector<std::pair<Point,double>>,CompDist> 
+lsh_approximate_nNN(Point q, int N, std::vector<HashTable> hashTables, hash_info *hInfo);
+
+std::priority_queue<std::pair<Point,double>,std::vector<std::pair<Point,double>>,CompDist> 
+true_approximate_nNN(Point q, int N, Vector_of_points inputData);
+
+
+
 
 #endif

@@ -83,7 +83,6 @@ priority_queue<pair<Point,double>,vector<pair<Point,double>>,CompDist> lsh_appro
     priority_queue<pair<Point,double>,vector<pair<Point,double>>,CompDist> bestPointsDists;
     Point a;
     bestPointsDists.push(make_pair(a,DBL_MAX));
-    cout << " ---- size " << bestPointsDists.size() << endl;
     int L = hInfo->get_L();
     for (int i = 0; i < L; i++) {
         // cout << "HASH TABLE : " << i << endl;
@@ -120,9 +119,39 @@ priority_queue<pair<Point,double>,vector<pair<Point,double>>,CompDist> lsh_appro
             }
             else if (bestPointsDists.size()<N) //if there is space in priority queue push pair
             {
-                cout << "here" << endl;
                 bestPointsDists.push(make_pair(*(current->point),dist));
             }
+        }
+    }
+    return bestPointsDists;
+}
+
+
+
+
+
+priority_queue<pair<Point,double>,vector<pair<Point,double>>,CompDist> true_approximate_nNN(Point q, int N, Vector_of_points inputData)
+{
+    // Initialise a max priority queue two hold pairs of true best point/best distance.
+    priority_queue<pair<Point,double>,vector<pair<Point,double>>,CompDist> bestPointsDists;
+    Point a;
+    bestPointsDists.push(make_pair(a,DBL_MAX));
+    
+    for (int i = 0; i < inputData.points.size(); i++)
+    {
+        double dist = distance(q.vpoint,inputData.points[i].vpoint, 2);
+        if (bestPointsDists.size()==N) //if priority queue is full
+        {
+            //if the biggest distance in priority queue is equal/greater than current distance
+            if (bestPointsDists.top().second >= dist)
+            {
+                bestPointsDists.pop(); //pop biggest distance pair
+                bestPointsDists.push(make_pair(inputData.points[i],dist)); //push new point/distance
+            }
+        }
+        else if (bestPointsDists.size()<N) //if there is space in priority queue push pair
+        {
+            bestPointsDists.push(make_pair(inputData.points[i],dist));
         }
     }
     return bestPointsDists;
