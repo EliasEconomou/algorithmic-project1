@@ -23,6 +23,9 @@ HashTable::HashTable(int bucketNumber)
 void HashTable::HTinsert(Point *p, hash_info *hInfo)
 {
   vector<int> hValues;
+  hInfo->update_v(this->v);
+  hInfo->update_t(this->t);
+  hInfo->update_r(this->r);
   int k = hInfo->get_k();
   vector<int> vp = p->vpoint;
   for (int i = 0; i < k; i++)

@@ -100,7 +100,7 @@ int main(int argc, char** argv) {
 
     int vectorsNumber = inputData.points.size();
     int dimension = inputData.points[0].vpoint.size();
-    int bucketsNumber = vectorsNumber/4;
+    int bucketsNumber = vectorsNumber/8;
     hash_info hInfo(k, dimension, L);
 
     vector<HashTable> hashTables;
@@ -112,13 +112,16 @@ int main(int argc, char** argv) {
     
     for (int i = 0; i < L; i++)
     {
+        hashTables[i].v = compute_v(k,dimension);
+        hashTables[i].t = compute_t(k);
+        hashTables[i].r = compute_r(k);
         for (int j = 0; j < vectorsNumber; j++)
         {
             hashTables[i].HTinsert(&inputData.points[j], &hInfo);
         }
-        hInfo.update_v();
-        hInfo.update_t();
-        hInfo.update_r();
+        // hInfo.update_v();
+        // hInfo.update_t();
+        // hInfo.update_r();
     }
     
     //hashTables[0].HTdisplay();
@@ -137,8 +140,9 @@ int main(int argc, char** argv) {
     //     cout << endl;
     // }
 
-    Point result = approximate_NN(queryData.points[0],hashTables, &hInfo);
+    Point lshResult = lsh_approximate_NN(queryData.points[0],hashTables, &hInfo);
 
+    Point trueResult = true_approximate_NN(queryData.points[0], inputData);
     
     return 0;
 

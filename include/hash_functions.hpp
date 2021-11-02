@@ -22,12 +22,13 @@ private:
 public:
     hash_info(int k, int d, int L);
     ~hash_info();
+    
     // Clear vectors v and add new random values to them.
-    void update_v();
+    void update_v(std::vector<std::vector<double> >);
     // Clear vector t and add new random values to it.
-    void update_t();
+    void update_t(std::vector<double>);
     // Clear vector r and add new random values to it.
-    void update_r();
+    void update_r(std::vector<int>);
     
     // Get vectors and values. 
     std::vector<std::vector<double> > get_v();
@@ -53,6 +54,16 @@ long int compute_IDvalue(std::vector<int> hValues, hash_info *hInfo);
 int compute_gValue(long int ID, int bucketNumber);
 
 
+// Returns the t vector with values in [0,w).
+std::vector<double> compute_t(int k);
+
+
+// Returns the v vector with values distributed according to the Gaussian distribution.
+std::vector<std::vector<double> > compute_v(int k, int d);
+
+
+// Returns the r vector to use in g function
+std::vector<int> compute_r(int k);
 
 
 #endif

@@ -6,7 +6,7 @@ using namespace std;
 // Returns w (int 3 to 6) // todo w
 int compute_w(void)
 {
-    return 150;
+    return 250;
 }
 
 
@@ -30,17 +30,18 @@ vector<double> compute_t(int k)
 
 
 // Clear vector t and add new random values to it.
-void hash_info::update_t()
+void hash_info::update_t(vector<double> t)
 {
     this->t.clear();
-    random_device rd;
-    mt19937 generator(rd());
-    for (int i = 0; i < this->k; i++)
-    {
-        uniform_real_distribution<double> d(0.0, float(compute_w()));
-        double coordinate = d(generator);
-        this->t.push_back(coordinate);
-    }
+    this->t = t;
+    // random_device rd;
+    // mt19937 generator(rd());
+    // for (int i = 0; i < this->k; i++)
+    // {
+    //     uniform_real_distribution<double> d(0.0, float(compute_w()));
+    //     double coordinate = d(generator);
+    //     this->t.push_back(coordinate);
+    // }
 }
 
 
@@ -70,22 +71,23 @@ vector<vector<double> > compute_v(int k, int d)
 
 
 // Clear vectors v and add new random values to them.
-void hash_info::update_v()
+void hash_info::update_v(vector<vector<double> > v)
 {
-    this->v.clear(); 
-    random_device rd;
-    mt19937 generator(rd());
-    for (int i = 0; i < this->k; i++)
-    {
-        vector<double> vi;
-        for (int j = 0; j < this->d; j++)
-        {
-            normal_distribution<double> d{0,1};
-            double coordinate = d(generator);
-            vi.push_back(coordinate);
-        }
-        this->v.push_back(vi);
-    }
+    this->v.clear();
+    this->v = v; 
+    // random_device rd;
+    // mt19937 generator(rd());
+    // for (int i = 0; i < this->k; i++)
+    // {
+    //     vector<double> vi;
+    //     for (int j = 0; j < this->d; j++)
+    //     {
+    //         normal_distribution<double> d{0,1};
+    //         double coordinate = d(generator);
+    //         vi.push_back(coordinate);
+    //     }
+    //     this->v.push_back(vi);
+    // }
 }
 
 
@@ -106,14 +108,15 @@ vector<int> compute_r(int k)
 
 
 // Clear vector r and add new random values to it.
-void hash_info::update_r()
+void hash_info::update_r(std::vector<int> r)
 {
     this->r.clear();
-    for (int i = 0; i < k; i++)
-    {
-        int rValue = random_number(1,INT32_MAX);
-        this->r.push_back(rValue);
-    }
+    this->r = r;
+    // for (int i = 0; i < k; i++)
+    // {
+    //     int rValue = random_number(1,INT32_MAX);
+    //     this->r.push_back(rValue);
+    // }
 }
 
 
@@ -137,9 +140,9 @@ hash_info::hash_info(int k, int d, int L)
     this->d = d;
     this->L = L;
     this->w = compute_w();
-    this->v = compute_v(k, d);
-    this->t = compute_t(k);
-    this->r = compute_r(k);
+    // this->v = compute_v(k, d);
+    // this->t = compute_t(k);
+    // this->r = compute_r(k);
     this->M = compute_M();
     
 }
