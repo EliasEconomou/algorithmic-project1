@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 #include <set>
+#include <unordered_map>
 #include <utility>
 #include <climits>
 #include <float.h>
@@ -32,6 +33,7 @@ lsh_approximate_nNN(Point q, int N, std::vector<HashTable> hashTables, hash_info
 std::set<std::pair<Point,double>, CompDist> 
 true_nNN(Point q, int N, Vector_of_points inputData);
 
+std::unordered_map<int,double> lsh_approximate_range_search(Point q, double R, std::vector<HashTable> hashTables, hash_info *hInfo);
 
 
 

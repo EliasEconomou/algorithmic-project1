@@ -156,3 +156,46 @@ set<pair<Point,double>, CompDist> true_nNN(Point q, int N, Vector_of_points inpu
     }
     return bestPointsDists;
 }
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+unordered_map<int,double> lsh_approximate_range_search(Point q, double R, vector<HashTable> hashTables, hash_info *hInfo)
+{
+    // Initialise an unordered map two hold points-distances inside radius r.
+    unordered_map<int,double> rPoints;
+    int L = hInfo->get_L();
+    for (int i = 0; i < L; i++) {
+        // cout << "HASH TABLE : " << i << endl;
+        // Update hinfo with the right vectors for every hash table, to compute query's g-value
+        hInfo->update_v(hashTables[i].v);
+        hInfo->update_t(hashTables[i].t);
+        hInfo->update_r(hashTables[i].r);
+        // Find g value for query point.
+        vector<int> hValues;
+        int k = hInfo->get_k();
+        vector<int> vp = q.vpoint;
+        for (int j = 0; j < k; j++)
+        {
+            hValues.push_back(compute_hValue(j, vp, hInfo));
+            
+        }
+        long int ID = compute_IDvalue(hValues, hInfo);
+        // cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++++" << b.itemID << " ID = " << ID << endl;
+        int g = compute_gValue(ID, hashTables[i].get_bucketsNumber());
+        list<HashNode> listToSearch = hashTables[i].get_bucketList(g);
+        typename list<HashNode>::iterator current;
+        for (current = listToSearch.begin() ; current != listToSearch.end() ; ++current ) {
+            // cout << current->point->itemID << ":" << current->ID << endl << endl;
+            double dist = distance(q.vpoint,current->point->vpoint, 2);
+            // cout << "--------------distance = " << dist << " best distance = " << bestDist << endl;
+            if (dist < R)
+            {
+
+                rPoints.insert(make_pair(current->point->itemID,dist));
+            }
+        }
+    }
+    return rPoints;
+}

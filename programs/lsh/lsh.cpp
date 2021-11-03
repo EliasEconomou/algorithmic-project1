@@ -21,7 +21,7 @@ int main(int argc, char** argv) {
     int k = 4; //number of 'h functions'
     int L = 5; //number of hash tables
     int N = 1; //number of nearest neighbors
-    float R = 10000; //search radius
+    double R = 10000; //search radius
     string inputFile,queryFile,outputFile;
 
     //Check the "-" option of arguments.
@@ -145,7 +145,6 @@ int main(int argc, char** argv) {
     
     set<pair<Point,double>, CompDist> lshBestPointsDists;
     lshBestPointsDists = lsh_approximate_nNN(queryData.points[0], N, hashTables, &hInfo);
-
     cout << "LSH distances: " << endl;
     for (auto it = lshBestPointsDists.begin(); it != lshBestPointsDists.end(); ++it)
     {
@@ -155,7 +154,6 @@ int main(int argc, char** argv) {
 
     set<pair<Point,double>, CompDist> trueBestPointsDists;
     trueBestPointsDists = true_nNN(queryData.points[0], N, inputData);
-
     cout << "TRUE distances: " << endl;
     for (auto it = trueBestPointsDists.begin(); it != trueBestPointsDists.end(); ++it)
     {
@@ -163,8 +161,14 @@ int main(int argc, char** argv) {
     }
 
 
-
-
+    unordered_map<int,double> PointsInR = lsh_approximate_range_search(queryData.points[0], R, hashTables, &hInfo);
+    cout << "Points inside radius: " << R << "." << endl;
+    for (auto it = PointsInR.begin(); it != PointsInR.end(); ++it)
+    {
+        cout << it->first << " ";
+    }
+    cout << endl;
+    
 
 
     return 0;
