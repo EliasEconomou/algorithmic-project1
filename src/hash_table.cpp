@@ -17,7 +17,14 @@ HashTable::HashTable(int bucketNumber)
   lists = new list<HashNode>[bucketNumber]; //allocate 'bucketsNumber' space for lists
 }
 
-
+HashTable::~HashTable()
+{
+  for (int i = 0; i < this->bucketsNumber; i++)
+  {
+    delete [] lists;
+  }
+  
+}
 
 
 void HashTable::HTinsert(Point *p, hash_info *hInfo)

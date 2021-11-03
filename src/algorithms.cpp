@@ -54,7 +54,7 @@ Point lsh_approximate_NN(Point q, vector<HashTable> hashTables, hash_info *hInfo
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-Point true_approximate_NN(Point q, Vector_of_points inputData)
+Point true_NN(Point q, Vector_of_points inputData)
 {
     Point b; //best true point/candidate
     double bestDist = DBL_MAX; // best true distance of best candidate
@@ -77,12 +77,12 @@ Point true_approximate_NN(Point q, Vector_of_points inputData)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-priority_queue<pair<Point,double>,vector<pair<Point,double>>,CompDist> lsh_approximate_nNN(Point q, int N, vector<HashTable> hashTables, hash_info *hInfo)
+set<pair<Point,double>, CompDist> lsh_approximate_nNN(Point q, int N, vector<HashTable> hashTables, hash_info *hInfo)
 {
-    // Initialise a max priority queue two hold pairs of best point/best distance.
-    priority_queue<pair<Point,double>,vector<pair<Point,double>>,CompDist> bestPointsDists;
+    // Initialise a set two hold pairs of best point/best distance.
+    set<pair<Point,double>, CompDist> bestPointsDists;
     Point a;
-    bestPointsDists.push(make_pair(a,DBL_MAX));
+    bestPointsDists.insert(make_pair(a,DBL_MAX));
     int L = hInfo->get_L();
     for (int i = 0; i < L; i++) {
         // cout << "HASH TABLE : " << i << endl;
@@ -108,18 +108,18 @@ priority_queue<pair<Point,double>,vector<pair<Point,double>>,CompDist> lsh_appro
             // cout << current->point->itemID << ":" << current->ID << endl << endl;
             double dist = distance(q.vpoint,current->point->vpoint, 2);
             // cout << "--------------distance = " << dist << " best distance = " << bestDist << endl;
-            if (bestPointsDists.size()==N) //if priority queue is full
+            if (bestPointsDists.size()==N) //if set is full
             {
-                //if the biggest distance in priority queue is equal/greater than current distance
-                if (bestPointsDists.top().second >= dist)
+                //if the biggest distance in set is equal/greater than current distance
+                if (prev(bestPointsDists.end())->second >= dist)
                 {
-                    bestPointsDists.pop(); //pop biggest distance pair
-                    bestPointsDists.push(make_pair(*(current->point),dist)); //push new point/distance
+                    bestPointsDists.erase(prev(bestPointsDists.end())); //pop biggest distance pair
+                    bestPointsDists.insert(make_pair(*(current->point),dist)); //insert new point/distance
                 }
             }
-            else if (bestPointsDists.size()<N) //if there is space in priority queue push pair
+            else if (bestPointsDists.size()<N) //if there is space in set insert pair
             {
-                bestPointsDists.push(make_pair(*(current->point),dist));
+                bestPointsDists.insert(make_pair(*(current->point),dist));
             }
         }
     }
@@ -130,28 +130,28 @@ priority_queue<pair<Point,double>,vector<pair<Point,double>>,CompDist> lsh_appro
 
 
 
-priority_queue<pair<Point,double>,vector<pair<Point,double>>,CompDist> true_approximate_nNN(Point q, int N, Vector_of_points inputData)
+set<pair<Point,double>, CompDist> true_nNN(Point q, int N, Vector_of_points inputData)
 {
-    // Initialise a max priority queue two hold pairs of true best point/best distance.
-    priority_queue<pair<Point,double>,vector<pair<Point,double>>,CompDist> bestPointsDists;
+    // Initialise a set two hold pairs of true best point/best distance.
+    set<pair<Point,double>, CompDist> bestPointsDists;
     Point a;
-    bestPointsDists.push(make_pair(a,DBL_MAX));
+    bestPointsDists.insert(make_pair(a,DBL_MAX));
     
     for (int i = 0; i < inputData.points.size(); i++)
     {
         double dist = distance(q.vpoint,inputData.points[i].vpoint, 2);
-        if (bestPointsDists.size()==N) //if priority queue is full
+        if (bestPointsDists.size()==N) //if set is full
         {
-            //if the biggest distance in priority queue is equal/greater than current distance
-            if (bestPointsDists.top().second >= dist)
+            //if the biggest distance in set is equal/greater than current distance
+            if (prev(bestPointsDists.end())->second >= dist)
             {
-                bestPointsDists.pop(); //pop biggest distance pair
-                bestPointsDists.push(make_pair(inputData.points[i],dist)); //push new point/distance
+                bestPointsDists.erase(prev(bestPointsDists.end())); //pop biggest distance pair
+                bestPointsDists.insert(make_pair(inputData.points[i],dist)); //insert new point/distance
             }
         }
-        else if (bestPointsDists.size()<N) //if there is space in priority queue push pair
+        else if (bestPointsDists.size()<N) //if there is space in set insert pair
         {
-            bestPointsDists.push(make_pair(inputData.points[i],dist));
+            bestPointsDists.insert(make_pair(inputData.points[i],dist));
         }
     }
     return bestPointsDists;

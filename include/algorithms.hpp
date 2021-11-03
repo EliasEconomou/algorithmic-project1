@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <vector>
-#include <queue>
+#include <set>
 #include <utility>
 #include <climits>
 #include <float.h>
@@ -24,13 +24,13 @@ struct CompDist
 
 Point lsh_approximate_NN(Point q, std::vector<HashTable> hashTables, hash_info *hInfo);
 
-Point true_approximate_NN(Point q, Vector_of_points inputData);
+Point true_NN(Point q, Vector_of_points inputData);
 
-std::priority_queue<std::pair<Point,double>,std::vector<std::pair<Point,double>>,CompDist> 
+std::set<std::pair<Point,double>, CompDist> 
 lsh_approximate_nNN(Point q, int N, std::vector<HashTable> hashTables, hash_info *hInfo);
 
-std::priority_queue<std::pair<Point,double>,std::vector<std::pair<Point,double>>,CompDist> 
-true_approximate_nNN(Point q, int N, Vector_of_points inputData);
+std::set<std::pair<Point,double>, CompDist> 
+true_nNN(Point q, int N, Vector_of_points inputData);
 
 
 

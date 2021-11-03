@@ -27,6 +27,7 @@ public:
     std::vector<int> r;
 
     HashTable(int bucketsNumber);
+    ~HashTable();
     
     // Insert item in hash table
     void HTinsert(Point *p, hash_info *hInfo);
