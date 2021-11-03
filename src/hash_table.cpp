@@ -11,20 +11,12 @@ HashNode::HashNode(Point *p, long int ID)
 
 
 
-HashTable::HashTable(int bucketNumber)
+HashTable::HashTable(int bucketsNumber)
 {
-  this->bucketsNumber = bucketNumber;
-  lists = new list<HashNode>[bucketNumber]; //allocate 'bucketsNumber' space for lists
+  this->bucketsNumber = bucketsNumber;
+  this->lists.resize(this->bucketsNumber);
 }
 
-HashTable::~HashTable()
-{
-  for (int i = 0; i < this->bucketsNumber; i++)
-  {
-    delete [] lists;
-  }
-  
-}
 
 
 void HashTable::HTinsert(Point *p, hash_info *hInfo)

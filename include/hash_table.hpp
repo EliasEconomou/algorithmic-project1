@@ -20,14 +20,15 @@ public:
 class HashTable
 {
     int bucketsNumber;
-    std::list<HashNode> *lists; //a list for every bucket
+    std::vector<std::list<HashNode>> lists; //a list for every bucket
+    
 public:
     std::vector<double> t;
     std::vector<std::vector<double> > v; //k vectors to use to compute every h
     std::vector<int> r;
 
     HashTable(int bucketsNumber);
-    ~HashTable();
+    //~HashTable();
     
     // Insert item in hash table
     void HTinsert(Point *p, hash_info *hInfo);
