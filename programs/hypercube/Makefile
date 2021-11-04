@@ -6,7 +6,7 @@ CC = g++
 CFLAGS = -Wall -g -Werror -I$(INCLUDE)
 LDFLAGS = -lm
 
-OBJS = hypercube.o $(SRC)/functions.o
+OBJS = hypercube.o $(SRC)/point_functions.o
 EXEC = hypercube.out
 
 # ARGS = TODO

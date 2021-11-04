@@ -1,5 +1,5 @@
-#ifndef FUNCTIONS_H
-#define FUNCTIONS_H
+#ifndef POINT_FUNCTIONS_H
+#define POINT_FUNCTIONS_H
 
 #include <algorithm>
 #include <iostream>

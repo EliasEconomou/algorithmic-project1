@@ -5,7 +5,7 @@
 #include <list>
 #include <vector>
 #include "hash_functions.hpp"
-#include "functions.hpp"
+#include "point_functions.hpp"
 
 class Point;
 

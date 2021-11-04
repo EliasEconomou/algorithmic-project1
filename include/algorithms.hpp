@@ -9,7 +9,7 @@
 #include <utility>
 #include <climits>
 #include <float.h>
-#include "functions.hpp"
+#include "point_functions.hpp"
 #include "hash_table.hpp"
 #include "hash_functions.hpp"
 

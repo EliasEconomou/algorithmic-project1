@@ -9,7 +9,7 @@
 #include <climits>
 #include <algorithm>
 #include <functional>
-#include "functions.hpp"
+#include "point_functions.hpp"
 
 class hash_info
 {

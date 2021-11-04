@@ -1,4 +1,4 @@
-#include "../include/functions.hpp"
+#include "../include/point_functions.hpp"
 
 using namespace std;
 

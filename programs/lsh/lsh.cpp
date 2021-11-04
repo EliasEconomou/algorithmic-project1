@@ -6,7 +6,7 @@
 #include <string>
 #include <getopt.h>
 #include <vector>
-#include "../../include/functions.hpp"
+#include "../../include/point_functions.hpp"
 #include "../../include/hash_table.hpp"
 #include "../../include/hash_functions.hpp"
 #include "../../include/algorithms.hpp"
