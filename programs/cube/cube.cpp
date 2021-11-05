@@ -21,8 +21,7 @@ using namespace std;
 
 
 static struct option long_options[] = {
-    {"probes", required_argument,  0,  '1' },
-    {"bb", required_argument,  0,  '2' },
+    {"probes", required_argument,  0,  'p' },
     {0,    0,            0,  0 }
 };
 
@@ -47,7 +46,7 @@ int main(int argc, char** argv) {
 
     //Get argument values.
     char option;
-    while ((option = getopt(argc, argv, "i:q:k:M:p:o:N:R:")) != -1)
+    while ((option = getopt_long_only(argc, argv, "i:q:k:M:p:o:N:R:", long_options, NULL)) != -1)
     {
         switch (option)
         {
