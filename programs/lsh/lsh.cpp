@@ -1,8 +1,6 @@
 
 #include <iostream>
 #include <algorithm>
-#include <fstream>
-#include <sstream>
 #include <string>
 #include <getopt.h>
 #include <vector>
@@ -76,9 +74,11 @@ int main(int argc, char** argv) {
                 break;
             }
             case 'R':
+            {
                 R = stoi(optarg);
                 //cout << option << " " << R << endl;
                 break;
+            }
             case '?':
                 cout << "Error in arguments" << endl;
 
