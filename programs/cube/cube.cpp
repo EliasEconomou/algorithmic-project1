@@ -25,7 +25,7 @@ int main(int argc, char** argv) {
     int probes = 2; //maximum number of hypercube's vertices to check 
     int N = 1; //number of nearest neighbors
     double R = 10000; //search radius
-    string inputFile,queryFile,outputFile;
+    string inputFile = "0",queryFile = "0",outputFile = "0";
 
     //Check the "-" option of arguments.
     for (int i = 1; i < argc; i+=2)
@@ -91,10 +91,19 @@ int main(int argc, char** argv) {
                 break;
             }
             case '?':
+            {
                 cout << "Error in arguments" << endl;
-
+                return -1;
+            }
         }
     }
+
+    if (inputFile == "0")
+    {
+        cout << "Give path to input file: ";
+        cin >> inputFile;
+    }
+    
 
     Vector_of_points inputData;
     inputData = parsing(inputFile);
@@ -110,6 +119,16 @@ int main(int argc, char** argv) {
 
 
 
+    if (queryFile == "0")
+    {
+        cout << "Give path to query file: ";
+        cin >> queryFile;
+    }
 
+    if (outputFile == "0")
+    {
+        cout << "Give path to output file: ";
+        cin >> outputFile;
+    }
 
 }

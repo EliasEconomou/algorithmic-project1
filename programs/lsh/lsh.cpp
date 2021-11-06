@@ -20,7 +20,7 @@ int main(int argc, char** argv) {
     int L = 5; //number of hash tables
     int N = 1; //number of nearest neighbors
     double R = 10000; //search radius
-    string inputFile,queryFile,outputFile;
+    string inputFile = "0",queryFile = "0",outputFile = "0";
 
     //Check the "-" option of arguments.
     for (int i = 1; i < argc; i+=2)
@@ -80,9 +80,17 @@ int main(int argc, char** argv) {
                 break;
             }
             case '?':
+            {
                 cout << "Error in arguments" << endl;
-
+                return -1;
+            }
         }
+    }
+
+    if (inputFile == "0")
+    {
+        cout << "Give path to input file: ";
+        cin >> inputFile;
     }
 
     Vector_of_points inputData;
@@ -121,21 +129,21 @@ int main(int argc, char** argv) {
         }
     }
     
-    //hashTables[0].HTdisplay();
+    if (queryFile == "0")
+    {
+        cout << "Give path to query file: ";
+        cin >> queryFile;
+    }
 
+    if (outputFile == "0")
+    {
+        cout << "Give path to output file: ";
+        cin >> outputFile;
+    }
 
     Vector_of_points queryData;
     queryData = parsing(queryFile);
 
-    // for (int i = 0; i < queryData.points.size(); i++) //print data
-    // {
-    //     cout << queryData.points[i].itemID << endl;
-    //     for (int j = 0; j < queryData.points[0].vpoint.size(); j++)
-    //     {
-    //         cout << queryData.points[i].vpoint[j] << " ";
-    //     }
-    //     cout << endl;
-    // }
 
     Point lshResult = lsh_approximate_NN(queryData.points[0],hashTables, &hInfo);
 

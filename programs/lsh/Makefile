@@ -10,7 +10,7 @@ OBJS = lsh.o $(SRC)/point_functions.o $(SRC)/hash_table.o $(SRC)/hash_functions.
 EXEC = lsh.out
 
 # Arguments for make run / make valgrind
-ARGS = -i ../../input_small_id -q ../../query_small_id -k 4 -L 5 -o ../../outputfile -N 5 -R 1000
+ARGS = -i ../../input_small_id -q ../../query_small_id -k 4 -L 5 -o ../../output_lsh -N 5 -R 1000
 
 $(EXEC): $(OBJS) $(LIBS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(EXEC) $(LDFLAGS)
