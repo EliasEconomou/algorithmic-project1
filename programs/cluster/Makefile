@@ -1,0 +1,27 @@
+
+INCLUDE = ../../include
+SRC = ../../src
+
+CC = g++
+CFLAGS = -std=c++11 -Wall -g -Werror -I$(INCLUDE)
+LDFLAGS = -lm
+
+OBJS = cluster.o $(SRC)/point_functions.o
+EXEC = cluster.out
+
+# Arguments for make run / make valgrind
+# Το complete στις παραμέτρους του cluster είναι "optional" για το αν το αρχείο θα τυπώνει τα διανύσματα του κάθε cluster η όχι
+ARGS = -i ../../input_small_id -c ../../cluster.conf -o ../../outputfile -complete -m Classic
+
+
+$(EXEC): $(OBJS) $(LIBS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(EXEC) $(LDFLAGS)
+
+clean:
+	rm -f $(OBJS) $(EXEC)
+
+run: $(EXEC)
+	./$(EXEC) $(ARGS)
+
+valgrind: $(EXEC)
+	valgrind --tool=memcheck --leak-check=yes --leak-check=full --show-leak-kinds=all ./$(EXEC) # ARGS = 
