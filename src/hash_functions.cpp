@@ -221,7 +221,7 @@ int compute_hValue(int i, vector<int> p, hash_info *hInfo)
     int w = hInfo->get_w();
     
     // cout << "pv = " << pv << " " << "ti = " << ti << " and w = " << w << endl<<endl; 
-    hValue = (pv - ti)/w;
+    hValue = floor(pv - ti)/w;
     return hValue;
 }
 

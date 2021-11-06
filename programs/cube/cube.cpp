@@ -12,14 +12,6 @@
 using namespace std;
 
 
-// static struct option long_options[] =
-// {
-//     {"title", required_argument, NULL, 'b'},
-//     {"artist", required_argument, NULL, 'j'},
-//     {NULL, 0, NULL, 0}
-// };
-
-
 static struct option long_options[] = {
     {"probes", required_argument,  0,  'p' },
     {0,    0,            0,  0 }
@@ -104,7 +96,17 @@ int main(int argc, char** argv) {
         }
     }
 
-
+    Vector_of_points inputData;
+    inputData = parsing(inputFile);
+    // for (int i = 0; i < inputData.points.size(); i++) //print data
+    // {
+    //     cout << inputData.points[i].itemID << endl;
+    //     for (int j = 0; j < inputData.points[0].vpoint.size(); j++)
+    //     {
+    //         cout << inputData.points[i].vpoint[j] << " ";
+    //     }
+    //     cout << endl;
+    // }
 
 
 
