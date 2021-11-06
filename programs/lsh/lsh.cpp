@@ -109,7 +109,7 @@ int main(int argc, char** argv) {
     int vectorsNumber = inputData.points.size();
     int dimension = inputData.points[0].vpoint.size();
     int bucketsNumber = vectorsNumber/8;
-    hash_info hInfo(k, dimension, L);
+    LSH_hash_info hInfo(k, dimension, L);
 
     vector<HashTable> hashTables;
     for (int i = 0; i < L; i++)
@@ -170,14 +170,12 @@ int main(int argc, char** argv) {
 
 
     unordered_map<int,double> PointsInR = lsh_approximate_range_search(queryData.points[0], R, hashTables, &hInfo);
-    cout << "Points inside radius: " << R << "." << endl;
-    for (auto it = PointsInR.begin(); it != PointsInR.end(); ++it)
-    {
-        cout << it->first << " ";
-    }
-    cout << endl;
-    
-
+    //cout << "Points inside radius: " << R << "." << endl;
+    // for (auto it = PointsInR.begin(); it != PointsInR.end(); ++it)
+    // {
+    //     cout << it->first << " ";
+    // }
+    // cout << endl;
 
     return 0;
 

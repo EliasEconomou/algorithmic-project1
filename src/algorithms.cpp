@@ -3,13 +3,12 @@
 using namespace std;
 
 
-Point lsh_approximate_NN(Point q, vector<HashTable> hashTables, hash_info *hInfo)
+Point lsh_approximate_NN(Point q, vector<HashTable> hashTables, LSH_hash_info *hInfo)
 {
     Point b; // best point-candidate
     double bestDist = INT_MAX; // best distance of best candidate
     int L = hInfo->get_L();
     for (int i = 0; i < L; i++) {
-        cout << "HASH TABLE : " << i << endl;
         // Update hinfo with the right vectors for every hash table, to compute query's g-value
         hInfo->update_v(hashTables[i].v);
         hInfo->update_t(hashTables[i].t);
@@ -31,7 +30,6 @@ Point lsh_approximate_NN(Point q, vector<HashTable> hashTables, hash_info *hInfo
         for (current = listToSearch.begin() ; current != listToSearch.end() ; ++current ) {
             // cout << current->point->itemID << ":" << current->ID << endl << endl;
             double dist = distance(q.vpoint,current->point->vpoint, 2);
-            cout << "--------------distance = " << dist << " best distance = " << bestDist << endl;
             if (dist < bestDist)
             {
                 bestDist = dist;
@@ -77,7 +75,7 @@ Point true_NN(Point q, Vector_of_points inputData)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-set<pair<Point,double>, CompDist> lsh_approximate_nNN(Point q, int N, vector<HashTable> hashTables, hash_info *hInfo)
+set<pair<Point,double>, CompDist> lsh_approximate_nNN(Point q, int N, vector<HashTable> hashTables, LSH_hash_info *hInfo)
 {
     // Initialise a set two hold pairs of best point/best distance.
     set<pair<Point,double>, CompDist> bestPointsDists;
@@ -161,7 +159,7 @@ set<pair<Point,double>, CompDist> true_nNN(Point q, int N, Vector_of_points inpu
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-unordered_map<int,double> lsh_approximate_range_search(Point q, double R, vector<HashTable> hashTables, hash_info *hInfo)
+unordered_map<int,double> lsh_approximate_range_search(Point q, double R, vector<HashTable> hashTables, LSH_hash_info *hInfo)
 {
     // Initialise an unordered map two hold points-distances inside radius r.
     unordered_map<int,double> rPoints;

@@ -6,7 +6,7 @@ CC = g++
 CFLAGS = -std=c++11 -Wall -g -Werror -I$(INCLUDE)
 LDFLAGS = -lm
 
-OBJS = cube.o $(SRC)/point_functions.o
+OBJS = cube.o $(SRC)/point_functions.o $(SRC)/cube_table.o $(SRC)/hash_functions.o $(SRC)/algorithms.o
 EXEC = cube.out
 
 # Arguments for make run / make valgrind

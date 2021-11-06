@@ -23,17 +23,17 @@ struct CompDist
     }
 };
 
-Point lsh_approximate_NN(Point q, std::vector<HashTable> hashTables, hash_info *hInfo);
+Point lsh_approximate_NN(Point q, std::vector<HashTable> hashTables, LSH_hash_info *hInfo);
 
 Point true_NN(Point q, Vector_of_points inputData);
 
 std::set<std::pair<Point,double>, CompDist> 
-lsh_approximate_nNN(Point q, int N, std::vector<HashTable> hashTables, hash_info *hInfo);
+lsh_approximate_nNN(Point q, int N, std::vector<HashTable> hashTables, LSH_hash_info *hInfo);
 
 std::set<std::pair<Point,double>, CompDist> 
 true_nNN(Point q, int N, Vector_of_points inputData);
 
-std::unordered_map<int,double> lsh_approximate_range_search(Point q, double R, std::vector<HashTable> hashTables, hash_info *hInfo);
+std::unordered_map<int,double> lsh_approximate_range_search(Point q, double R, std::vector<HashTable> hashTables, LSH_hash_info *hInfo);
 
 
 

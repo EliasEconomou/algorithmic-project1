@@ -11,7 +11,7 @@
 #include <functional>
 #include "point_functions.hpp"
 
-class hash_info
+class LSH_hash_info
 {
 private:
     int w,k,d,L; //k = number of h functions, d = dimension
@@ -20,8 +20,7 @@ private:
     std::vector<std::vector<double> > v; //k vectors to use to compute every h
     std::vector<int> r;
 public:
-    hash_info(int k, int d, int L);
-    ~hash_info();
+    LSH_hash_info(int k, int d, int L);
     
     // Clear vectors v and add new random values to them.
     void update_v(std::vector<std::vector<double> >);
@@ -42,12 +41,38 @@ public:
 };
 
 
+class CUBE_hash_info
+{
+private:
+    int w,k,d,M,probes; //d = dimension, k = new dimension to project points
+    std::vector<double> t;
+    std::vector<std::vector<double> > v; //k vectors to use to compute every h
+public:
+    CUBE_hash_info(int k, int d, int M, int probes);    
+
+    // Clear vectors v and add new random values to them.
+    void update_v(std::vector<std::vector<double> >);
+    // Clear vector t and add new random values to it.
+    void update_t(std::vector<double>);
+    
+    // Get vectors and values. 
+    std::vector<std::vector<double> > get_v();
+    std::vector<double> get_t();
+    int get_w();
+    int get_k();
+    int get_d();
+    int get_M();
+    int get_probes();
+};
+
+
 // Returns a vector with k ints computed from k-h functions
-int compute_hValue(int i, std::vector<int> p, hash_info *hInfo);
+int compute_hValue(int i, std::vector<int> p, LSH_hash_info *hInfo);
+int compute_hValue(int i, std::vector<int> p, CUBE_hash_info *hInfo);
 
 
 // Returns the ID value for quicker searching
-long int compute_IDvalue(std::vector<int> hValues, hash_info *hInfo);
+long int compute_IDvalue(std::vector<int> hValues, LSH_hash_info *hInfo);
 
 
 // Returns the g hash function - value

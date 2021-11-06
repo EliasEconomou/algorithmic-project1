@@ -19,7 +19,7 @@ HashTable::HashTable(int bucketsNumber)
 
 
 
-void HashTable::HTinsert(Point *p, hash_info *hInfo)
+void HashTable::HTinsert(Point *p, LSH_hash_info *hInfo)
 {
   vector<int> hValues;
   hInfo->update_v(this->v);

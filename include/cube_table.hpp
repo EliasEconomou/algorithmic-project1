@@ -1,5 +1,5 @@
-#ifndef HASH_TABLE_H
-#define HASH_TABLE_H
+#ifndef HYPERCUBE_TABLE_H
+#define HYPERCUBE_TABLE_H
 
 #include <iostream>
 #include <list>
@@ -9,36 +9,34 @@
 
 class Point;
 
-class HashNode
+class Vertice
 {
 public:
-    long int ID;
     Point *point;
-    HashNode(Point *p, long int ID);
+    Vertice(Point *p);
 };
 
-class HashTable
+class CubeTable
 {
     int bucketsNumber;
-    std::vector<std::list<HashNode>> lists; //a list for every bucket
+    std::vector<std::list<Vertice>> lists; //a list for every bucket
     
 public:
     std::vector<double> t;
     std::vector<std::vector<double> > v; //k vectors to use to compute every h
-    std::vector<int> r;
 
-    HashTable(int bucketsNumber);
-    //~HashTable();
+    CubeTable(int bucketsNumber);
+    //~CubeTable();
     
     // Insert item in hash table
-    void HTinsert(Point *p, LSH_hash_info *hInfo);
+    void HTinsert(Point *p, CUBE_hash_info *hInfo);
 
     // Display hash table (debug)
     void HTdisplay();
 
     int get_bucketsNumber();
 
-    std::list<HashNode> get_bucketList(int g);
+    std::list<Vertice> get_bucketList(int g);
 };
 
 
