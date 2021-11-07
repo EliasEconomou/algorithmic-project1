@@ -18,23 +18,27 @@ CubeTable::CubeTable(int bucketsNumber)
 
 
 
-// void HashTable::HTinsert(Point *p, hash_info *hInfo)
-// {
-//   vector<int> hValues;
-//   hInfo->update_v(this->v);
-//   hInfo->update_t(this->t);
-//   hInfo->update_r(this->r);
-//   int k = hInfo->get_k();
-//   vector<int> vp = p->vpoint;
-//   for (int i = 0; i < k; i++)
-//   {
-//     hValues.push_back(compute_hValue(i, vp, hInfo));
-//   }
+void CubeTable::CTinsert(Point *p, CUBE_hash_info *hInfo)
+{
+  vector<int> hValues;
+  hInfo->update_v(this->v);
+  hInfo->update_t(this->t);
+  int k = hInfo->get_k();
+  vector<int> vp = p->vpoint;
+  for (int i = 0; i < k; i++)
+  {
+    hValues.push_back(compute_hValue(i, vp, hInfo));
+  }
 
-//   long int ID = compute_IDvalue(hValues, hInfo);
-//   int g = compute_gValue(ID, this->bucketsNumber);
-//   lists[g].push_back(HashNode(p, ID));
-// }
+  vector<int> fValues;
+  for (int i = 0; i < k; i++)
+  {
+    fValues.push_back(compute_fValue(hValues[i], hInfo));
+  }
+
+  int g = compute_gValue(fValues, hInfo);
+  lists[g].push_back(Vertice(p));
+}
 
 
 

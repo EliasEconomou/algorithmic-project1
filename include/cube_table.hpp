@@ -29,10 +29,10 @@ public:
     //~CubeTable();
     
     // Insert item in hash table
-    void HTinsert(Point *p, CUBE_hash_info *hInfo);
+    void CTinsert(Point *p, CUBE_hash_info *hInfo);
 
     // Display hash table (debug)
-    void HTdisplay();
+    void CTdisplay();
 
     int get_bucketsNumber();
 

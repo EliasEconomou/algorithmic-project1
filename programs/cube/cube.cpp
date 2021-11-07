@@ -4,9 +4,9 @@
 #include <getopt.h>
 #include <vector>
 #include "../../include/point_functions.hpp"
-// #include "../../include/hash_table.hpp"
-// #include "../../include/hash_functions.hpp"
-// #include "../../include/algorithms.hpp"
+#include "../../include/cube_table.hpp"
+#include "../../include/hash_functions.hpp"
+#include "../../include/algorithms.hpp"
 
 
 using namespace std;
@@ -107,17 +107,19 @@ int main(int argc, char** argv) {
 
     Vector_of_points inputData;
     inputData = parsing(inputFile);
-    // for (int i = 0; i < inputData.points.size(); i++) //print data
-    // {
-    //     cout << inputData.points[i].itemID << endl;
-    //     for (int j = 0; j < inputData.points[0].vpoint.size(); j++)
-    //     {
-    //         cout << inputData.points[i].vpoint[j] << " ";
-    //     }
-    //     cout << endl;
-    // }
+    
+    int vectorsNumber = inputData.points.size();
+    int dimension = inputData.points[0].vpoint.size();
+    int bucketsNumber = pow(2,k);
+    CUBE_hash_info hInfo(k, dimension, M, probes);
 
-
+    CubeTable cubeTable(bucketsNumber);
+    cubeTable.v = compute_v(k,dimension);
+    cubeTable.t = compute_t(k);
+    for (int i = 0; i < vectorsNumber; i++)
+    {
+        cubeTable.CTinsert(&inputData.points[i], &hInfo);
+    }
 
     if (queryFile == "0")
     {
@@ -130,5 +132,11 @@ int main(int argc, char** argv) {
         cout << "Give path to output file: ";
         cin >> outputFile;
     }
+    
+    Vector_of_points queryData;
+    queryData = parsing(queryFile);
+
+
+    
 
 }

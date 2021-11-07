@@ -6,7 +6,7 @@ using namespace std;
 // Returns w
 int compute_w(void)
 {
-    return 250;
+    return 100;
 }
 
 
@@ -124,6 +124,7 @@ long long int compute_M()
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// Constructors //
 
 LSH_hash_info::LSH_hash_info(int k, int d, int L)
 {
@@ -131,13 +132,20 @@ LSH_hash_info::LSH_hash_info(int k, int d, int L)
     this->d = d;
     this->L = L;
     this->w = compute_w();
-    // this->v = compute_v(k, d);
-    // this->t = compute_t(k);
-    // this->r = compute_r(k);
     this->M = compute_M();
     
 }
 
+CUBE_hash_info::CUBE_hash_info(int k, int d, int M, int probes)
+{
+    this->k = k;
+    this->d = d;
+    this->M = M;
+    this->probes = probes;
+    this->w = compute_w();
+}
+
+// Getters //
 
 vector<vector<double> > LSH_hash_info::get_v()
 {
@@ -175,6 +183,11 @@ int CUBE_hash_info::get_w()
 }
 
 int LSH_hash_info::get_k()
+{
+    return this->k;
+}
+
+int CUBE_hash_info::get_k()
 {
     return this->k;
 }
@@ -240,7 +253,32 @@ int compute_hValue(int i, vector<int> p, CUBE_hash_info *hInfo)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-// Returns the ID - value
+// Check if h-key is in map and has an f-value. If not assign f-value and add it to map. Return the f-value.
+int CUBE_hash_info::update_map(int hValue)
+{
+    auto it = this->MapHtoF.find(hValue);
+    if (it == this->MapHtoF.end())
+    {
+        int fValue = random_number(0,1);
+        MapHtoF.insert({hValue,fValue});
+        return fValue;
+    }
+    return it->second;
+    
+}
+
+// Returns the f value that corresponds to the h value given.
+int compute_fValue(int hValue, CUBE_hash_info *hInfo)
+{
+    int fValue = hInfo->update_map(hValue);
+    return fValue;
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// Returns the ID - value.
 long int compute_IDvalue(std::vector<int> hValues, LSH_hash_info *hInfo)
 {
     int k = hInfo->get_k();
@@ -262,9 +300,27 @@ long int compute_IDvalue(std::vector<int> hValues, LSH_hash_info *hInfo)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-// Returns the g hash function - value
-int compute_gValue(long int ID, int bucketNumber)
+// Returns the g hash function - value.
+int compute_gValue(long int ID, int bucketNumber) //lsh
 {
     int g = modulo(ID,bucketNumber);
+    return g;
+}
+
+// Converts binary to decimal.
+int binary_to_decimal(vector<int> bin, int k)
+{
+    int dec = bin[0];
+
+    for (int i = 1; i < k; i++) {
+        dec = dec << (1);
+        dec = dec + bin[i];
+    }
+    return dec;
+}
+
+int compute_gValue(vector<int> fValues, CUBE_hash_info *hInfo) //cube
+{
+    int g = binary_to_decimal(fValues, hInfo->get_k());
     return g;
 }
