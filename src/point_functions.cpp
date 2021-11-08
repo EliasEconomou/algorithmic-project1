@@ -36,14 +36,14 @@ Vector_of_points parsing(string fileName){
             p.vpoint.push_back(stod(word));
         }
 
-        //Check if same size vectors are created // todo
-        // if (sizelim==0){
-        //     sizelim=entry_vec.size();
-        // }
-        // if (entry_vec.size()!=sizelim){
-        //     cout << "Error with input file - inconsistent record size. \n";
-        //     exit(-1);
-        // }
+        //Check if same size vectors are created
+        if (sizelim==0){
+            sizelim=p.vpoint.size();
+        }
+        if (p.vpoint.size()!=sizelim){
+            cout << "Error with input file - inconsistent record size. \n";
+            exit(-1);
+        }
 
         //Add newly created point to data
         data.points.push_back(p);
