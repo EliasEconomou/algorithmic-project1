@@ -29,12 +29,22 @@ void CubeTable::CTinsert(Point *p, CUBE_hash_info *hInfo)
   {
     hValues.push_back(compute_hValue(i, vp, hInfo));
   }
-
   vector<int> fValues;
   for (int i = 0; i < k; i++)
   {
-    fValues.push_back(compute_fValue(hValues[i], hInfo));
+    fValues.push_back(compute_fValue(i, hValues[i], hInfo));
   }
+  // for (int i = 0; i < k; i++)
+  // {
+  //   cout << i << "  -  " << hValues[i] << " - " << fValues[i] << endl; 
+  // }
+  // cout << "-";
+  // for (int i = 0; i < k; i++)
+  // {
+  //   cout << fValues[i];
+  // }
+  // cout << endl;
+  
 
   int g = compute_gValue(fValues, hInfo);
   lists[g].push_back(Vertice(p));

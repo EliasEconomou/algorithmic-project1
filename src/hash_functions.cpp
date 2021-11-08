@@ -143,6 +143,7 @@ CUBE_hash_info::CUBE_hash_info(int k, int d, int M, int probes)
     this->M = M;
     this->probes = probes;
     this->w = compute_w();
+    this->MapHtoF.resize(this->k);
 }
 
 // Getters //
@@ -254,13 +255,13 @@ int compute_hValue(int i, vector<int> p, CUBE_hash_info *hInfo)
 
 
 // Check if h-key is in map and has an f-value. If not assign f-value and add it to map. Return the f-value.
-int CUBE_hash_info::update_map(int hValue)
+int CUBE_hash_info::update_map(int i, int hValue)
 {
-    auto it = this->MapHtoF.find(hValue);
-    if (it == this->MapHtoF.end())
+    auto it = this->MapHtoF[i].find(hValue);
+    if (it == this->MapHtoF[i].end())
     {
         int fValue = random_number(0,1);
-        MapHtoF.insert({hValue,fValue});
+        MapHtoF[i].insert({hValue,fValue});
         return fValue;
     }
     return it->second;
@@ -268,9 +269,9 @@ int CUBE_hash_info::update_map(int hValue)
 }
 
 // Returns the f value that corresponds to the h value given.
-int compute_fValue(int hValue, CUBE_hash_info *hInfo)
+int compute_fValue(int i, int hValue, CUBE_hash_info *hInfo)
 {
-    int fValue = hInfo->update_map(hValue);
+    int fValue = hInfo->update_map(i, hValue);
     return fValue;
 }
 

@@ -48,7 +48,7 @@ private:
     int w,k,d,M,probes; //d = dimension, k = new dimension to project points
     std::vector<double> t;
     std::vector<std::vector<double> > v; //k vectors to use to compute every h
-    std::unordered_map<int,int> MapHtoF;
+    std::vector<std::unordered_map<int,int> > MapHtoF;
 public:
     CUBE_hash_info(int k, int d, int M, int probes);
 
@@ -58,7 +58,7 @@ public:
     void update_t(std::vector<double>);
 
     // Check if h-key is in map and has an f-value. If not assign f-value and add it to map. Return the f-value.
-    int update_map(int hValue);
+    int update_map(int i, int hValue);
     
     // Get vectors and values. 
     std::vector<std::vector<double> > get_v();
@@ -77,7 +77,7 @@ int compute_hValue(int i, std::vector<int> p, CUBE_hash_info *hInfo);
 
 
 // Returns the f value that corresponds to the h value given.
-int compute_fValue(int hValue, CUBE_hash_info *hInfo);
+int compute_fValue(int i, int hValue, CUBE_hash_info *hInfo);
 
 
 // Returns the ID value for quicker searching.

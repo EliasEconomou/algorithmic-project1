@@ -197,3 +197,76 @@ unordered_map<int,double> lsh_approximate_range_search(Point q, double R, vector
     }
     return rPoints;
 }
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+int hammingDistance(int n1, int n2)
+{
+    int x = n1 ^ n2;
+    int setBits = 0;
+ 
+    while (x > 0) {
+        setBits += x & 1;
+        x >>= 1;
+    }
+ 
+    return setBits;
+}
+
+
+Point cube_approximate_NN(Point q, CubeTable cubeTable, CUBE_hash_info *hInfo)
+{
+    Point b; // best point-candidate
+    double bestDist = INT_MAX; // best distance of best candidate
+    
+    // Update hinfo with the right vectors for hash table, to compute query's g-value
+    hInfo->update_v(cubeTable.v);
+    hInfo->update_t(cubeTable.t);
+    // Find g value for query point.
+    vector<int> hValues;
+    int k = hInfo->get_k();
+    vector<int> vp = q.vpoint;
+    for (int i = 0; i < k; i++)
+    {
+        hValues.push_back(compute_hValue(i, vp, hInfo));
+    }
+    vector<int> fValues;
+    for (int i = 0; i < k; i++)
+    {
+        fValues.push_back(compute_fValue(i, hValues[i], hInfo));
+    }
+
+    // cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++++" << b.itemID << " ID = " << ID << endl;
+
+    int g = compute_gValue(fValues, hInfo);
+    
+    // Now we need to find and keep the neighbor/vertices-indexes of g according to hamming distance.
+    
+    
+
+
+    list<Vertice> listToSearch = cubeTable.get_bucketList(g);
+    typename list<Vertice>::iterator current;
+    for (current = listToSearch.begin() ; current != listToSearch.end() ; ++current ) {
+        // cout << current->point->itemID << ":" << current->ID << endl << endl;
+        double dist = distance(q.vpoint,current->point->vpoint, 2);
+        if (dist < bestDist)
+        {
+            bestDist = dist;
+            b = *(current->point);
+        }
+
+        
+        // for (auto j = current->point->vpoint.begin() ; j != current->point->vpoint.end() ; ++j){
+        //     cout << *j << " ";
+        // }
+        // cout << endl;
+    }
+
+    cout << "Query index " << q.itemID << " - BEST LSH DISTANCE : " << bestDist << endl;
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
