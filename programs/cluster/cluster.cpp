@@ -7,17 +7,27 @@
 
 using namespace std;
 
-Cluster_of_points cluster_data(Vector_of_points data,string method, bool complete){
+Cluster_of_points cluster_data(Vector_of_points data , string method , string config_file , bool complete){
     Cluster_of_points cluster;
+
+    //First check method
+    //..
+
+    //Then check config parameters
+    //..
+
+    //Then check if complete
+    //..
+
+    //Send data to correct cluster function
+    //..
+
+    //Return said data
     return cluster;
 }
 
 
 int main(int argc, char** argv) {
-
-
-// kalytera na kaneis parse ta arguments ths main me allon tropo ap oti exw kanei sta lsh/cube, giati edw exei kai to 'complete' pou 
-// einai optional argument
 
     string input_file, config_file, output_file, method;
     string word;
@@ -69,10 +79,12 @@ int main(int argc, char** argv) {
 
     Vector_of_points Data = parsing(input_file);
 
-    // if all on input is well then..
-    Cluster_of_points Cluster  = cluster_data(Data, method , complete);
+    // if all on input is well then.. TODO CHECK
+
+    Cluster_of_points Cluster  = cluster_data(Data, method , config_file , complete);
     cout << "I RAN! \n";
     
+    //  ---DATABASE PRINT---
     // for (int i=0 ; i < Data.points.size() ; i++){
     //     cout << "POINT #" << Data.points[i].itemID << endl;
     //     for ( int j=0 ; j < Data.points[i].vpoint.size() ; j++ ) {
