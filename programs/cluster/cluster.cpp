@@ -7,8 +7,9 @@
 
 using namespace std;
 
-void cluster_data(Vector_of_points data,string method, bool complete){
-    return;
+Cluster_of_points cluster_data(Vector_of_points data,string method, bool complete){
+    Cluster_of_points cluster;
+    return cluster;
 }
 
 
@@ -61,7 +62,7 @@ int main(int argc, char** argv) {
             complete = true;
         }
         else{
-            cout << "Unknown error occured. \n";
+            cout << "Unknown error in arguments. \n";
             return -1;
         }
     }
@@ -69,7 +70,7 @@ int main(int argc, char** argv) {
     Vector_of_points Data = parsing(input_file);
 
     // if all on input is well then..
-    cluster_data(Data, method , complete);
+    Cluster_of_points Cluster  = cluster_data(Data, method , complete);
     cout << "I RAN! \n";
     
     // for (int i=0 ; i < Data.points.size() ; i++){

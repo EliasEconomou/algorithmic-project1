@@ -25,6 +25,29 @@ public:
     std::vector<Point> points; //vector of points
 };
 
+//----Same classes as above but with pointers----
+
+class PPoint
+{
+    public:
+    Point* ppoint;
+};
+
+class Vector_of_ppoints
+{
+    public:
+    std::vector<PPoint> ppoints; //vector of pointers to points
+};
+
+class Cluster_of_points // class to implement clusters easier
+{
+    public:
+    vector<PPoint> centroids; //vector of pointers to centroid Points
+    vector<Vector_of_ppoints> points; //vector of pointers to Points in each cluster
+};
+
+//-------------------------------------------------
+
 
 
 // Parse dataset and return a vector of dataset's vectors.
