@@ -8,7 +8,7 @@
 #include "../../include/hash_functions.hpp"
 #include "../../include/algorithms.hpp"
 
-#define MAX_HAMMING_DIST 2 //maximum hamming distance to use when searching neighbor-vertices
+#define MAX_HAMMING_DIST 1 //maximum hamming distance to use when searching neighbor-vertices
 
 using namespace std;
 
