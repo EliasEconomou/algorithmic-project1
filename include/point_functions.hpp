@@ -42,8 +42,8 @@ class Vector_of_ppoints
 class Cluster_of_points // class to implement clusters easier
 {
     public:
-    vector<PPoint> centroids; //vector of pointers to centroid Points
-    vector<Vector_of_ppoints> points; //vector of pointers to Points in each cluster
+    std::vector<PPoint> centroids; //vector of pointers to centroid Points
+    std::vector<Vector_of_ppoints> points; //vector of pointers to Points in each cluster
 };
 
 //-------------------------------------------------
