@@ -136,8 +136,9 @@ LSH_hash_info::LSH_hash_info(int k, int d, int L)
     
 }
 
-CUBE_hash_info::CUBE_hash_info(int k, int d, int M, int probes)
+CUBE_hash_info::CUBE_hash_info(int k, int d, int M, int probes, int maxHD)
 {
+    this->maxHD = maxHD;
     this->k = k;
     this->d = d;
     this->M = M;
@@ -211,6 +212,11 @@ long int LSH_hash_info::get_M()
 int CUBE_hash_info::get_M()
 {
     return this->M;
+}
+
+int CUBE_hash_info::get_probes()
+{
+    return this->probes;
 }
 
 

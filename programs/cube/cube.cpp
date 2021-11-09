@@ -8,6 +8,7 @@
 #include "../../include/hash_functions.hpp"
 #include "../../include/algorithms.hpp"
 
+#define MAX_HAMMING_DIST 2 //maximum hamming distance to use when searching neighbor-vertices
 
 using namespace std;
 
@@ -111,7 +112,7 @@ int main(int argc, char** argv) {
     int vectorsNumber = inputData.points.size();
     int dimension = inputData.points[0].vpoint.size();
     int bucketsNumber = pow(2,k);
-    CUBE_hash_info hInfo(k, dimension, M, probes);
+    CUBE_hash_info hInfo(k, dimension, M, probes, MAX_HAMMING_DIST);
 
     CubeTable cubeTable(bucketsNumber);
     cubeTable.v = compute_v(k,dimension);
@@ -137,6 +138,7 @@ int main(int argc, char** argv) {
     queryData = parsing(queryFile);
 
 
+    Point cubeResult = cube_approximate_NN(queryData.points[0],cubeTable, &hInfo);
     
 
 }

@@ -70,14 +70,14 @@ void CubeTable::CTinsert(Point *p, CUBE_hash_info *hInfo)
 
 
 
-// int HashTable::get_bucketsNumber()
-// {
-//   return this->bucketsNumber;
-// }
+int CubeTable::get_bucketsNumber()
+{
+  return this->bucketsNumber;
+}
 
 
 
-// list<HashNode> HashTable::get_bucketList(int g)
-// {
-//   return this->lists[g];
-// }
+list<Vertice> CubeTable::get_bucketList(int g)
+{
+  return this->lists[g];
+}

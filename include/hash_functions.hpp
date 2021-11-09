@@ -50,7 +50,9 @@ private:
     std::vector<std::vector<double> > v; //k vectors to use to compute every h
     std::vector<std::unordered_map<int,int> > MapHtoF;
 public:
-    CUBE_hash_info(int k, int d, int M, int probes);
+    int maxHD; //max hamming distance
+
+    CUBE_hash_info(int k, int d, int M, int probes, int maxHD);
 
     // Clear vectors v and add new random values to them.
     void update_v(std::vector<std::vector<double> >);

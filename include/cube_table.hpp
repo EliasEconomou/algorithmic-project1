@@ -1,5 +1,5 @@
-#ifndef HYPERCUBE_TABLE_H
-#define HYPERCUBE_TABLE_H
+#ifndef CUBE_TABLE_H
+#define CUBE_TABLE_H
 
 #include <iostream>
 #include <list>
@@ -28,10 +28,10 @@ public:
     CubeTable(int bucketsNumber);
     //~CubeTable();
     
-    // Insert item in hash table
+    // Insert item in cube table
     void CTinsert(Point *p, CUBE_hash_info *hInfo);
 
-    // Display hash table (debug)
+    // Display cube table (debug)
     void CTdisplay();
 
     int get_bucketsNumber();
