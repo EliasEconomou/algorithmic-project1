@@ -253,7 +253,6 @@ pair<Point,double> cube_approximate_NN(Point q, CubeTable cubeTable, CUBE_hash_i
     // Loop hamming distances till maximum hd defined in cube program.
     for (int hd = 0; hd <= maxHD; hd++) 
     {
-        cout << "hd - " << hd << endl << endl;
         vector<int> HDhasProbes; //will consist of all vertices-indexes of current hamming distance
         
         // Loop all vertices and store only the ones with hamming distance = hd from g-index.
@@ -273,14 +272,11 @@ pair<Point,double> cube_approximate_NN(Point q, CubeTable cubeTable, CUBE_hash_i
             {
                 break;
             }
-            
-            cout << "probes ------------------------------------------------------------ " << currentProbes << endl;
-            
+                        
             // Finally search vertice for best distance.
             list<Vertice> listToSearch = cubeTable.get_bucketList(HDhasProbes[i]);
             typename list<Vertice>::iterator current;
             for (current = listToSearch.begin() ; current != listToSearch.end() ; ++current ) {
-                cout << " M = " << currentM << "  " << current->point->itemID << ":" << endl << endl;
                 double dist = distance(q.vpoint,current->point->vpoint, 2);
                 currentM++;
                 if (dist < best.second)
@@ -314,3 +310,101 @@ pair<Point,double> cube_approximate_NN(Point q, CubeTable cubeTable, CUBE_hash_i
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+set<pair<Point,double>, CompDist> cube_approximate_nNN(Point q, int N, CubeTable cubeTable, CUBE_hash_info *hInfo)
+{
+    // Initialise a set two hold pairs of best point/best distance.
+    set<pair<Point,double>, CompDist> bestPointsDists;
+    Point a;
+    bestPointsDists.insert(make_pair(a,DBL_MAX));
+    
+    // Update hinfo with the right vectors for hash table, to compute query's g-value
+    hInfo->update_v(cubeTable.v);
+    hInfo->update_t(cubeTable.t);
+    // Find g value for query point.
+    vector<int> hValues;
+    int k = hInfo->get_k();
+    vector<int> vp = q.vpoint;
+    for (int i = 0; i < k; i++)
+    {
+        hValues.push_back(compute_hValue(i, vp, hInfo));
+    }
+    vector<int> fValues;
+    for (int i = 0; i < k; i++)
+    {
+        fValues.push_back(compute_fValue(i, hValues[i], hInfo));
+    }
+    int g = compute_gValue(fValues, hInfo);
+
+    int M = hInfo->get_M(); //maximum number of points to search
+    int currentM = 0; //keep track how many points we have searched till now
+
+    // We finished checking vertice g but we have more points to check (because currentM < M).
+    // We can't check more than 'probes minus the g' vertices and we will search until hamming distance = maxHD.
+    int maxProbes = hInfo->get_probes();
+    int maxHD = hInfo->maxHD;
+    int numVertices = cubeTable.get_bucketsNumber();
+    int currentProbes = maxProbes; //current probes will be reduced every time a new vertex is checked
+    
+    // Loop hamming distances till maximum hd defined in cube program.
+    for (int hd = 0; hd <= maxHD; hd++) 
+    {
+        vector<int> HDhasProbes; //will consist of all vertices-indexes of current hamming distance
+        
+        // Loop all vertices and store only the ones with hamming distance = hd from g-index.
+        for (int i = 0; i < numVertices; i++)
+        {
+            if(hammingDistance(g,i) == hd)
+            {
+                HDhasProbes.push_back(i);
+            }
+        }
+        random_shuffle(HDhasProbes.begin(), HDhasProbes.end()); //randomize vertices
+        
+        // Loop from 0 to maxProbes and access current hd's probes.
+        for (int i = 0; i < maxProbes; i++)
+        {
+            if (i==HDhasProbes.size()) //current hd has no more probes - break and increment hd
+            {
+                break;
+            }
+                        
+            // Finally search vertice for best distance.
+            list<Vertice> listToSearch = cubeTable.get_bucketList(HDhasProbes[i]);
+            typename list<Vertice>::iterator current;
+            for (current = listToSearch.begin() ; current != listToSearch.end() ; ++current ) {
+                double dist = distance(q.vpoint,current->point->vpoint, 2);
+                currentM++;
+                if (bestPointsDists.size()==N) //if set is full
+                {
+                    //if the biggest distance in set is equal/greater than current distance
+                    if (prev(bestPointsDists.end())->second >= dist)
+                    {
+                        bestPointsDists.erase(prev(bestPointsDists.end())); //pop biggest distance pair
+                        bestPointsDists.insert(make_pair(*(current->point),dist)); //insert new point/distance
+                    }
+                }
+                else if (bestPointsDists.size()<N) //if there is space in set insert pair
+                {
+                    bestPointsDists.insert(make_pair(*(current->point),dist));
+                }
+                if (currentM == M) //maximum points to check reached
+                {
+                    cout << "M completed" << endl;
+                    return bestPointsDists;
+                }   
+            }
+
+            currentProbes--;
+            // If no more probes to check return
+            if (currentProbes == 0)
+            {
+                cout << "probes depleted" << endl;
+                return bestPointsDists;
+            }
+        }
+        HDhasProbes.clear(); //clear table to get next hd's probes
+
+    }
+    cout << "max HD reached" << endl;
+    return bestPointsDists;
+}

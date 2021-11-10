@@ -141,4 +141,21 @@ int main(int argc, char** argv) {
     pair<Point,double> cubeResult = cube_approximate_NN(queryData.points[0],cubeTable, &hInfo);
     cout << "BEST POINT ID = " << cubeResult.first.itemID << " - " << cubeResult.second << endl;
 
+
+    set<pair<Point,double>, CompDist> cubeBestPointsDists;
+    cubeBestPointsDists = cube_approximate_nNN(queryData.points[0], N, cubeTable, &hInfo);
+    cout << "CUBE distances: " << endl;
+    for (auto it = cubeBestPointsDists.begin(); it != cubeBestPointsDists.end(); ++it)
+    {
+        cout << it->first.itemID << " - " << it->second << endl;
+    }
+
+
+
+
+
+
+
+    return 0;
+
 }
