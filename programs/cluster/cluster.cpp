@@ -25,6 +25,18 @@ double random_double(double n1, double n2){
     return dis(gen);
 }
 
+Cluster_of_points calculate_centroids(Cluster_of_points &cluster){
+    PPoint new_centroid = new Point ;
+    double sum_of_dimention=0;
+    int centroid_count = cluster.centroids.size();
+    
+    //Set new centroids for cluster
+    //..
+   
+
+    return cluster;
+}
+
 Cluster_of_points initialize_kplusplus(Vector_of_points &Data, Cluster_of_points &cluster, int number_of_clusters){
     // ---Creating Kplusplus iteam with data structures to help---
     kplusplus_helper Kplusplus;
@@ -138,24 +150,97 @@ Cluster_of_points initialize_kplusplus(Vector_of_points &Data, Cluster_of_points
     return cluster;
 }
 
-Cluster_of_points cluster_default(Vector_of_points &Data, Cluster_of_points &cluster, int number_of_clusters){
-    std::cout << "CLUSTER DEFAULT.\n";
-    std::cout << "Number of clusters: " << number_of_clusters << endl;
+Cluster_of_points lloyds(Vector_of_points &Data, Cluster_of_points &cluster, int iter_num_input){
+    int iter_num = iter_num_input;
 
-    //SET UP CLUSTER CENTROID DATABASE
-    // cluster.centroids.resize(number_of_clusters);
-
-
-    cluster = initialize_kplusplus(Data, cluster, number_of_clusters);
-
-    //PRINT CENTROIDS
-    for (int j = 0; j < cluster.centroids.size(); j++)
-    {
-        std::cout << cluster.centroids[j].ppoint->itemID << endl;
+    // ---Manually preallocating the vectors to load iteams without problems---
+    Vector_of_ppoints current_cluster;
+    for (int i=0 ; i < cluster.centroids.size() ; i++){
+        cluster.points.push_back(current_cluster);
     }
 
 
+    while (iter_num > 0){
+        // ---ASSIGN EACH POINT TO A CENTROID---
+        int min_centroid_iterator;
+        double min_centroid_distance;
+        double dist;
+        bool is_centroid;
+
+        // ---ITERATING THROUGH POINTS---
+        for (int i=0 ; i < Data.points.size() ; i++){
+
+            //---Checking if point is centroid, if so ignoring it---
+            is_centroid = false;
+            for (int j=0 ; j < cluster.centroids.size() ; j++){
+                if (cluster.centroids[j].ppoint->itemID == Data.points[i].itemID){
+                    is_centroid = true;
+                    break;
+                }
+            }
+            if (is_centroid)continue;
+
+            // ---Creating clusters of points by assigning them to closest centroid---
+            for (int j=0 ; j < cluster.centroids.size() ; j++){
+                //Calculating distance between current point and current centroid
+                dist = distance( Data.points[i].vpoint, cluster.centroids[j].ppoint->vpoint , 2 );
+
+                if (j==0){
+                    min_centroid_iterator = 0;
+                    min_centroid_distance = dist;
+                }
+                else{
+                    if (dist < min_centroid_distance){
+                        min_centroid_distance = dist;
+                        min_centroid_iterator = j;
+                    }
+                }
+            }
+            cluster.points[min_centroid_iterator].ppoints.push_back(PPoint(&Data.points[i]));
+
+        }
+        // ---ASSIGNING NEW CENTROIDS-- 
+        cluster = calculate_centroids(cluster);
+
+
+        std::cout << "Iteration #" << iter_num_input - iter_num+1 << " of Lloyd's algorythm complete." << endl;
+        for (int i=0 ; i<cluster.centroids.size() ; i++){
+            std::cout << "Cluster #" << i+1 << ": Centroid ID - " << cluster.centroids[i].ppoint->itemID << ", Size - " << cluster.points[i].ppoints.size() << endl;
+        }
+
+        iter_num--;
+
+        // ---IF NOT OVER , CLEANING UP FOR NEXT ITEARATION---
+        if (iter_num > 0){
+            for(int j=0 ; j < cluster.centroids.size() ; j++){
+                cluster.points[j].ppoints.clear();
+            }
+        }
+    }
+
+    return cluster;
+}
+
+Cluster_of_points cluster_default(Vector_of_points &Data, Cluster_of_points &cluster, int number_of_clusters){
+    std::cout << "CLUSTER CLASSIC - LLOYD'S ALGORYTHM.\n";
+    std::cout << "Number of clusters: " << number_of_clusters << endl;
+
+    //INITIALISE WITH K++
+    cluster = initialize_kplusplus(Data, cluster, number_of_clusters);
+
+    // //PRINT CENTROIDS
+    // for (int j = 0; j < cluster.centroids.size(); j++)
+    // {
+    //     std::cout << cluster.centroids[j].ppoint->itemID << endl;
+    // }
+
+
     // ---LLOYDS ALGORYTHM---
+    cluster = lloyds(Data, cluster, 2);
+
+    // for (int i=0 ; i<cluster.centroids.size() ; i++){
+    //     std::cout << "Cluster #" << i+1 << ": Centroid ID - " << cluster.centroids[i].ppoint->itemID << ", Size - " << cluster.points[i].ppoints.size() << endl;
+    // }
     
 
     return cluster;
@@ -325,7 +410,7 @@ int main(int argc, char** argv) {
     //..
 
 
-    std::cout << "I RAN! \n";
+    std::cout << "Operation Successfull. \n";
     
     //  ---DATABASE PRINT---
     // for (int i=0 ; i < Data.points.size() ; i++){
