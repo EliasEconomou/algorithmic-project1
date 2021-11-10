@@ -31,6 +31,12 @@ class PPoint
 {
     public:
     Point* ppoint;
+    PPoint& operator= (Point* pointer){
+        this->ppoint=pointer;
+    }
+    PPoint(Point* pointer){
+        this->ppoint=pointer;
+    }
 };
 
 class Vector_of_ppoints

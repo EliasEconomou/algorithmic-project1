@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdlib.h>
 #include <algorithm>
 #include <string>
 #include <string.h>
@@ -8,10 +9,142 @@
 
 using namespace std;
 
+class kplusplus_helper{
+    public:
+    vector<double> Additive_Square_Sums;
+    vector<vector<double>> Dist_From_Centroids;
+    vector<float> Minimum_Distances;
+    vector<PPoint> Centroids;
+    vector<bool> IsCentroid;
+};
+
+double random_double(double n1, double n2){
+    return ((double)rand() * (n2 - n1)) / (double)RAND_MAX + n1;
+}
+
+Cluster_of_points initialize_kplusplus(Vector_of_points Data, Cluster_of_points cluster, int number_of_clusters){
+    // ---Creating Kplusplus iteam with data structures to help---
+    kplusplus_helper Kplusplus;
+
+    // ---Getting a random point to be a centroid and adding it to centroid vector---
+    PPoint Rand_centroid = &Data.points[ random_number(1,Data.points.size()) ]; //Get random point to be the first centroid
+    Kplusplus.Centroids.push_back(Rand_centroid.ppoint);
+
+
+    // ---LOOP TO FIND NEW CENTROIDS---
+    while (Kplusplus.Centroids.size() < number_of_clusters){
+        //---Calculating all distances to centroids---
+        bool wascentroid;
+        vector<double> distances;
+        for (int i=0 ; i < Data.points.size() ; i++){
+            PPoint CurrentPoint = &(Data.points[i]);
+            wascentroid=false;
+            for (int j=0 ; j < Kplusplus.Centroids.size() ; j++){
+                if (Kplusplus.Centroids[j].ppoint->itemID == CurrentPoint.ppoint->itemID){ //if current is centroid dont
+                    distances.push_back(0);
+                    wascentroid=true;
+                }
+                else{
+                    distances.push_back( distance( (Kplusplus.Centroids[j].ppoint)->vpoint , (CurrentPoint.ppoint)->vpoint , 2) );
+                }
+            }
+            if(wascentroid){
+                Kplusplus.IsCentroid.push_back(true);
+            }
+            else{
+                Kplusplus.IsCentroid.push_back(false);
+            }
+            Kplusplus.Dist_From_Centroids.push_back(distances);
+            distances.clear();
+        }
+
+        // ---Calculating minimum distances---
+        for (int i=0 ; i < Data.points.size() ; i++){
+            double min_dist = MAXFLOAT;
+            for (int j=0 ; j < Kplusplus.Centroids.size() ; j++){
+                if (Kplusplus.Dist_From_Centroids[i][j] < min_dist){
+                    min_dist = Kplusplus.Dist_From_Centroids[i][j];
+                }
+            }
+            // ---Saving minimum distances---
+            Kplusplus.Minimum_Distances.push_back(min_dist);
+        }
+
+        // ---Calculating max D(i) to normalize---
+        float max_di = 0;
+        for (int i=0 ; i < Data.points.size() ; i++){
+            if (Kplusplus.Minimum_Distances[i] > max_di){
+                max_di = Kplusplus.Minimum_Distances[i];
+            }
+        }
+
+        // ---Normalising and calculating cumulative sum of squares---
+        for (int i=0 ; i < Data.points.size() ; i++){
+            //Normalising
+            float norm_distance = Kplusplus.Minimum_Distances[i] / max_di ;
+
+            //Calculate sqare of normalised distance
+            float norm_dist_squared = norm_distance * norm_distance;
+
+            //Adding to vector of cumulative sums
+            if (i==0){
+                Kplusplus.Additive_Square_Sums.push_back(norm_dist_squared);
+            }
+            else{
+                Kplusplus.Additive_Square_Sums.push_back(norm_dist_squared + Kplusplus.Additive_Square_Sums[i-1]);
+            }
+            // std::cout << Additive_Square_Sums[i] << endl;
+        }
+
+        // ---Calculating the probabilities to be centroids---
+        double uniform_rand_possibility = random_double(0.0 , Kplusplus.Additive_Square_Sums[Kplusplus.Additive_Square_Sums.size()-1]);
+        // std::cout << "Random possibility number chosen:" << uniform_rand_possibility << endl; 
+
+        // ---Searching for next centroid according to random number taken---
+        int next_centroid_index;
+        for (int i=0 ; i < Data.points.size() ; i++){
+            if (Kplusplus.Additive_Square_Sums[i] >= uniform_rand_possibility && Kplusplus.IsCentroid[i]==false ){
+                next_centroid_index = i;
+                break;
+            }
+        }
+
+        // ---Making it a centroid---
+        
+        Kplusplus.IsCentroid[next_centroid_index]=true;
+        Kplusplus.Centroids.push_back(&Data.points[next_centroid_index]);
+
+
+        //Clearing for next loop
+        Kplusplus.Minimum_Distances.clear();
+        Kplusplus.Dist_From_Centroids.clear();
+        Kplusplus.Additive_Square_Sums.clear();
+        Kplusplus.IsCentroid.clear();
+    }   
+
+    //Αssign centroids found to cluster and return
+    for (int i=0 ; i < Kplusplus.Centroids.size() ; i++){
+        cluster.centroids.push_back(Kplusplus.Centroids[i]);
+    }
+    return cluster;
+}
+
 Cluster_of_points cluster_default(Vector_of_points Data, Cluster_of_points cluster, int number_of_clusters){
     //DO STUFF
     std::cout << "CLUSTER DEFAULT.\n";
     std::cout << "Number of clusters: " << number_of_clusters << endl;
+
+    cluster = initialize_kplusplus(Data, cluster, number_of_clusters);
+
+    // std::cout << "Cluster points: " << cluster.centroids.size() << endl;
+    // for (int i = 0; i < cluster.centroids.size(); i++)
+    // {
+    //     std::cout << cluster.centroids[i].ppoint->itemID << endl;
+    // }
+
+    // ---LLOYDS ALGORYTHM---
+    
+
     return cluster;
 }
 
