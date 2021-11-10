@@ -1,7 +1,6 @@
 #ifndef ALGORITHMS_H
 #define ALGORITHMS_H
 
-
 #include <iostream>
 #include <vector>
 #include <set>
@@ -48,5 +47,6 @@ std::pair<Point,double> cube_approximate_NN(Point q, CubeTable cubeTable, CUBE_h
 
 std::set<std::pair<Point,double>, CompDist> cube_approximate_nNN(Point q, int N, CubeTable cubeTable, CUBE_hash_info *hInfo);
 
+std::unordered_map<int,double> cube_approximate_range_search(Point q, double R, CubeTable cubeTable, CUBE_hash_info *hInfo);
 
 #endif

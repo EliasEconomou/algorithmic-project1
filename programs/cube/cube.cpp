@@ -140,6 +140,7 @@ int main(int argc, char** argv) {
 
     pair<Point,double> cubeResult = cube_approximate_NN(queryData.points[0],cubeTable, &hInfo);
     cout << "BEST POINT ID = " << cubeResult.first.itemID << " - " << cubeResult.second << endl;
+    cout << endl;
 
 
     set<pair<Point,double>, CompDist> cubeBestPointsDists;
@@ -149,9 +150,16 @@ int main(int argc, char** argv) {
     {
         cout << it->first.itemID << " - " << it->second << endl;
     }
+    cout << endl << endl;
 
 
-
+    unordered_map<int,double> PointsInR = cube_approximate_range_search(queryData.points[0], R, cubeTable, &hInfo);
+    cout << "Points inside radius: " << R << "." << endl;
+    for (auto it = PointsInR.begin(); it != PointsInR.end(); ++it)
+    {
+        cout << it->first << " - " << it->second << endl;
+    }
+    cout << endl << endl;
 
 
 
