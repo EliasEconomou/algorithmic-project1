@@ -8,7 +8,7 @@
 #include "../../include/hash_functions.hpp"
 #include "../../include/algorithms.hpp"
 
-#define MAX_HAMMING_DIST 1 //maximum hamming distance to use when searching neighbor-vertices
+#define MAX_HAMMING_DIST 5 //maximum hamming distance to use when searching neighbor-vertices
 
 using namespace std;
 
@@ -138,7 +138,7 @@ int main(int argc, char** argv) {
     queryData = parsing(queryFile);
 
 
-    Point cubeResult = cube_approximate_NN(queryData.points[0],cubeTable, &hInfo);
-    
+    pair<Point,double> cubeResult = cube_approximate_NN(queryData.points[0],cubeTable, &hInfo);
+    cout << "BEST POINT ID = " << cubeResult.first.itemID << " - " << cubeResult.second << endl;
 
 }

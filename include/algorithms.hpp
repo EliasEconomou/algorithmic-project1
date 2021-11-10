@@ -44,7 +44,7 @@ std::unordered_map<int,double> lsh_approximate_range_search(Point q, double R, s
 
 //HYPERCUBE
 
-Point cube_approximate_NN(Point q, CubeTable cubeTable, CUBE_hash_info *hInfo);
+std::pair<Point,double> cube_approximate_NN(Point q, CubeTable cubeTable, CUBE_hash_info *hInfo);
 
 
 
