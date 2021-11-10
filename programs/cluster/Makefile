@@ -11,7 +11,7 @@ EXEC = cluster.out
 
 # Arguments for make run / make valgrind
 # Το complete στις παραμέτρους του cluster είναι "optional" για το αν το αρχείο θα τυπώνει τα διανύσματα του κάθε cluster η όχι
-ARGS = -i ../../dataset.txt -c ../../cluster.conf -o ../../outputfile -complete -m Classic
+ARGS = -i ../../input_small_id -c ../../cluster.conf -o ../../outputfile -complete -m Classic
 
 
 $(EXEC): $(OBJS) $(LIBS)
@@ -24,4 +24,4 @@ run: $(EXEC)
 	./$(EXEC) $(ARGS)
 
 valgrind: $(EXEC)
-	valgrind --tool=memcheck --leak-check=yes --leak-check=full --show-leak-kinds=all ./$(EXEC) # ARGS = 
+	valgrind --tool=memcheck --leak-check=yes --leak-check=full --show-leak-kinds=all ./$(EXEC) $(ARGS)

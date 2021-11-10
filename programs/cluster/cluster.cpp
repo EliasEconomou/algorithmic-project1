@@ -19,16 +19,21 @@ class kplusplus_helper{
 };
 
 double random_double(double n1, double n2){
-    return ((double)rand() * (n2 - n1)) / (double)RAND_MAX + n1;
+    std::random_device rd;  // Will be used to obtain a seed for the random number engine
+    std::mt19937 gen(rd()); // Standard mersenne_twister_engine seeded with rd()
+    std::uniform_real_distribution<> dis(n1, n2);
+    return dis(gen);
 }
 
-Cluster_of_points initialize_kplusplus(Vector_of_points Data, Cluster_of_points cluster, int number_of_clusters){
+Cluster_of_points initialize_kplusplus(Vector_of_points &Data, Cluster_of_points &cluster, int number_of_clusters){
     // ---Creating Kplusplus iteam with data structures to help---
     kplusplus_helper Kplusplus;
 
     // ---Getting a random point to be a centroid and adding it to centroid vector---
     PPoint Rand_centroid = &Data.points[ random_number(1,Data.points.size()) ]; //Get random point to be the first centroid
     Kplusplus.Centroids.push_back(Rand_centroid.ppoint);
+
+    int t=1;
 
 
     // ---LOOP TO FIND NEW CENTROIDS---
@@ -77,7 +82,6 @@ Cluster_of_points initialize_kplusplus(Vector_of_points Data, Cluster_of_points 
                 max_di = Kplusplus.Minimum_Distances[i];
             }
         }
-
         // ---Normalising and calculating cumulative sum of squares---
         for (int i=0 ; i < Data.points.size() ; i++){
             //Normalising
@@ -97,13 +101,17 @@ Cluster_of_points initialize_kplusplus(Vector_of_points Data, Cluster_of_points 
         }
 
         // ---Calculating the probabilities to be centroids---
-        double uniform_rand_possibility = random_double(0.0 , Kplusplus.Additive_Square_Sums[Kplusplus.Additive_Square_Sums.size()-1]);
-        // std::cout << "Random possibility number chosen:" << uniform_rand_possibility << endl; 
+        double uniform_rand_possibility=0;
+        
+        uniform_rand_possibility = random_double(0.0 , Kplusplus.Additive_Square_Sums[Kplusplus.Additive_Square_Sums.size()-1]);
+
+        
+        // std::cout << "Random possibility number chosen:" << uniform_rand_possibility << endl; //PRINT RANDOM NUMBER CHOSEN
 
         // ---Searching for next centroid according to random number taken---
         int next_centroid_index;
         for (int i=0 ; i < Data.points.size() ; i++){
-            if (Kplusplus.Additive_Square_Sums[i] >= uniform_rand_possibility && Kplusplus.IsCentroid[i]==false ){
+            if ( (Kplusplus.Additive_Square_Sums[i] >= uniform_rand_possibility) && (Kplusplus.IsCentroid[i]==false) ){
                 next_centroid_index = i;
                 break;
             }
@@ -120,27 +128,32 @@ Cluster_of_points initialize_kplusplus(Vector_of_points Data, Cluster_of_points 
         Kplusplus.Dist_From_Centroids.clear();
         Kplusplus.Additive_Square_Sums.clear();
         Kplusplus.IsCentroid.clear();
+        t++;
     }   
 
     //Αssign centroids found to cluster and return
     for (int i=0 ; i < Kplusplus.Centroids.size() ; i++){
-        cluster.centroids.push_back(Kplusplus.Centroids[i]);
+        cluster.centroids.push_back( Kplusplus.Centroids[i] );
     }
     return cluster;
 }
 
-Cluster_of_points cluster_default(Vector_of_points Data, Cluster_of_points cluster, int number_of_clusters){
-    //DO STUFF
+Cluster_of_points cluster_default(Vector_of_points &Data, Cluster_of_points &cluster, int number_of_clusters){
     std::cout << "CLUSTER DEFAULT.\n";
     std::cout << "Number of clusters: " << number_of_clusters << endl;
 
+    //SET UP CLUSTER CENTROID DATABASE
+    // cluster.centroids.resize(number_of_clusters);
+
+
     cluster = initialize_kplusplus(Data, cluster, number_of_clusters);
 
-    // std::cout << "Cluster points: " << cluster.centroids.size() << endl;
-    // for (int i = 0; i < cluster.centroids.size(); i++)
-    // {
-    //     std::cout << cluster.centroids[i].ppoint->itemID << endl;
-    // }
+    //PRINT CENTROIDS
+    for (int j = 0; j < cluster.centroids.size(); j++)
+    {
+        std::cout << cluster.centroids[j].ppoint->itemID << endl;
+    }
+
 
     // ---LLOYDS ALGORYTHM---
     
@@ -166,7 +179,7 @@ Cluster_of_points cluster_Hypercube(Vector_of_points Data, Cluster_of_points clu
     return cluster;
 }
 
-Cluster_of_points cluster_data(Vector_of_points data , string method , string config_file , bool complete){
+Cluster_of_points cluster_data(Vector_of_points &data , string method , string config_file , bool complete){
     Cluster_of_points cluster;
 
     //---First check method---

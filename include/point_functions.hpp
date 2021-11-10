@@ -33,6 +33,7 @@ class PPoint
     Point* ppoint;
     PPoint& operator= (Point* pointer){
         this->ppoint=pointer;
+        return *this;
     }
     PPoint(Point* pointer){
         this->ppoint=pointer;
