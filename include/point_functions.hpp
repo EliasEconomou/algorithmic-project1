@@ -25,32 +25,23 @@ public:
     std::vector<Point> points; //vector of points
 };
 
-//----Same classes as above but with pointers----
-
-class PPoint
-{
-    public:
-    Point* ppoint;
-    PPoint& operator= (Point* pointer){
-        this->ppoint=pointer;
-        return *this;
-    }
-    PPoint(Point* pointer){
-        this->ppoint=pointer;
-    }
-};
-
-class Vector_of_ppoints
-{
-    public:
-    std::vector<PPoint> ppoints; //vector of pointers to points
-};
+//----Clusters_of_points----
 
 class Cluster_of_points // class to implement clusters easier
 {
     public:
-    std::vector<PPoint> centroids; //vector of pointers to centroid Points
-    std::vector<Vector_of_ppoints> points; //vector of pointers to Points in each cluster
+    std::vector<Point> centroids; //vector of centroid Points
+    std::vector<Vector_of_points> points; //vector of Points in each cluster
+};
+
+//---Helping class, dont bother looking---
+class kplusplus_helper{
+    public:
+    std::vector<double> Additive_Square_Sums;
+    std::vector<std::vector<double>> Dist_From_Centroids;
+    std::vector<double> Minimum_Distances;
+    std::vector<Point> Centroids;
+    std::vector<bool> IsCentroid;
 };
 
 //-------------------------------------------------
@@ -71,6 +62,8 @@ double inner_prod(std::vector<double> v1, std::vector<int> v2);
 
 // Returns a random integer in the specified range.
 int random_number(int begin, int end);
+
+double random_double(double n1, double n2);
 
 // Returns modulo of two numbers.
 long int modulo(long int a, long long int b);

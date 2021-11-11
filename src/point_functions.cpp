@@ -142,6 +142,13 @@ int random_number(int begin, int end)
     return dis(generator);
 }
 
+double random_double(double n1, double n2){
+    std::random_device rd;  // Will be used to obtain a seed for the random number engine
+    std::mt19937 gen(rd()); // Standard mersenne_twister_engine seeded with rd()
+    std::uniform_real_distribution<> dis(n1, n2);
+    return dis(gen);
+}
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
