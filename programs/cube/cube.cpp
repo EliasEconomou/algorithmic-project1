@@ -138,31 +138,47 @@ int main(int argc, char** argv) {
     queryData = parsing(queryFile);
 
 
-    pair<Point,double> cubeResult = cube_approximate_NN(queryData.points[0],cubeTable, &hInfo);
-    cout << "BEST POINT ID = " << cubeResult.first.itemID << " - " << cubeResult.second << endl;
+    // pair<Point,double> cubeResult = cube_approximate_NN(queryData.points[0],cubeTable, &hInfo);
+    // pair<Point,double> trueResult = true_NN(queryData.points[0], inputData);
+    
+
+    ofstream out (outputFile);
+
+
+    for (int i = 0; i < queryData.points.size(); i++)
+    {
+        out << "Query: " << queryData.points[i].itemID << endl;
+        double cubeTime, trueTime;
+        set<pair<Point,double>, CompDist> cubeBestPointsDists;
+        set<pair<Point,double>, CompDist> trueBestPointsDists;
+        cubeBestPointsDists = cube_approximate_nNN(queryData.points[i], N, cubeTable, &hInfo, cubeTime);
+        trueBestPointsDists = true_nNN(queryData.points[i], N, inputData, trueTime);
+        int neighbor = 1;
+        auto it1 = cubeBestPointsDists.begin();
+        auto it2 = trueBestPointsDists.begin();
+        for (it1,it2; it1 != cubeBestPointsDists.end(),it2 != trueBestPointsDists.end(); ++it1,++it2)
+        {
+            out << "Nearest neighbor-" << neighbor << ": " << it1->first.itemID << endl;
+            out << "distanceHypercube: " << it1->second << endl;
+            out << "distanceTrue: " << it2->second << endl;
+            neighbor++;
+        }
+        out << "tHypercube: " << cubeTime << endl;
+        out << "tTrue: " << trueTime << endl;
+    }
     cout << endl;
 
 
-    set<pair<Point,double>, CompDist> cubeBestPointsDists;
-    cubeBestPointsDists = cube_approximate_nNN(queryData.points[0], N, cubeTable, &hInfo);
-    cout << "CUBE distances: " << endl;
-    for (auto it = cubeBestPointsDists.begin(); it != cubeBestPointsDists.end(); ++it)
-    {
-        cout << it->first.itemID << " - " << it->second << endl;
-    }
-    cout << endl << endl;
+    // unordered_map<int,double> PointsInR = cube_approximate_range_search(queryData.points[0], R, cubeTable, &hInfo);
+    // cout << "Points inside radius: " << R << "." << endl;
+    // for (auto it = PointsInR.begin(); it != PointsInR.end(); ++it)
+    // {
+    //     cout << it->first << " - " << it->second << endl;
+    // }
+    // cout << endl << endl;
 
 
-    unordered_map<int,double> PointsInR = cube_approximate_range_search(queryData.points[0], R, cubeTable, &hInfo);
-    cout << "Points inside radius: " << R << "." << endl;
-    for (auto it = PointsInR.begin(); it != PointsInR.end(); ++it)
-    {
-        cout << it->first << " - " << it->second << endl;
-    }
-    cout << endl << endl;
-
-
-
+    out.close();
 
     return 0;
 

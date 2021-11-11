@@ -7,28 +7,32 @@ using namespace std;
 // TRUE //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-Point true_NN(Point q, Vector_of_points inputData)
+pair<Point,double> true_NN(Point q, Vector_of_points inputData)
 {
-    Point b; //best true point/candidate
-    double bestDist = DBL_MAX; // best true distance of best candidate
+    Point b;
+    pair<Point,double> best;
+    best.first = b; //best point-candidate
+    best.second = DBL_MAX; //best distance of best candidate
     
     for (int i = 0; i < inputData.points.size(); i++)
     {
         double dist = distance(q.vpoint,inputData.points[i].vpoint, 2);
-        if (dist < bestDist)
+        if (dist < best.second)
         {
-            bestDist = dist;
-            b = inputData.points[i];
+            best.second = dist;
+            best.first = inputData.points[i];
         }
         
     }
-    cout << "Query index " << q.itemID << " - BEST TRUE DISTANCE : " << bestDist << endl;
-    return b;
+    return best;
+
 }
 
 
-set<pair<Point,double>, CompDist> true_nNN(Point q, int N, Vector_of_points inputData)
+set<pair<Point,double>, CompDist> true_nNN(Point q, int N, Vector_of_points inputData, double &time)
 {
+    using namespace std::chrono;
+    high_resolution_clock::time_point start = high_resolution_clock::now();
     // Initialise a set two hold pairs of true best point/best distance.
     set<pair<Point,double>, CompDist> bestPointsDists;
     Point a;
@@ -51,6 +55,9 @@ set<pair<Point,double>, CompDist> true_nNN(Point q, int N, Vector_of_points inpu
             bestPointsDists.insert(make_pair(inputData.points[i],dist));
         }
     }
+    high_resolution_clock::time_point end = high_resolution_clock::now();
+    duration<double> time_span = duration_cast<duration<double>>(end - start);
+    time = time_span.count();
     return bestPointsDists;
 }
 
@@ -59,11 +66,14 @@ set<pair<Point,double>, CompDist> true_nNN(Point q, int N, Vector_of_points inpu
 // LSH //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//todo
-Point lsh_approximate_NN(Point q, vector<HashTable> hashTables, LSH_hash_info *hInfo)
+
+pair<Point,double> lsh_approximate_NN(Point q, vector<HashTable> hashTables, LSH_hash_info *hInfo)
 {
-    Point b; // best point-candidate
-    double bestDist = INT_MAX; // best distance of best candidate
+    Point b;
+    pair<Point,double> best;
+    best.first = b; //best point-candidate
+    best.second = DBL_MAX; //best distance of best candidate
+
     int L = hInfo->get_L();
     for (int i = 0; i < L; i++) {
         // Update hinfo with the right vectors for every hash table, to compute query's g-value
@@ -85,21 +95,22 @@ Point lsh_approximate_NN(Point q, vector<HashTable> hashTables, LSH_hash_info *h
         typename list<HashNode>::iterator current;
         for (current = listToSearch.begin() ; current != listToSearch.end() ; ++current ) {
             double dist = distance(q.vpoint,current->point->vpoint, 2);
-            if (dist < bestDist)
+            if (dist < best.second)
             {
-                bestDist = dist;
-                b = *(current->point);
+                best.second = dist;
+                best.first = *(current->point);
             }
         }
     }
-    cout << "Query index " << q.itemID << " - BEST LSH DISTANCE : " << bestDist << endl;
-    return b;
+    return best;
     
 }
 
 
-set<pair<Point,double>, CompDist> lsh_approximate_nNN(Point q, int N, vector<HashTable> hashTables, LSH_hash_info *hInfo)
+set<pair<Point,double>, CompDist> lsh_approximate_nNN(Point q, int N, vector<HashTable> hashTables, LSH_hash_info *hInfo, double &time)
 {
+    using namespace std::chrono;
+    high_resolution_clock::time_point start = high_resolution_clock::now();
     // Initialise a set two hold pairs of best point/best distance.
     set<pair<Point,double>, CompDist> bestPointsDists;
     Point a;
@@ -140,6 +151,9 @@ set<pair<Point,double>, CompDist> lsh_approximate_nNN(Point q, int N, vector<Has
             }
         }
     }
+    high_resolution_clock::time_point end = high_resolution_clock::now();
+    duration<double> time_span = duration_cast<duration<double>>(end - start);
+    time = time_span.count();
     return bestPointsDists;
 }
 
@@ -293,8 +307,10 @@ pair<Point,double> cube_approximate_NN(Point q, CubeTable cubeTable, CUBE_hash_i
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-set<pair<Point,double>, CompDist> cube_approximate_nNN(Point q, int N, CubeTable cubeTable, CUBE_hash_info *hInfo)
+set<pair<Point,double>, CompDist> cube_approximate_nNN(Point q, int N, CubeTable cubeTable, CUBE_hash_info *hInfo, double &time)
 {
+    using namespace std::chrono;
+    high_resolution_clock::time_point start = high_resolution_clock::now();
     // Initialise a set two hold pairs of best point/best distance.
     set<pair<Point,double>, CompDist> bestPointsDists;
     Point a;
@@ -372,7 +388,10 @@ set<pair<Point,double>, CompDist> cube_approximate_nNN(Point q, int N, CubeTable
                 }
                 if (currentM == M) //maximum points to check reached
                 {
-                    cout << "M completed" << endl;
+                    // cout << "M completed" << endl;
+                    high_resolution_clock::time_point end = high_resolution_clock::now();
+                    duration<double> time_span = duration_cast<duration<double>>(end - start);
+                    time = time_span.count();
                     return bestPointsDists;
                 }   
             }
@@ -381,7 +400,10 @@ set<pair<Point,double>, CompDist> cube_approximate_nNN(Point q, int N, CubeTable
             // If no more probes to check return.
             if (currentProbes == 0)
             {
-                cout << "probes depleted" << endl;
+                // cout << "probes depleted" << endl;
+                high_resolution_clock::time_point end = high_resolution_clock::now();
+                duration<double> time_span = duration_cast<duration<double>>(end - start);
+                time = time_span.count();
                 return bestPointsDists;
             }
         }
@@ -389,6 +411,9 @@ set<pair<Point,double>, CompDist> cube_approximate_nNN(Point q, int N, CubeTable
 
     }
     // Max HD reached.
+    high_resolution_clock::time_point end = high_resolution_clock::now();
+    duration<double> time_span = duration_cast<duration<double>>(end - start);
+    time = time_span.count();
     return bestPointsDists;
 }
 

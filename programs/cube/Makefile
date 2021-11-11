@@ -10,7 +10,7 @@ OBJS = cube.o $(SRC)/point_functions.o $(SRC)/hash_table.o $(SRC)/cube_table.o $
 EXEC = cube.out
 
 # Arguments for make run / make valgrind
-ARGS = -i ../../input_small_id -q ../../query_small_id -k 12 -M 1000 -probes 12 -o ../../output_cube -N 5 -R 1000
+ARGS = -i ../../input_small_id -q ../../query_small_id -k 12 -M 1000 -probes 12 -o ../../output_file -N 5 -R 400
 
 
 $(EXEC): $(OBJS) $(LIBS)
@@ -23,4 +23,4 @@ run: $(EXEC)
 	./$(EXEC) $(ARGS)
 
 valgrind: $(EXEC)
-	valgrind --tool=memcheck --leak-check=yes --leak-check=full --show-leak-kinds=all ./$(EXEC) # ARGS = 
+	valgrind --tool=memcheck --leak-check=yes --leak-check=full --show-leak-kinds=all ./$(EXEC) $(ARGS)
