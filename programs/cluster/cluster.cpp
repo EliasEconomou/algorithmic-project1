@@ -6,8 +6,8 @@
 #include <string.h>
 #include <vector>
 #include "unistd.h"
-#include "../../include/point_functions.hpp"
 #include "../../include/cluster_methods.hpp"
+
 
 
 using namespace std;

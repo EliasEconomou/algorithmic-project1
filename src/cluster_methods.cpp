@@ -1,6 +1,5 @@
 #include "../include/cluster_methods.hpp"
 
-
 using namespace std;
 
 void calculate_centroids(Cluster_of_points &cluster){
@@ -267,19 +266,30 @@ Cluster_of_points cluster_Classic(Vector_of_points &Data, Cluster_of_points &clu
 }
 
 Cluster_of_points cluster_LSH(Vector_of_points Data, Cluster_of_points cluster, int number_of_clusters, int L_of_LSH, int k_of_LSH){
-    //DO STUFF
     std::cout << "CLUSTER LSH.\n";
     std::cout << "Number of clusters: " << number_of_clusters << endl;
     std::cout << "L of LSH: " << L_of_LSH << endl;
     std::cout << "k of LSH: " << k_of_LSH << endl;
+
+    cluster = initialize_kplusplus(Data, cluster, number_of_clusters);
+
+    //DO STUFF
+    //..
+    
+
     return cluster;
 }
 
 Cluster_of_points cluster_Hypercube(Vector_of_points Data, Cluster_of_points cluster, int number_of_clusters, int M_of_Hypercube, int k_of_Hypercube){
-    //DO STUFF
     std::cout << "CLUSTER HYPERCUBE.\n";
     std::cout << "Number of clusters: " << number_of_clusters << endl;
     std::cout << "M of Hypercube: " << M_of_Hypercube << endl;
     std::cout << "k of Hypercube: " << k_of_Hypercube << endl;
+
+    cluster = initialize_kplusplus(Data, cluster, number_of_clusters);
+
+    //DO STUFF
+    //..
+
     return cluster;
 }

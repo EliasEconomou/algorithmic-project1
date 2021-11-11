@@ -6,7 +6,7 @@ CC = g++
 CFLAGS = -std=c++11 -Wall -g -Werror -I$(INCLUDE)
 LDFLAGS = -lm
 
-OBJS = cluster.o $(SRC)/point_functions.o $(SRC)/cluster_methods.o
+OBJS = cluster.o $(SRC)/point_functions.o $(SRC)/cluster_methods.o $(SRC)/hash_table.o $(SRC)/cube_table.o $(SRC)/hash_functions.o $(SRC)/algorithms.o
 EXEC = cluster.out
 
 # Arguments for make run / make valgrind

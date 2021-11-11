@@ -9,6 +9,10 @@
 #include <string.h>
 #include <vector>
 #include "point_functions.hpp"
+#include "cluster_methods.hpp"
+#include "hash_table.hpp"
+#include "hash_functions.hpp"
+#include "algorithms.hpp"
 
 
 using namespace std;
