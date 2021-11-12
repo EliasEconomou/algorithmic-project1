@@ -1,0 +1,1800 @@
+Query: 1
+Nearest neighbor-1: 4010
+distanceHypercube: 283.637
+distanceTrue: 276.782
+Nearest neighbor-2: 817
+distanceHypercube: 311.032
+distanceTrue: 277.496
+Nearest neighbor-3: 1296
+distanceHypercube: 319.165
+distanceTrue: 282.315
+Nearest neighbor-4: 3238
+distanceHypercube: 330.002
+distanceTrue: 283.637
+Nearest neighbor-5: 697
+distanceHypercube: 337.126
+distanceTrue: 284.596
+tHypercube: 0.00186487
+tTrue: 0.0750785
+Query: 2
+Nearest neighbor-1: 3544
+distanceHypercube: 322.379
+distanceTrue: 256.852
+Nearest neighbor-2: 1272
+distanceHypercube: 361.273
+distanceTrue: 259.913
+Nearest neighbor-3: 413
+distanceHypercube: 362.329
+distanceTrue: 262.895
+Nearest neighbor-4: 1717
+distanceHypercube: 370.698
+distanceTrue: 262.926
+Nearest neighbor-5: 3346
+distanceHypercube: 372.372
+distanceTrue: 264.932
+tHypercube: 0.000830242
+tTrue: 0.0768672
+Query: 3
+Nearest neighbor-1: 1697
+distanceHypercube: 340.187
+distanceTrue: 206.737
+Nearest neighbor-2: 235
+distanceHypercube: 374.194
+distanceTrue: 219.461
+Nearest neighbor-3: 931
+distanceHypercube: 377.667
+distanceTrue: 222.551
+Nearest neighbor-4: 5117
+distanceHypercube: 391.492
+distanceTrue: 227.726
+Nearest neighbor-5: 544
+distanceHypercube: 398.764
+distanceTrue: 241.754
+tHypercube: 0.000710015
+tTrue: 0.0646831
+Query: 4
+Nearest neighbor-1: 9582
+distanceHypercube: 260.569
+distanceTrue: 215.177
+Nearest neighbor-2: 108
+distanceHypercube: 265.633
+distanceTrue: 216.843
+Nearest neighbor-3: 3753
+distanceHypercube: 270.315
+distanceTrue: 236.138
+Nearest neighbor-4: 4095
+distanceHypercube: 284.385
+distanceTrue: 242.207
+Nearest neighbor-5: 9715
+distanceHypercube: 286.873
+distanceTrue: 249.622
+tHypercube: 0.000741634
+tTrue: 0.0669738
+Query: 5
+Nearest neighbor-1: 7886
+distanceHypercube: 307.49
+distanceTrue: 250.509
+Nearest neighbor-2: 3524
+distanceHypercube: 341.454
+distanceTrue: 257.538
+Nearest neighbor-3: 5643
+distanceHypercube: 346.945
+distanceTrue: 265.068
+Nearest neighbor-4: 5516
+distanceHypercube: 358.19
+distanceTrue: 267.277
+Nearest neighbor-5: 5047
+distanceHypercube: 359.678
+distanceTrue: 279.383
+tHypercube: 0.000938323
+tTrue: 0.0646917
+Query: 6
+Nearest neighbor-1: 3392
+distanceHypercube: 357.088
+distanceTrue: 275.151
+Nearest neighbor-2: 3300
+distanceHypercube: 398.252
+distanceTrue: 287.503
+Nearest neighbor-3: 3891
+distanceHypercube: 432.822
+distanceTrue: 293.82
+Nearest neighbor-4: 3182
+distanceHypercube: 435.161
+distanceTrue: 300.525
+Nearest neighbor-5: 6443
+distanceHypercube: 449.629
+distanceTrue: 304.816
+tHypercube: 0.000561354
+tTrue: 0.0654247
+Query: 7
+Nearest neighbor-1: 1151
+distanceHypercube: 302.983
+distanceTrue: 246.609
+Nearest neighbor-2: 125
+distanceHypercube: 336.41
+distanceTrue: 252.816
+Nearest neighbor-3: 1364
+distanceHypercube: 339.918
+distanceTrue: 255.805
+Nearest neighbor-4: 1256
+distanceHypercube: 344.452
+distanceTrue: 256.105
+Nearest neighbor-5: 146
+distanceHypercube: 349.004
+distanceTrue: 258.337
+tHypercube: 0.000611633
+tTrue: 0.0690867
+Query: 8
+Nearest neighbor-1: 2206
+distanceHypercube: 231.333
+distanceTrue: 173.948
+Nearest neighbor-2: 3694
+distanceHypercube: 267.281
+distanceTrue: 177.727
+Nearest neighbor-3: 6688
+distanceHypercube: 270.381
+distanceTrue: 196.403
+Nearest neighbor-4: 6522
+distanceHypercube: 272.586
+distanceTrue: 197.56
+Nearest neighbor-5: 7742
+distanceHypercube: 272.885
+distanceTrue: 205.093
+tHypercube: 0.00281275
+tTrue: 0.0674307
+Query: 9
+Nearest neighbor-1: 7051
+distanceHypercube: 285.921
+distanceTrue: 248.473
+Nearest neighbor-2: 8336
+distanceHypercube: 295.374
+distanceTrue: 256.215
+Nearest neighbor-3: 8737
+distanceHypercube: 295.696
+distanceTrue: 259.012
+Nearest neighbor-4: 1693
+distanceHypercube: 300.488
+distanceTrue: 259.137
+Nearest neighbor-5: 6604
+distanceHypercube: 315.864
+distanceTrue: 263.945
+tHypercube: 0.00103908
+tTrue: 0.0671324
+Query: 10
+Nearest neighbor-1: 1539
+distanceHypercube: 263.374
+distanceTrue: 250.014
+Nearest neighbor-2: 7643
+distanceHypercube: 268.777
+distanceTrue: 251.722
+Nearest neighbor-3: 3001
+distanceHypercube: 292.199
+distanceTrue: 254.68
+Nearest neighbor-4: 1056
+distanceHypercube: 297.328
+distanceTrue: 262.717
+Nearest neighbor-5: 93
+distanceHypercube: 306.367
+distanceTrue: 263.374
+tHypercube: 0.0011083
+tTrue: 0.0703349
+Query: 11
+Nearest neighbor-1: 5927
+distanceHypercube: 336.473
+distanceTrue: 293.883
+Nearest neighbor-2: 8413
+distanceHypercube: 344.093
+distanceTrue: 308.914
+Nearest neighbor-3: 2630
+distanceHypercube: 349.971
+distanceTrue: 309.307
+Nearest neighbor-4: 2174
+distanceHypercube: 360.033
+distanceTrue: 311.014
+Nearest neighbor-5: 2881
+distanceHypercube: 363.347
+distanceTrue: 312.784
+tHypercube: 0.00102171
+tTrue: 0.0647278
+Query: 12
+Nearest neighbor-1: 3470
+distanceHypercube: 264.087
+distanceTrue: 172.163
+Nearest neighbor-2: 9
+distanceHypercube: 272.079
+distanceTrue: 206.608
+Nearest neighbor-3: 7574
+distanceHypercube: 306.591
+distanceTrue: 224.484
+Nearest neighbor-4: 3039
+distanceHypercube: 308.357
+distanceTrue: 225.109
+Nearest neighbor-5: 1488
+distanceHypercube: 309.184
+distanceTrue: 227.337
+tHypercube: 0.0005354
+tTrue: 0.0645781
+Query: 13
+Nearest neighbor-1: 2389
+distanceHypercube: 287.797
+distanceTrue: 238.55
+Nearest neighbor-2: 3649
+distanceHypercube: 294.769
+distanceTrue: 250.072
+Nearest neighbor-3: 2321
+distanceHypercube: 321.706
+distanceTrue: 251.239
+Nearest neighbor-4: 3506
+distanceHypercube: 324.501
+distanceTrue: 252.567
+Nearest neighbor-5: 7383
+distanceHypercube: 364.914
+distanceTrue: 252.737
+tHypercube: 0.000511059
+tTrue: 0.0645453
+Query: 14
+Nearest neighbor-1: 925
+distanceHypercube: 270.585
+distanceTrue: 244.677
+Nearest neighbor-2: 1532
+distanceHypercube: 272.156
+distanceTrue: 256.739
+Nearest neighbor-3: 1683
+distanceHypercube: 278.119
+distanceTrue: 259.675
+Nearest neighbor-4: 2110
+distanceHypercube: 302.62
+distanceTrue: 262.134
+Nearest neighbor-5: 990
+distanceHypercube: 320.688
+distanceTrue: 268.373
+tHypercube: 0.00158948
+tTrue: 0.0669225
+Query: 15
+Nearest neighbor-1: 1020
+distanceHypercube: 288.399
+distanceTrue: 273.317
+Nearest neighbor-2: 907
+distanceHypercube: 292.993
+distanceTrue: 278.307
+Nearest neighbor-3: 3021
+distanceHypercube: 315.163
+distanceTrue: 282.74
+Nearest neighbor-4: 7003
+distanceHypercube: 319.506
+distanceTrue: 288.399
+Nearest neighbor-5: 9589
+distanceHypercube: 323.978
+distanceTrue: 291.307
+tHypercube: 0.00293586
+tTrue: 0.064573
+Query: 16
+Nearest neighbor-1: 5741
+distanceHypercube: 283.049
+distanceTrue: 253.683
+Nearest neighbor-2: 6226
+distanceHypercube: 294.009
+distanceTrue: 254.823
+Nearest neighbor-3: 2560
+distanceHypercube: 308.624
+distanceTrue: 256.753
+Nearest neighbor-4: 8042
+distanceHypercube: 312.978
+distanceTrue: 257.422
+Nearest neighbor-5: 3965
+distanceHypercube: 317.277
+distanceTrue: 259.079
+tHypercube: 0.000780784
+tTrue: 0.064617
+Query: 17
+Nearest neighbor-1: 8013
+distanceHypercube: 271.439
+distanceTrue: 248.2
+Nearest neighbor-2: 3625
+distanceHypercube: 271.884
+distanceTrue: 248.324
+Nearest neighbor-3: 6982
+distanceHypercube: 273.2
+distanceTrue: 250.667
+Nearest neighbor-4: 2302
+distanceHypercube: 273.335
+distanceTrue: 255.19
+Nearest neighbor-5: 177
+distanceHypercube: 282.411
+distanceTrue: 255.317
+tHypercube: 0.00298906
+tTrue: 0.0682285
+Query: 18
+Nearest neighbor-1: 485
+distanceHypercube: 286.26
+distanceTrue: 254.635
+Nearest neighbor-2: 2176
+distanceHypercube: 287.906
+distanceTrue: 260.852
+Nearest neighbor-3: 3628
+distanceHypercube: 289.23
+distanceTrue: 263.279
+Nearest neighbor-4: 9526
+distanceHypercube: 301.929
+distanceTrue: 263.431
+Nearest neighbor-5: 9595
+distanceHypercube: 302.756
+distanceTrue: 263.676
+tHypercube: 0.00138396
+tTrue: 0.0654185
+Query: 19
+Nearest neighbor-1: 7365
+distanceHypercube: 307.714
+distanceTrue: 266.889
+Nearest neighbor-2: 9215
+distanceHypercube: 316.861
+distanceTrue: 268.527
+Nearest neighbor-3: 4504
+distanceHypercube: 317.024
+distanceTrue: 274.341
+Nearest neighbor-4: 1375
+distanceHypercube: 333.94
+distanceTrue: 275.601
+Nearest neighbor-5: 4537
+distanceHypercube: 335.958
+distanceTrue: 276.523
+tHypercube: 0.0010654
+tTrue: 0.065705
+Query: 20
+Nearest neighbor-1: 3139
+distanceHypercube: 263.716
+distanceTrue: 224.751
+Nearest neighbor-2: 1324
+distanceHypercube: 267.473
+distanceTrue: 230.213
+Nearest neighbor-3: 3688
+distanceHypercube: 274.078
+distanceTrue: 233.495
+Nearest neighbor-4: 97
+distanceHypercube: 277.474
+distanceTrue: 236.901
+Nearest neighbor-5: 9575
+distanceHypercube: 277.51
+distanceTrue: 239.552
+tHypercube: 0.00202027
+tTrue: 0.0648478
+Query: 21
+Nearest neighbor-1: 4761
+distanceHypercube: 204.778
+distanceTrue: 192.984
+Nearest neighbor-2: 3505
+distanceHypercube: 211.606
+distanceTrue: 193.249
+Nearest neighbor-3: 6883
+distanceHypercube: 215.868
+distanceTrue: 196.008
+Nearest neighbor-4: 4677
+distanceHypercube: 223.853
+distanceTrue: 198.842
+Nearest neighbor-5: 3771
+distanceHypercube: 225.016
+distanceTrue: 199.84
+tHypercube: 0.00170466
+tTrue: 0.0638949
+Query: 22
+Nearest neighbor-1: 2257
+distanceHypercube: 249.459
+distanceTrue: 80.8455
+Nearest neighbor-2: 4709
+distanceHypercube: 259.058
+distanceTrue: 87.7325
+Nearest neighbor-3: 9209
+distanceHypercube: 261.119
+distanceTrue: 207.302
+Nearest neighbor-4: 86
+distanceHypercube: 261.922
+distanceTrue: 218.577
+Nearest neighbor-5: 5052
+distanceHypercube: 265.686
+distanceTrue: 220.42
+tHypercube: 0.00153058
+tTrue: 0.0670265
+Query: 23
+Nearest neighbor-1: 7059
+distanceHypercube: 243.508
+distanceTrue: 173.052
+Nearest neighbor-2: 183
+distanceHypercube: 271.724
+distanceTrue: 175.642
+Nearest neighbor-3: 160
+distanceHypercube: 294.702
+distanceTrue: 182.642
+Nearest neighbor-4: 5512
+distanceHypercube: 305.5
+distanceTrue: 199.427
+Nearest neighbor-5: 7550
+distanceHypercube: 314.123
+distanceTrue: 199.582
+tHypercube: 0.00177037
+tTrue: 0.0658477
+Query: 24
+Nearest neighbor-1: 7549
+distanceHypercube: 271.56
+distanceTrue: 253.941
+Nearest neighbor-2: 1479
+distanceHypercube: 296.186
+distanceTrue: 254.876
+Nearest neighbor-3: 4210
+distanceHypercube: 366.324
+distanceTrue: 256.677
+Nearest neighbor-4: 8705
+distanceHypercube: 457.282
+distanceTrue: 260.042
+Nearest neighbor-5: 6134
+distanceHypercube: 461.207
+distanceTrue: 261.576
+tHypercube: 0.000427322
+tTrue: 0.066769
+Query: 25
+Nearest neighbor-1: 8795
+distanceHypercube: 253.667
+distanceTrue: 154.227
+Nearest neighbor-2: 5422
+distanceHypercube: 322.599
+distanceTrue: 156.547
+Nearest neighbor-3: 8764
+distanceHypercube: 429.14
+distanceTrue: 191.186
+Nearest neighbor-4: 1059
+distanceHypercube: 430.977
+distanceTrue: 232.08
+Nearest neighbor-5: 5640
+distanceHypercube: 470.709
+distanceTrue: 239.46
+tHypercube: 0.000429123
+tTrue: 0.0653226
+Query: 26
+Nearest neighbor-1: 8664
+distanceHypercube: 296.16
+distanceTrue: 271.61
+Nearest neighbor-2: 8913
+distanceHypercube: 308.508
+distanceTrue: 286.568
+Nearest neighbor-3: 7512
+distanceHypercube: 315.653
+distanceTrue: 288.806
+Nearest neighbor-4: 8099
+distanceHypercube: 340.974
+distanceTrue: 292.817
+Nearest neighbor-5: 2662
+distanceHypercube: 352.239
+distanceTrue: 294.995
+tHypercube: 0.000652319
+tTrue: 0.0694497
+Query: 27
+Nearest neighbor-1: 8503
+distanceHypercube: 225.599
+distanceTrue: 183.442
+Nearest neighbor-2: 4667
+distanceHypercube: 266.603
+distanceTrue: 199.702
+Nearest neighbor-3: 5903
+distanceHypercube: 272.468
+distanceTrue: 220.018
+Nearest neighbor-4: 5949
+distanceHypercube: 277.209
+distanceTrue: 223.099
+Nearest neighbor-5: 5224
+distanceHypercube: 278.182
+distanceTrue: 224.326
+tHypercube: 0.00152693
+tTrue: 0.0666155
+Query: 28
+Nearest neighbor-1: 6162
+distanceHypercube: 212.549
+distanceTrue: 175.516
+Nearest neighbor-2: 1640
+distanceHypercube: 256.65
+distanceTrue: 200.888
+Nearest neighbor-3: 5252
+distanceHypercube: 259.95
+distanceTrue: 212.549
+Nearest neighbor-4: 5147
+distanceHypercube: 262.237
+distanceTrue: 220.474
+Nearest neighbor-5: 6132
+distanceHypercube: 266.897
+distanceTrue: 227.469
+tHypercube: 0.00173585
+tTrue: 0.0672754
+Query: 29
+Nearest neighbor-1: 5511
+distanceHypercube: 271.809
+distanceTrue: 224.86
+Nearest neighbor-2: 4861
+distanceHypercube: 280.745
+distanceTrue: 229.828
+Nearest neighbor-3: 5515
+distanceHypercube: 316.632
+distanceTrue: 230.378
+Nearest neighbor-4: 5738
+distanceHypercube: 319.69
+distanceTrue: 235.86
+Nearest neighbor-5: 5851
+distanceHypercube: 323.116
+distanceTrue: 235.932
+tHypercube: 0.000937076
+tTrue: 0.0637641
+Query: 30
+Nearest neighbor-1: 3555
+distanceHypercube: 230.965
+distanceTrue: 125.379
+Nearest neighbor-2: 9809
+distanceHypercube: 244.851
+distanceTrue: 167.821
+Nearest neighbor-3: 9854
+distanceHypercube: 264.592
+distanceTrue: 170.868
+Nearest neighbor-4: 9721
+distanceHypercube: 268.378
+distanceTrue: 184.09
+Nearest neighbor-5: 6202
+distanceHypercube: 291.429
+distanceTrue: 185.37
+tHypercube: 0.000746237
+tTrue: 0.0645724
+Query: 31
+Nearest neighbor-1: 207
+distanceHypercube: 290.666
+distanceTrue: 265.377
+Nearest neighbor-2: 7059
+distanceHypercube: 295.213
+distanceTrue: 267.007
+Nearest neighbor-3: 4907
+distanceHypercube: 309.267
+distanceTrue: 272.206
+Nearest neighbor-4: 1330
+distanceHypercube: 310.347
+distanceTrue: 273.96
+Nearest neighbor-5: 2994
+distanceHypercube: 314.843
+distanceTrue: 275.342
+tHypercube: 0.000885435
+tTrue: 0.0659705
+Query: 32
+Nearest neighbor-1: 5560
+distanceHypercube: 109.192
+distanceTrue: 109.192
+Nearest neighbor-2: 4996
+distanceHypercube: 126.953
+distanceTrue: 126.953
+Nearest neighbor-3: 8898
+distanceHypercube: 340.968
+distanceTrue: 175.773
+Nearest neighbor-4: 1136
+distanceHypercube: 345.725
+distanceTrue: 231.651
+Nearest neighbor-5: 7146
+distanceHypercube: 346.588
+distanceTrue: 240.45
+tHypercube: 0.00104936
+tTrue: 0.065619
+Query: 33
+Nearest neighbor-1: 5301
+distanceHypercube: 187.563
+distanceTrue: 187.563
+Nearest neighbor-2: 5408
+distanceHypercube: 232.768
+distanceTrue: 232.768
+Nearest neighbor-3: 4957
+distanceHypercube: 236.244
+distanceTrue: 236.244
+Nearest neighbor-4: 8780
+distanceHypercube: 260.373
+distanceTrue: 246.605
+Nearest neighbor-5: 7024
+distanceHypercube: 264.992
+distanceTrue: 250.519
+tHypercube: 0.00157002
+tTrue: 0.0641286
+Query: 34
+Nearest neighbor-1: 2107
+distanceHypercube: 410.86
+distanceTrue: 328.279
+Nearest neighbor-2: 1941
+distanceHypercube: 414.081
+distanceTrue: 340.103
+Nearest neighbor-3: 2694
+distanceHypercube: 414.812
+distanceTrue: 348.505
+Nearest neighbor-4: 917
+distanceHypercube: 427.544
+distanceTrue: 351.409
+Nearest neighbor-5: 2577
+distanceHypercube: 431.329
+distanceTrue: 353.065
+tHypercube: 0.000812781
+tTrue: 0.0650244
+Query: 35
+Nearest neighbor-1: 4652
+distanceHypercube: 279.057
+distanceTrue: 248.554
+Nearest neighbor-2: 9330
+distanceHypercube: 332.724
+distanceTrue: 262.463
+Nearest neighbor-3: 2267
+distanceHypercube: 338.563
+distanceTrue: 272.189
+Nearest neighbor-4: 953
+distanceHypercube: 343.846
+distanceTrue: 274.829
+Nearest neighbor-5: 1181
+distanceHypercube: 351.16
+distanceTrue: 274.936
+tHypercube: 0.000611347
+tTrue: 0.0648544
+Query: 36
+Nearest neighbor-1: 5842
+distanceHypercube: 120.975
+distanceTrue: 120.975
+Nearest neighbor-2: 6708
+distanceHypercube: 179.597
+distanceTrue: 140.353
+Nearest neighbor-3: 2907
+distanceHypercube: 336.516
+distanceTrue: 179.597
+Nearest neighbor-4: 3883
+distanceHypercube: 348.329
+distanceTrue: 263.564
+Nearest neighbor-5: 9779
+distanceHypercube: 369.919
+distanceTrue: 288.083
+tHypercube: 0.00187868
+tTrue: 0.0646853
+Query: 37
+Nearest neighbor-1: 5443
+distanceHypercube: 336.819
+distanceTrue: 111.459
+Nearest neighbor-2: 8485
+distanceHypercube: 350.639
+distanceTrue: 140.136
+Nearest neighbor-3: 6675
+distanceHypercube: 352.109
+distanceTrue: 159.909
+Nearest neighbor-4: 3710
+distanceHypercube: 354.907
+distanceTrue: 282.73
+Nearest neighbor-5: 695
+distanceHypercube: 359.196
+distanceTrue: 284.761
+tHypercube: 0.00105316
+tTrue: 0.0649172
+Query: 38
+Nearest neighbor-1: 2618
+distanceHypercube: 355.938
+distanceTrue: 166.856
+Nearest neighbor-2: 4221
+distanceHypercube: 361.641
+distanceTrue: 247.869
+Nearest neighbor-3: 2767
+distanceHypercube: 394.675
+distanceTrue: 298.412
+Nearest neighbor-4: 4208
+distanceHypercube: 408.801
+distanceTrue: 302.374
+Nearest neighbor-5: 5797
+distanceHypercube: 413.843
+distanceTrue: 304.752
+tHypercube: 0.00198343
+tTrue: 0.0653219
+Query: 39
+Nearest neighbor-1: 3673
+distanceHypercube: 315.03
+distanceTrue: 156.359
+Nearest neighbor-2: 5643
+distanceHypercube: 357.414
+distanceTrue: 159.245
+Nearest neighbor-3: 6589
+distanceHypercube: 361.132
+distanceTrue: 162.034
+Nearest neighbor-4: 4794
+distanceHypercube: 384.066
+distanceTrue: 177.302
+Nearest neighbor-5: 1398
+distanceHypercube: 385.546
+distanceTrue: 214.532
+tHypercube: 0.00173213
+tTrue: 0.0653414
+Query: 40
+Nearest neighbor-1: 4693
+distanceHypercube: 212.807
+distanceTrue: 193.977
+Nearest neighbor-2: 4735
+distanceHypercube: 220.009
+distanceTrue: 202.262
+Nearest neighbor-3: 9998
+distanceHypercube: 227.37
+distanceTrue: 207.538
+Nearest neighbor-4: 4691
+distanceHypercube: 241.241
+distanceTrue: 210.768
+Nearest neighbor-5: 6813
+distanceHypercube: 295.09
+distanceTrue: 210.789
+tHypercube: 0.000892998
+tTrue: 0.0640941
+Query: 41
+Nearest neighbor-1: 8308
+distanceHypercube: 153.564
+distanceTrue: 153.564
+Nearest neighbor-2: 9797
+distanceHypercube: 291.307
+distanceTrue: 185.373
+Nearest neighbor-3: 706
+distanceHypercube: 344.038
+distanceTrue: 188.197
+Nearest neighbor-4: 974
+distanceHypercube: 360.604
+distanceTrue: 193.938
+Nearest neighbor-5: 8265
+distanceHypercube: 364.604
+distanceTrue: 194.415
+tHypercube: 0.00156764
+tTrue: 0.0650431
+Query: 42
+Nearest neighbor-1: 898
+distanceHypercube: 272.022
+distanceTrue: 200.494
+Nearest neighbor-2: 7080
+distanceHypercube: 311.304
+distanceTrue: 202.667
+Nearest neighbor-3: 4975
+distanceHypercube: 323.998
+distanceTrue: 203.605
+Nearest neighbor-4: 1736
+distanceHypercube: 352.803
+distanceTrue: 206.649
+Nearest neighbor-5: 5877
+distanceHypercube: 371.26
+distanceTrue: 213.27
+tHypercube: 0.000692657
+tTrue: 0.0682852
+Query: 43
+Nearest neighbor-1: 3912
+distanceHypercube: 263.408
+distanceTrue: 236.772
+Nearest neighbor-2: 3034
+distanceHypercube: 287.873
+distanceTrue: 245.41
+Nearest neighbor-3: 653
+distanceHypercube: 306.47
+distanceTrue: 247.911
+Nearest neighbor-4: 5422
+distanceHypercube: 317.57
+distanceTrue: 255.351
+Nearest neighbor-5: 4484
+distanceHypercube: 326.859
+distanceTrue: 258.844
+tHypercube: 0.000579186
+tTrue: 0.0662178
+Query: 44
+Nearest neighbor-1: 6303
+distanceHypercube: 165.339
+distanceTrue: 165.339
+Nearest neighbor-2: 5145
+distanceHypercube: 193.634
+distanceTrue: 193.634
+Nearest neighbor-3: 5513
+distanceHypercube: 303.053
+distanceTrue: 272.384
+Nearest neighbor-4: 2317
+distanceHypercube: 312.866
+distanceTrue: 282.317
+Nearest neighbor-5: 6236
+distanceHypercube: 325.54
+distanceTrue: 283.058
+tHypercube: 0.00183413
+tTrue: 0.0725898
+Query: 45
+Nearest neighbor-1: 8221
+distanceHypercube: 278.726
+distanceTrue: 256.353
+Nearest neighbor-2: 5356
+distanceHypercube: 279.805
+distanceTrue: 257.08
+Nearest neighbor-3: 4825
+distanceHypercube: 283.741
+distanceTrue: 260.085
+Nearest neighbor-4: 3309
+distanceHypercube: 297.72
+distanceTrue: 260.615
+Nearest neighbor-5: 5553
+distanceHypercube: 305.655
+distanceTrue: 260.898
+tHypercube: 0.00131043
+tTrue: 0.0676284
+Query: 46
+Nearest neighbor-1: 6680
+distanceHypercube: 289.042
+distanceTrue: 261.362
+Nearest neighbor-2: 5030
+distanceHypercube: 312.626
+distanceTrue: 265.663
+Nearest neighbor-3: 3981
+distanceHypercube: 313.209
+distanceTrue: 266.15
+Nearest neighbor-4: 5007
+distanceHypercube: 335.879
+distanceTrue: 269.401
+Nearest neighbor-5: 1587
+distanceHypercube: 341.333
+distanceTrue: 271.199
+tHypercube: 0.000965865
+tTrue: 0.0703355
+Query: 47
+Nearest neighbor-1: 8219
+distanceHypercube: 226.071
+distanceTrue: 99.6293
+Nearest neighbor-2: 8260
+distanceHypercube: 234.141
+distanceTrue: 215.715
+Nearest neighbor-3: 5858
+distanceHypercube: 239.992
+distanceTrue: 224.007
+Nearest neighbor-4: 9161
+distanceHypercube: 242.753
+distanceTrue: 226.071
+Nearest neighbor-5: 8607
+distanceHypercube: 256.527
+distanceTrue: 234.141
+tHypercube: 0.00271762
+tTrue: 0.0656983
+Query: 48
+Nearest neighbor-1: 2020
+distanceHypercube: 360.012
+distanceTrue: 294.394
+Nearest neighbor-2: 3554
+distanceHypercube: 373.703
+distanceTrue: 312.92
+Nearest neighbor-3: 1789
+distanceHypercube: 378.753
+distanceTrue: 314.474
+Nearest neighbor-4: 4024
+distanceHypercube: 387.85
+distanceTrue: 321.33
+Nearest neighbor-5: 3896
+distanceHypercube: 391.325
+distanceTrue: 324.14
+tHypercube: 0.00130503
+tTrue: 0.0652137
+Query: 49
+Nearest neighbor-1: 9822
+distanceHypercube: 437.802
+distanceTrue: 155.763
+Nearest neighbor-2: 2210
+distanceHypercube: 439.133
+distanceTrue: 215.634
+Nearest neighbor-3: 4978
+distanceHypercube: 460.449
+distanceTrue: 265.311
+Nearest neighbor-4: 3985
+distanceHypercube: 462.064
+distanceTrue: 275.193
+Nearest neighbor-5: 3468
+distanceHypercube: 463.952
+distanceTrue: 288.638
+tHypercube: 0.000552503
+tTrue: 0.0644833
+Query: 50
+Nearest neighbor-1: 4744
+distanceHypercube: 219.784
+distanceTrue: 128.783
+Nearest neighbor-2: 6231
+distanceHypercube: 271.212
+distanceTrue: 172.398
+Nearest neighbor-3: 5389
+distanceHypercube: 289.934
+distanceTrue: 215.016
+Nearest neighbor-4: 9697
+distanceHypercube: 306.005
+distanceTrue: 217.17
+Nearest neighbor-5: 354
+distanceHypercube: 306.741
+distanceTrue: 219.784
+tHypercube: 0.00123298
+tTrue: 0.0643468
+Query: 51
+Nearest neighbor-1: 7966
+distanceHypercube: 373.647
+distanceTrue: 181.141
+Nearest neighbor-2: 4093
+distanceHypercube: 409.7
+distanceTrue: 199.605
+Nearest neighbor-3: 3988
+distanceHypercube: 423.213
+distanceTrue: 219.816
+Nearest neighbor-4: 4554
+distanceHypercube: 435.347
+distanceTrue: 256.591
+Nearest neighbor-5: 9032
+distanceHypercube: 436.898
+distanceTrue: 267.159
+tHypercube: 0.000543068
+tTrue: 0.0693587
+Query: 52
+Nearest neighbor-1: 6124
+distanceHypercube: 130.813
+distanceTrue: 130.813
+Nearest neighbor-2: 6193
+distanceHypercube: 200.4
+distanceTrue: 200.4
+Nearest neighbor-3: 6344
+distanceHypercube: 219.825
+distanceTrue: 219.825
+Nearest neighbor-4: 2592
+distanceHypercube: 254.124
+distanceTrue: 248.328
+Nearest neighbor-5: 8112
+distanceHypercube: 260.877
+distanceTrue: 254.124
+tHypercube: 0.00308199
+tTrue: 0.064529
+Query: 53
+Nearest neighbor-1: 3213
+distanceHypercube: 238.317
+distanceTrue: 198.776
+Nearest neighbor-2: 8174
+distanceHypercube: 256.027
+distanceTrue: 220.749
+Nearest neighbor-3: 7726
+distanceHypercube: 264.267
+distanceTrue: 221.671
+Nearest neighbor-4: 2836
+distanceHypercube: 306.699
+distanceTrue: 225.717
+Nearest neighbor-5: 5804
+distanceHypercube: 313.863
+distanceTrue: 227.075
+tHypercube: 0.000627545
+tTrue: 0.0681354
+Query: 54
+Nearest neighbor-1: 634
+distanceHypercube: 262.404
+distanceTrue: 194.178
+Nearest neighbor-2: 5561
+distanceHypercube: 271.737
+distanceTrue: 227.82
+Nearest neighbor-3: 4997
+distanceHypercube: 279.902
+distanceTrue: 233.122
+Nearest neighbor-4: 4312
+distanceHypercube: 298.156
+distanceTrue: 241.149
+Nearest neighbor-5: 3572
+distanceHypercube: 320.442
+distanceTrue: 251.529
+tHypercube: 0.00106756
+tTrue: 0.0649611
+Query: 55
+Nearest neighbor-1: 6159
+distanceHypercube: 159.308
+distanceTrue: 159.308
+Nearest neighbor-2: 6168
+distanceHypercube: 164.241
+distanceTrue: 164.241
+Nearest neighbor-3: 4799
+distanceHypercube: 164.627
+distanceTrue: 164.627
+Nearest neighbor-4: 6984
+distanceHypercube: 166.631
+distanceTrue: 164.785
+Nearest neighbor-5: 6677
+distanceHypercube: 167.051
+distanceTrue: 166.631
+tHypercube: 0.00055538
+tTrue: 0.0642842
+Query: 56
+Nearest neighbor-1: 5831
+distanceHypercube: 184.043
+distanceTrue: 184.043
+Nearest neighbor-2: 7227
+distanceHypercube: 222.281
+distanceTrue: 197.474
+Nearest neighbor-3: 5060
+distanceHypercube: 232.131
+distanceTrue: 197.914
+Nearest neighbor-4: 8438
+distanceHypercube: 271.643
+distanceTrue: 207.81
+Nearest neighbor-5: 7561
+distanceHypercube: 274.27
+distanceTrue: 212.17
+tHypercube: 0.00176738
+tTrue: 0.0638408
+Query: 57
+Nearest neighbor-1: 5979
+distanceHypercube: 209.062
+distanceTrue: 190.735
+Nearest neighbor-2: 4485
+distanceHypercube: 210.794
+distanceTrue: 209.062
+Nearest neighbor-3: 516
+distanceHypercube: 233.671
+distanceTrue: 210.713
+Nearest neighbor-4: 5977
+distanceHypercube: 234.527
+distanceTrue: 210.794
+Nearest neighbor-5: 4856
+distanceHypercube: 240.664
+distanceTrue: 211.606
+tHypercube: 0.000714389
+tTrue: 0.0650595
+Query: 58
+Nearest neighbor-1: 9373
+distanceHypercube: 254.228
+distanceTrue: 167.147
+Nearest neighbor-2: 1789
+distanceHypercube: 257.039
+distanceTrue: 211.688
+Nearest neighbor-3: 2965
+distanceHypercube: 260.161
+distanceTrue: 220.518
+Nearest neighbor-4: 9823
+distanceHypercube: 277.793
+distanceTrue: 227.295
+Nearest neighbor-5: 9607
+distanceHypercube: 278.964
+distanceTrue: 237.71
+tHypercube: 0.00295106
+tTrue: 0.0652013
+Query: 59
+Nearest neighbor-1: 7238
+distanceHypercube: 65.7419
+distanceTrue: 65.7419
+Nearest neighbor-2: 3278
+distanceHypercube: 353.221
+distanceTrue: 281.768
+Nearest neighbor-3: 1901
+distanceHypercube: 356.498
+distanceTrue: 302.607
+Nearest neighbor-4: 3281
+distanceHypercube: 367.038
+distanceTrue: 316.142
+Nearest neighbor-5: 5482
+distanceHypercube: 373.174
+distanceTrue: 319.786
+tHypercube: 0.00236862
+tTrue: 0.0644127
+Query: 60
+Nearest neighbor-1: 6317
+distanceHypercube: 117.149
+distanceTrue: 114.416
+Nearest neighbor-2: 6649
+distanceHypercube: 140.182
+distanceTrue: 117.149
+Nearest neighbor-3: 9889
+distanceHypercube: 190.675
+distanceTrue: 125.18
+Nearest neighbor-4: 9978
+distanceHypercube: 207.567
+distanceTrue: 140.182
+Nearest neighbor-5: 9835
+distanceHypercube: 211.045
+distanceTrue: 140.46
+tHypercube: 0.00098326
+tTrue: 0.0646866
+Query: 61
+Nearest neighbor-1: 2659
+distanceHypercube: 301.846
+distanceTrue: 170.309
+Nearest neighbor-2: 7125
+distanceHypercube: 321.442
+distanceTrue: 264.023
+Nearest neighbor-3: 9561
+distanceHypercube: 322.817
+distanceTrue: 265.339
+Nearest neighbor-4: 4729
+distanceHypercube: 325.47
+distanceTrue: 268.351
+Nearest neighbor-5: 9612
+distanceHypercube: 334.169
+distanceTrue: 270.629
+tHypercube: 0.000962989
+tTrue: 0.0647141
+Query: 62
+Nearest neighbor-1: 8403
+distanceHypercube: 140.357
+distanceTrue: 140.357
+Nearest neighbor-2: 4826
+distanceHypercube: 324.056
+distanceTrue: 151.993
+Nearest neighbor-3: 8152
+distanceHypercube: 329.413
+distanceTrue: 242.295
+Nearest neighbor-4: 4912
+distanceHypercube: 333.611
+distanceTrue: 249.189
+Nearest neighbor-5: 7695
+distanceHypercube: 349.086
+distanceTrue: 249.796
+tHypercube: 0.000894239
+tTrue: 0.0631564
+Query: 63
+Nearest neighbor-1: 6249
+distanceHypercube: 234.574
+distanceTrue: 131.651
+Nearest neighbor-2: 6364
+distanceHypercube: 270.712
+distanceTrue: 182.058
+Nearest neighbor-3: 9911
+distanceHypercube: 314.014
+distanceTrue: 193.22
+Nearest neighbor-4: 5922
+distanceHypercube: 340.695
+distanceTrue: 203.58
+Nearest neighbor-5: 5994
+distanceHypercube: 344.505
+distanceTrue: 207.017
+tHypercube: 0.00122029
+tTrue: 0.0651839
+Query: 64
+Nearest neighbor-1: 6322
+distanceHypercube: 94.9158
+distanceTrue: 94.9158
+Nearest neighbor-2: 6414
+distanceHypercube: 124.226
+distanceTrue: 124.226
+Nearest neighbor-3: 2671
+distanceHypercube: 264.212
+distanceTrue: 133.503
+Nearest neighbor-4: 9911
+distanceHypercube: 269.292
+distanceTrue: 152.417
+Nearest neighbor-5: 9842
+distanceHypercube: 282.177
+distanceTrue: 207.767
+tHypercube: 0.00147348
+tTrue: 0.064661
+Query: 65
+Nearest neighbor-1: 1001
+distanceHypercube: 392.186
+distanceTrue: 138.275
+Nearest neighbor-2: 6644
+distanceHypercube: 402.929
+distanceTrue: 226.824
+Nearest neighbor-3: 7280
+distanceHypercube: 407.289
+distanceTrue: 240.697
+Nearest neighbor-4: 9017
+distanceHypercube: 410.76
+distanceTrue: 243.963
+Nearest neighbor-5: 9110
+distanceHypercube: 411.891
+distanceTrue: 247.39
+tHypercube: 0.0016408
+tTrue: 0.0656563
+Query: 66
+Nearest neighbor-1: 2499
+distanceHypercube: 293.138
+distanceTrue: 173.381
+Nearest neighbor-2: 7115
+distanceHypercube: 314.684
+distanceTrue: 219.861
+Nearest neighbor-3: 9776
+distanceHypercube: 317.021
+distanceTrue: 224.194
+Nearest neighbor-4: 9149
+distanceHypercube: 404.037
+distanceTrue: 233.009
+Nearest neighbor-5: 2719
+distanceHypercube: 414.795
+distanceTrue: 234.47
+tHypercube: 0.000571487
+tTrue: 0.0646179
+Query: 67
+Nearest neighbor-1: 4851
+distanceHypercube: 325.492
+distanceTrue: 200.866
+Nearest neighbor-2: 8197
+distanceHypercube: 341.851
+distanceTrue: 225.699
+Nearest neighbor-3: 8076
+distanceHypercube: 346.977
+distanceTrue: 230.048
+Nearest neighbor-4: 6430
+distanceHypercube: 360.548
+distanceTrue: 241.448
+Nearest neighbor-5: 5463
+distanceHypercube: 384.706
+distanceTrue: 247.917
+tHypercube: 0.00073409
+tTrue: 0.0649065
+Query: 68
+Nearest neighbor-1: 6858
+distanceHypercube: 224.225
+distanceTrue: 224.225
+Nearest neighbor-2: 6639
+distanceHypercube: 260.225
+distanceTrue: 244.238
+Nearest neighbor-3: 6793
+distanceHypercube: 295.801
+distanceTrue: 251.036
+Nearest neighbor-4: 9138
+distanceHypercube: 313.619
+distanceTrue: 253.379
+Nearest neighbor-5: 1439
+distanceHypercube: 317.055
+distanceTrue: 260.225
+tHypercube: 0.00175257
+tTrue: 0.0644287
+Query: 69
+Nearest neighbor-1: 7156
+distanceHypercube: 243.758
+distanceTrue: 201.311
+Nearest neighbor-2: 6123
+distanceHypercube: 253.689
+distanceTrue: 201.336
+Nearest neighbor-3: 6742
+distanceHypercube: 254.346
+distanceTrue: 202.771
+Nearest neighbor-4: 9312
+distanceHypercube: 263.139
+distanceTrue: 203.18
+Nearest neighbor-5: 3028
+distanceHypercube: 270.597
+distanceTrue: 206.894
+tHypercube: 0.00162214
+tTrue: 0.0659666
+Query: 70
+Nearest neighbor-1: 5903
+distanceHypercube: 286.951
+distanceTrue: 266.813
+Nearest neighbor-2: 8899
+distanceHypercube: 315.816
+distanceTrue: 268.537
+Nearest neighbor-3: 1407
+distanceHypercube: 320.178
+distanceTrue: 276.109
+Nearest neighbor-4: 3433
+distanceHypercube: 326.654
+distanceTrue: 276.219
+Nearest neighbor-5: 7050
+distanceHypercube: 329.717
+distanceTrue: 283.87
+tHypercube: 0.00203887
+tTrue: 0.0644669
+Query: 71
+Nearest neighbor-1: 6125
+distanceHypercube: 46.8188
+distanceTrue: 46.8188
+Nearest neighbor-2: 6431
+distanceHypercube: 80.3679
+distanceTrue: 80.3679
+Nearest neighbor-3: 6805
+distanceHypercube: 112.049
+distanceTrue: 100.772
+Nearest neighbor-4: 7766
+distanceHypercube: 149.305
+distanceTrue: 112.049
+Nearest neighbor-5: 5197
+distanceHypercube: 157.064
+distanceTrue: 132.28
+tHypercube: 0.000874063
+tTrue: 0.0635042
+Query: 72
+Nearest neighbor-1: 7737
+distanceHypercube: 283.942
+distanceTrue: 193.675
+Nearest neighbor-2: 9298
+distanceHypercube: 286.117
+distanceTrue: 205.701
+Nearest neighbor-3: 7417
+distanceHypercube: 323.235
+distanceTrue: 222.8
+Nearest neighbor-4: 7448
+distanceHypercube: 327.611
+distanceTrue: 252.331
+Nearest neighbor-5: 4609
+distanceHypercube: 340.022
+distanceTrue: 253.369
+tHypercube: 0.00130984
+tTrue: 0.0640594
+Query: 73
+Nearest neighbor-1: 7165
+distanceHypercube: 377.077
+distanceTrue: 303.211
+Nearest neighbor-2: 9883
+distanceHypercube: 379.917
+distanceTrue: 320.128
+Nearest neighbor-3: 7053
+distanceHypercube: 382.833
+distanceTrue: 320.729
+Nearest neighbor-4: 7782
+distanceHypercube: 385.193
+distanceTrue: 322.633
+Nearest neighbor-5: 2195
+distanceHypercube: 389.179
+distanceTrue: 322.723
+tHypercube: 0.000715418
+tTrue: 0.0649043
+Query: 74
+Nearest neighbor-1: 2699
+distanceHypercube: 415.213
+distanceTrue: 230.458
+Nearest neighbor-2: 3253
+distanceHypercube: 421.857
+distanceTrue: 289.491
+Nearest neighbor-3: 8328
+distanceHypercube: 440.998
+distanceTrue: 289.595
+Nearest neighbor-4: 8187
+distanceHypercube: 444.858
+distanceTrue: 291.89
+Nearest neighbor-5: 1336
+distanceHypercube: 454.93
+distanceTrue: 295.586
+tHypercube: 0.000658013
+tTrue: 0.0648675
+Query: 75
+Nearest neighbor-1: 7365
+distanceHypercube: 131.095
+distanceTrue: 131.095
+Nearest neighbor-2: 8191
+distanceHypercube: 223.598
+distanceTrue: 220.02
+Nearest neighbor-3: 7059
+distanceHypercube: 263.829
+distanceTrue: 220.504
+Nearest neighbor-4: 4463
+distanceHypercube: 265.652
+distanceTrue: 222.187
+Nearest neighbor-5: 5903
+distanceHypercube: 266.978
+distanceTrue: 223.598
+tHypercube: 0.00169748
+tTrue: 0.0646755
+Query: 76
+Nearest neighbor-1: 9797
+distanceHypercube: 310.314
+distanceTrue: 212.061
+Nearest neighbor-2: 4497
+distanceHypercube: 450.042
+distanceTrue: 254.769
+Nearest neighbor-3: 3375
+distanceHypercube: 450.5
+distanceTrue: 294.258
+Nearest neighbor-4: 6559
+distanceHypercube: 450.837
+distanceTrue: 297.792
+Nearest neighbor-5: 3602
+distanceHypercube: 451.861
+distanceTrue: 299.314
+tHypercube: 0.000535387
+tTrue: 0.0644865
+Query: 77
+Nearest neighbor-1: 9038
+distanceHypercube: 293.566
+distanceTrue: 251.257
+Nearest neighbor-2: 3529
+distanceHypercube: 317.435
+distanceTrue: 255.996
+Nearest neighbor-3: 8814
+distanceHypercube: 318.181
+distanceTrue: 280.836
+Nearest neighbor-4: 6768
+distanceHypercube: 320.838
+distanceTrue: 282.427
+Nearest neighbor-5: 4181
+distanceHypercube: 322.562
+distanceTrue: 285.184
+tHypercube: 0.00197956
+tTrue: 0.0641518
+Query: 78
+Nearest neighbor-1: 7530
+distanceHypercube: 339.941
+distanceTrue: 293.716
+Nearest neighbor-2: 2835
+distanceHypercube: 362.119
+distanceTrue: 298.88
+Nearest neighbor-3: 8833
+distanceHypercube: 377.951
+distanceTrue: 306.738
+Nearest neighbor-4: 3750
+distanceHypercube: 380.594
+distanceTrue: 317.762
+Nearest neighbor-5: 30
+distanceHypercube: 385.062
+distanceTrue: 317.909
+tHypercube: 0.00130238
+tTrue: 0.0663987
+Query: 79
+Nearest neighbor-1: 7292
+distanceHypercube: 307.896
+distanceTrue: 226.868
+Nearest neighbor-2: 1265
+distanceHypercube: 332.896
+distanceTrue: 245.516
+Nearest neighbor-3: 6457
+distanceHypercube: 358.313
+distanceTrue: 254.876
+Nearest neighbor-4: 9624
+distanceHypercube: 360.77
+distanceTrue: 258.88
+Nearest neighbor-5: 5219
+distanceHypercube: 368.557
+distanceTrue: 260.929
+tHypercube: 0.0013299
+tTrue: 0.0642375
+Query: 80
+Nearest neighbor-1: 7077
+distanceHypercube: 218.925
+distanceTrue: 148.165
+Nearest neighbor-2: 9710
+distanceHypercube: 304.828
+distanceTrue: 160.415
+Nearest neighbor-3: 4053
+distanceHypercube: 464.026
+distanceTrue: 161.369
+Nearest neighbor-4: 6893
+distanceHypercube: 473.623
+distanceTrue: 171.193
+Nearest neighbor-5: 7475
+distanceHypercube: 556.656
+distanceTrue: 180.222
+tHypercube: 0.00102964
+tTrue: 0.0640626
+Query: 81
+Nearest neighbor-1: 7743
+distanceHypercube: 281.068
+distanceTrue: 146.311
+Nearest neighbor-2: 924
+distanceHypercube: 324.002
+distanceTrue: 230.894
+Nearest neighbor-3: 3838
+distanceHypercube: 341.857
+distanceTrue: 281.068
+Nearest neighbor-4: 2496
+distanceHypercube: 343.948
+distanceTrue: 296.906
+Nearest neighbor-5: 3529
+distanceHypercube: 346.22
+distanceTrue: 299.286
+tHypercube: 0.00143809
+tTrue: 0.0641945
+Query: 82
+Nearest neighbor-1: 1515
+distanceHypercube: 362.718
+distanceTrue: 276.819
+Nearest neighbor-2: 2847
+distanceHypercube: 378.497
+distanceTrue: 295.41
+Nearest neighbor-3: 1911
+distanceHypercube: 383.475
+distanceTrue: 297.303
+Nearest neighbor-4: 4729
+distanceHypercube: 399.722
+distanceTrue: 298.706
+Nearest neighbor-5: 106
+distanceHypercube: 403.911
+distanceTrue: 302.366
+tHypercube: 0.000656971
+tTrue: 0.0652846
+Query: 83
+Nearest neighbor-1: 5572
+distanceHypercube: 296.414
+distanceTrue: 271.982
+Nearest neighbor-2: 1134
+distanceHypercube: 297.642
+distanceTrue: 273.892
+Nearest neighbor-3: 5220
+distanceHypercube: 310.467
+distanceTrue: 278.718
+Nearest neighbor-4: 3373
+distanceHypercube: 314.302
+distanceTrue: 280.237
+Nearest neighbor-5: 8227
+distanceHypercube: 325.988
+distanceTrue: 280.36
+tHypercube: 0.00208984
+tTrue: 0.0640091
+Query: 84
+Nearest neighbor-1: 8481
+distanceHypercube: 237.668
+distanceTrue: 181.607
+Nearest neighbor-2: 5289
+distanceHypercube: 257.63
+distanceTrue: 196.987
+Nearest neighbor-3: 4673
+distanceHypercube: 273.271
+distanceTrue: 237.668
+Nearest neighbor-4: 972
+distanceHypercube: 298.242
+distanceTrue: 249.389
+Nearest neighbor-5: 6558
+distanceHypercube: 309.853
+distanceTrue: 252.513
+tHypercube: 0.00136463
+tTrue: 0.0670223
+Query: 85
+Nearest neighbor-1: 8950
+distanceHypercube: 283.813
+distanceTrue: 192.678
+Nearest neighbor-2: 1957
+distanceHypercube: 286.801
+distanceTrue: 233.846
+Nearest neighbor-3: 1279
+distanceHypercube: 293.099
+distanceTrue: 248.363
+Nearest neighbor-4: 1277
+distanceHypercube: 309.532
+distanceTrue: 249.662
+Nearest neighbor-5: 1197
+distanceHypercube: 314.057
+distanceTrue: 250.466
+tHypercube: 0.0010106
+tTrue: 0.0645691
+Query: 86
+Nearest neighbor-1: 8355
+distanceHypercube: 285.107
+distanceTrue: 285.107
+Nearest neighbor-2: 6426
+distanceHypercube: 395.349
+distanceTrue: 305.612
+Nearest neighbor-3: 2979
+distanceHypercube: 413.889
+distanceTrue: 330.97
+Nearest neighbor-4: 4072
+distanceHypercube: 477.809
+distanceTrue: 339.972
+Nearest neighbor-5: 3764
+distanceHypercube: 520.452
+distanceTrue: 346.298
+tHypercube: 0.0007314
+tTrue: 0.0661327
+Query: 87
+Nearest neighbor-1: 7703
+distanceHypercube: 460.12
+distanceTrue: 224.907
+Nearest neighbor-2: 7621
+distanceHypercube: 470.19
+distanceTrue: 255.282
+Nearest neighbor-3: 9853
+distanceHypercube: 476.651
+distanceTrue: 265.055
+Nearest neighbor-4: 8372
+distanceHypercube: 476.658
+distanceTrue: 277.784
+Nearest neighbor-5: 8242
+distanceHypercube: 482.805
+distanceTrue: 281.778
+tHypercube: 0.000484814
+tTrue: 0.0643705
+Query: 88
+Nearest neighbor-1: 3230
+distanceHypercube: 449.559
+distanceTrue: 123.56
+Nearest neighbor-2: 2849
+distanceHypercube: 474.031
+distanceTrue: 216.025
+Nearest neighbor-3: 3636
+distanceHypercube: 500.13
+distanceTrue: 217.936
+Nearest neighbor-4: 2184
+distanceHypercube: 544.994
+distanceTrue: 231.208
+Nearest neighbor-5: 9322
+distanceHypercube: 557.761
+distanceTrue: 234.113
+tHypercube: 0.000432322
+tTrue: 0.0635987
+Query: 89
+Nearest neighbor-1: 8900
+distanceHypercube: 154.418
+distanceTrue: 75.08
+Nearest neighbor-2: 6713
+distanceHypercube: 235.234
+distanceTrue: 135.052
+Nearest neighbor-3: 6639
+distanceHypercube: 238.39
+distanceTrue: 154.418
+Nearest neighbor-4: 8351
+distanceHypercube: 246.698
+distanceTrue: 155.515
+Nearest neighbor-5: 6830
+distanceHypercube: 248.473
+distanceTrue: 163.411
+tHypercube: 0.00214565
+tTrue: 0.0628974
+Query: 90
+Nearest neighbor-1: 6832
+distanceHypercube: 212.683
+distanceTrue: 114.534
+Nearest neighbor-2: 9080
+distanceHypercube: 214.779
+distanceTrue: 157.34
+Nearest neighbor-3: 47
+distanceHypercube: 224.453
+distanceTrue: 191.523
+Nearest neighbor-4: 3152
+distanceHypercube: 227.763
+distanceTrue: 206.422
+Nearest neighbor-5: 4067
+distanceHypercube: 229.497
+distanceTrue: 208.031
+tHypercube: 0.00145014
+tTrue: 0.0636556
+Query: 91
+Nearest neighbor-1: 104
+distanceHypercube: 163.141
+distanceTrue: 50.4579
+Nearest neighbor-2: 5320
+distanceHypercube: 183.085
+distanceTrue: 60.663
+Nearest neighbor-3: 4741
+distanceHypercube: 192.546
+distanceTrue: 156.234
+Nearest neighbor-4: 1525
+distanceHypercube: 207.022
+distanceTrue: 157.629
+Nearest neighbor-5: 5261
+distanceHypercube: 221.317
+distanceTrue: 163.141
+tHypercube: 0.000854961
+tTrue: 0.0645679
+Query: 92
+Nearest neighbor-1: 3900
+distanceHypercube: 409.718
+distanceTrue: 298.027
+Nearest neighbor-2: 231
+distanceHypercube: 412.358
+distanceTrue: 308.971
+Nearest neighbor-3: 1134
+distanceHypercube: 412.829
+distanceTrue: 314.189
+Nearest neighbor-4: 8369
+distanceHypercube: 417.393
+distanceTrue: 317.481
+Nearest neighbor-5: 4345
+distanceHypercube: 419.688
+distanceTrue: 318.824
+tHypercube: 0.00145133
+tTrue: 0.064404
+Query: 93
+Nearest neighbor-1: 909
+distanceHypercube: 305.943
+distanceTrue: 141.464
+Nearest neighbor-2: 2318
+distanceHypercube: 343.171
+distanceTrue: 245.21
+Nearest neighbor-3: 442
+distanceHypercube: 350.331
+distanceTrue: 293.626
+Nearest neighbor-4: 3831
+distanceHypercube: 353.49
+distanceTrue: 305.943
+Nearest neighbor-5: 433
+distanceHypercube: 361.411
+distanceTrue: 307.982
+tHypercube: 0.00128512
+tTrue: 0.0640127
+Query: 94
+Nearest neighbor-1: 1653
+distanceHypercube: 284.949
+distanceTrue: 234.774
+Nearest neighbor-2: 5459
+distanceHypercube: 303.72
+distanceTrue: 258.339
+Nearest neighbor-3: 9914
+distanceHypercube: 311.262
+distanceTrue: 259.917
+Nearest neighbor-4: 4832
+distanceHypercube: 314.236
+distanceTrue: 265.735
+Nearest neighbor-5: 3271
+distanceHypercube: 314.943
+distanceTrue: 268.717
+tHypercube: 0.00103714
+tTrue: 0.0641999
+Query: 95
+Nearest neighbor-1: 8120
+distanceHypercube: 301.463
+distanceTrue: 160.571
+Nearest neighbor-2: 2049
+distanceHypercube: 325.209
+distanceTrue: 236.377
+Nearest neighbor-3: 6603
+distanceHypercube: 338.755
+distanceTrue: 245.982
+Nearest neighbor-4: 5218
+distanceHypercube: 356.931
+distanceTrue: 256.515
+Nearest neighbor-5: 9484
+distanceHypercube: 367.086
+distanceTrue: 260.471
+tHypercube: 0.00184338
+tTrue: 0.0637896
+Query: 96
+Nearest neighbor-1: 9838
+distanceHypercube: 340.425
+distanceTrue: 305.392
+Nearest neighbor-2: 311
+distanceHypercube: 351.773
+distanceTrue: 313.359
+Nearest neighbor-3: 3747
+distanceHypercube: 368.095
+distanceTrue: 313.739
+Nearest neighbor-4: 8796
+distanceHypercube: 368.148
+distanceTrue: 318.987
+Nearest neighbor-5: 526
+distanceHypercube: 376.59
+distanceTrue: 320.947
+tHypercube: 0.00180892
+tTrue: 0.06624
+Query: 97
+Nearest neighbor-1: 3353
+distanceHypercube: 424.713
+distanceTrue: 285.79
+Nearest neighbor-2: 3273
+distanceHypercube: 433.965
+distanceTrue: 303.557
+Nearest neighbor-3: 5420
+distanceHypercube: 483.249
+distanceTrue: 318.366
+Nearest neighbor-4: 5750
+distanceHypercube: 491.166
+distanceTrue: 320.209
+Nearest neighbor-5: 9301
+distanceHypercube: 522.824
+distanceTrue: 322.957
+tHypercube: 0.000464361
+tTrue: 0.0650332
+Query: 98
+Nearest neighbor-1: 6504
+distanceHypercube: 336.436
+distanceTrue: 233.532
+Nearest neighbor-2: 6344
+distanceHypercube: 345.29
+distanceTrue: 303.745
+Nearest neighbor-3: 5828
+distanceHypercube: 374.162
+distanceTrue: 304.041
+Nearest neighbor-4: 3408
+distanceHypercube: 375.733
+distanceTrue: 311.304
+Nearest neighbor-5: 7003
+distanceHypercube: 378.482
+distanceTrue: 315.435
+tHypercube: 0.0019601
+tTrue: 0.0643046
+Query: 99
+Nearest neighbor-1: 5440
+distanceHypercube: 138.899
+distanceTrue: 137.43
+Nearest neighbor-2: 7724
+distanceHypercube: 233.778
+distanceTrue: 138.899
+Nearest neighbor-3: 1956
+distanceHypercube: 262.198
+distanceTrue: 138.964
+Nearest neighbor-4: 2789
+distanceHypercube: 322.786
+distanceTrue: 142.506
+Nearest neighbor-5: 8902
+distanceHypercube: 449.792
+distanceTrue: 143.457
+tHypercube: 0.000466048
+tTrue: 0.0638514
+Query: 100
+Nearest neighbor-1: 9847
+distanceHypercube: 337.996
+distanceTrue: 184.613
+Nearest neighbor-2: 5363
+distanceHypercube: 401.138
+distanceTrue: 234.885
+Nearest neighbor-3: 927
+distanceHypercube: 403.745
+distanceTrue: 308.608
+Nearest neighbor-4: 9414
+distanceHypercube: 414.842
+distanceTrue: 310.403
+Nearest neighbor-5: 4510
+distanceHypercube: 421.536
+distanceTrue: 318.94
+tHypercube: 0.000651102
+tTrue: 0.0680831

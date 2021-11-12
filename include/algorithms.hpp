@@ -8,6 +8,7 @@
 #include <utility>
 #include <climits>
 #include <float.h>
+#include <chrono>
 #include "point_functions.hpp"
 #include "hash_table.hpp"
 #include "cube_table.hpp"
@@ -26,17 +27,16 @@ struct CompDist
 
 //TRUE
 
-Point true_NN(Point q, Vector_of_points inputData);
+std::pair<Point,double> true_NN(Point q, Vector_of_points inputData);
 
-std::set<std::pair<Point,double>, CompDist> 
-true_nNN(Point q, int N, Vector_of_points inputData);
+std::set<std::pair<Point,double>, CompDist> true_nNN(Point q, int N, Vector_of_points inputData, double &time);
 
 
 //LSH
 
-Point lsh_approximate_NN(Point q, std::vector<HashTable> hashTables, LSH_hash_info *hInfo);
+std::pair<Point,double> lsh_approximate_NN(Point q, std::vector<HashTable> hashTables, LSH_hash_info *hInfo);
 
-std::set<std::pair<Point,double>, CompDist> lsh_approximate_nNN(Point q, int N, std::vector<HashTable> hashTables, LSH_hash_info *hInfo);
+std::set<std::pair<Point,double>, CompDist> lsh_approximate_nNN(Point q, int N, std::vector<HashTable> hashTables, LSH_hash_info *hInfo, double &time);
 
 std::unordered_map<int,double> lsh_approximate_range_search(Point q, double R, std::vector<HashTable> hashTables, LSH_hash_info *hInfo);
 
@@ -45,7 +45,7 @@ std::unordered_map<int,double> lsh_approximate_range_search(Point q, double R, s
 
 std::pair<Point,double> cube_approximate_NN(Point q, CubeTable cubeTable, CUBE_hash_info *hInfo);
 
-std::set<std::pair<Point,double>, CompDist> cube_approximate_nNN(Point q, int N, CubeTable cubeTable, CUBE_hash_info *hInfo);
+std::set<std::pair<Point,double>, CompDist> cube_approximate_nNN(Point q, int N, CubeTable cubeTable, CUBE_hash_info *hInfo, double &time);
 
 std::unordered_map<int,double> cube_approximate_range_search(Point q, double R, CubeTable cubeTable, CUBE_hash_info *hInfo);
 

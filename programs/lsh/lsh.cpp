@@ -96,16 +96,6 @@ int main(int argc, char** argv) {
     Vector_of_points inputData;
     inputData = parsing(inputFile);
 
-    // for (int i = 0; i < inputData.points.size(); i++) //print data
-    // {
-    //     cout << inputData.points[i].itemID << endl;
-    //     for (int j = 0; j < inputData.points[0].vpoint.size(); j++)
-    //     {
-    //         cout << inputData.points[i].vpoint[j] << " ";
-    //     }
-    //     cout << endl;
-    // }
-
     int vectorsNumber = inputData.points.size();
     int dimension = inputData.points[0].vpoint.size();
     int bucketsNumber = vectorsNumber/8;
@@ -145,39 +135,47 @@ int main(int argc, char** argv) {
     queryData = parsing(queryFile);
 
 
-    Point lshResult = lsh_approximate_NN(queryData.points[0],hashTables, &hInfo);
+    pair<Point,double> lshResult = lsh_approximate_NN(queryData.points[0],hashTables, &hInfo);
+    pair<Point,double> trueResult = true_NN(queryData.points[0], inputData);
 
 
-    Point trueResult = true_NN(queryData.points[0], inputData);
+    ofstream out (outputFile);
 
-    
-    set<pair<Point,double>, CompDist> lshBestPointsDists;
-    lshBestPointsDists = lsh_approximate_nNN(queryData.points[0], N, hashTables, &hInfo);
-    cout << "LSH distances: " << endl;
-    for (auto it = lshBestPointsDists.begin(); it != lshBestPointsDists.end(); ++it)
+
+    for (int i = 0; i < queryData.points.size(); i++)
     {
-        cout << it->first.itemID << " - " << it->second << endl;
-    }
-    cout << endl << endl;
-    
-
-    set<pair<Point,double>, CompDist> trueBestPointsDists;
-    trueBestPointsDists = true_nNN(queryData.points[0], N, inputData);
-    cout << "TRUE distances: " << endl;
-    for (auto it = trueBestPointsDists.begin(); it != trueBestPointsDists.end(); ++it)
-    {
-        cout << it->first.itemID << " - " << it->second << endl;
+        out << "Query: " << queryData.points[i].itemID << endl;
+        double lshTime, trueTime;
+        set<pair<Point,double>, CompDist> lshBestPointsDists;
+        set<pair<Point,double>, CompDist> trueBestPointsDists;
+        lshBestPointsDists = lsh_approximate_nNN(queryData.points[i], N, hashTables, &hInfo, lshTime);
+        trueBestPointsDists = true_nNN(queryData.points[i], N, inputData, trueTime);
+        int neighbor = 1;
+        auto it1 = lshBestPointsDists.begin();
+        auto it2 = trueBestPointsDists.begin();
+        for (it1,it2; it1 != lshBestPointsDists.end(),it2 != trueBestPointsDists.end(); ++it1,++it2)
+        {
+            out << "Nearest neighbor-" << neighbor << ": " << it1->first.itemID << endl;
+            out << "distanceLSH: " << it1->second << endl;
+            out << "distanceTrue: " << it2->second << endl;
+            neighbor++;
+        }
+        out << "tLSH: " << lshTime << endl;
+        out << "tTrue: " << trueTime << endl;
     }
     cout << endl << endl;
 
 
     unordered_map<int,double> PointsInR = lsh_approximate_range_search(queryData.points[0], R, hashTables, &hInfo);
-    cout << "Points inside radius: " << R << "." << endl;
-    for (auto it = PointsInR.begin(); it != PointsInR.end(); ++it)
-    {
-        cout << it->first << " - " << it->second << endl;
-    }
-    cout << endl << endl;
+    // cout << "Points inside radius: " << R << "." << endl;
+    // for (auto it = PointsInR.begin(); it != PointsInR.end(); ++it)
+    // {
+    //     cout << it->first << " - " << it->second << endl;
+    // }
+    // cout << endl << endl;
+
+
+    out.close();
 
     return 0;
 
