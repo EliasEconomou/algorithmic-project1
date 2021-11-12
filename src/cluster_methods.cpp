@@ -265,7 +265,7 @@ Cluster_of_points cluster_Classic(Vector_of_points &Data, Cluster_of_points &clu
     return cluster;
 }
 
-Cluster_of_points cluster_LSH(Vector_of_points Data, Cluster_of_points cluster, int number_of_clusters, int L_of_LSH, int k_of_LSH){
+Cluster_of_points cluster_LSH(Vector_of_points &Data, Cluster_of_points &cluster, int number_of_clusters, int L_of_LSH, int k_of_LSH){
     std::cout << "CLUSTER LSH.\n";
     std::cout << "Number of clusters: " << number_of_clusters << endl;
     std::cout << "L of LSH: " << L_of_LSH << endl;
@@ -273,14 +273,62 @@ Cluster_of_points cluster_LSH(Vector_of_points Data, Cluster_of_points cluster, 
 
     cluster = initialize_kplusplus(Data, cluster, number_of_clusters);
 
-    //DO STUFF
-    //..
+    // ---INITIALISE HASH TABLES FOR LSH---
+
+    int vectorsNumber = Data.points.size();
+    int dimension = Data.points[0].vpoint.size();
+    int bucketsNumber = vectorsNumber/8;
+    LSH_hash_info hInfo(k_of_LSH, dimension, L_of_LSH);
+
+    vector<HashTable> hashTables;
+    for (int i = 0; i < L_of_LSH; i++)
+    {
+        HashTable ht(bucketsNumber);
+        hashTables.push_back(ht);
+    }
+    
+    for (int i = 0; i < L_of_LSH; i++)
+    {
+        hashTables[i].v = compute_v(k_of_LSH,dimension);
+        hashTables[i].t = compute_t(k_of_LSH);
+        hashTables[i].r = compute_r(k_of_LSH);
+        for (int j = 0; j < vectorsNumber; j++)
+        {
+            hashTables[i].HTinsert(&Data.points[j], &hInfo);
+        }
+    }
+
+
+    bool alldata_found=false;
+    int R = 2;
+
+    vector<vector<Point>> Found_points;
+    unordered_map<int, int> Found_map;
+    unordered_map<int, int>::iterator it1;
+    unordered_map<int, double> PointsInR;
+    unordered_map<int, double>::iterator it2;
+
+
+
+    while (!alldata_found){
+        //FOR EVERY CENTROID
+        for (int i=0 ; i < cluster.centroids.size() ; i++){
+            PointsInR = lsh_approximate_range_search(cluster.centroids[i], R, hashTables, &hInfo);
+
+            for (it2 = PointsInR.begin(); it2 != PointsInR.end(); it2++){
+                Found_map.insert(it2->first,i);
+                Found_points[i]
+            }
+
+        }
+    }
+        //
     
 
     return cluster;
 }
 
-Cluster_of_points cluster_Hypercube(Vector_of_points Data, Cluster_of_points cluster, int number_of_clusters, int M_of_Hypercube, int k_of_Hypercube){
+Cluster_of_points cluster_Hypercube(Vector_of_points &Data, Cluster_of_points &cluster, int number_of_clusters, int M_of_Hypercube, int k_of_Hypercube){
     std::cout << "CLUSTER HYPERCUBE.\n";
     std::cout << "Number of clusters: " << number_of_clusters << endl;
     std::cout << "M of Hypercube: " << M_of_Hypercube << endl;
