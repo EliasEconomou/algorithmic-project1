@@ -183,7 +183,7 @@ unordered_map<int,double> lsh_approximate_range_search(Point q, double R, vector
         typename list<HashNode>::iterator current;
         for (current = listToSearch.begin() ; current != listToSearch.end() ; ++current ) {
             double dist = distance(q.vpoint,current->point->vpoint, 2);
-            if (dist < R)
+            if (dist < R && dist != 0)
             {
                 rPoints.insert(make_pair(current->point->itemID,dist));
             }

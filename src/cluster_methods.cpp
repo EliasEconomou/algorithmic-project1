@@ -299,30 +299,67 @@ Cluster_of_points cluster_LSH(Vector_of_points &Data, Cluster_of_points &cluster
     }
 
 
-    bool alldata_found=false;
-    int R = 2;
+    bool stopflag=false;
+    double R;
+    unordered_map <int, int> Data_Found_map;
+    vector<unordered_map<int,double>> Found_maps;
+    unordered_map<int,double> PointsInR;
+    unordered_map<int,double>::iterator it2;
 
-    vector<vector<Point>> Found_points;
-    unordered_map<int, int> Found_map;
-    unordered_map<int, int>::iterator it1;
-    unordered_map<int, double> PointsInR;
-    unordered_map<int, double>::iterator it2;
+    //Claculate starting R
+    double min_dist = MAXFLOAT;
+    for (int i=0 ; i < cluster.centroids.size() ; i++){
+         for (int j=0 ; j < cluster.centroids.size() ; j++){
+             if (double dist = distance( cluster.centroids[i].vpoint , cluster.centroids[j].vpoint, 2 ) < min_dist ){
+                 min_dist = dist;
+             }
+         }
+    }
+    R = min_dist / 2;
+
+    //INITIALIZE CLUSTERS / PREALLOCATE STRUCTURES
+    for (int i = 0 ; i < Data.points.size() ; i++){
+        Data_Found_map.insert(make_pair(Data.points[i].itemID, 0));
+    }
 
 
+    while (!stopflag){
 
-    while (!alldata_found){
         //FOR EVERY CENTROID
         for (int i=0 ; i < cluster.centroids.size() ; i++){
+            
+            std::cout << "Searching from centroid #" << i+1 << " in range=" << R << endl;
             PointsInR = lsh_approximate_range_search(cluster.centroids[i], R, hashTables, &hInfo);
-
+            std::cout << "Range Search result size: " << PointsInR.size() << endl;
+            // for (it2 = PointsInR.begin(); it2 != PointsInR.end(); it2++){
+            //     std::cout << it2->first << endl;
+            // }
+            
             for (it2 = PointsInR.begin(); it2 != PointsInR.end(); it2++){
-                Found_map.insert(it2->first,i);
-                Found_points[i]
+                if ( Data_Found_map.find(it2->first) != end(Data_Found_map) ){
+                    Data_Found_map.find(it2->first)->second=i;
+                }
+                Data_Found_map.find(it2->first)->second=i;
             }
 
+
+            Found_maps.push_back(PointsInR);
+            PointsInR.clear();
         }
+
+        // //PRINT STUFF
+        // for ( int i = 0 ; i < Found_points.size() ; i++){
+        //     cout << "Cluster #" << i+1 << endl;
+        //     for ( int j = 0 ; j < Found_points[i].size() ; j++){
+        //         std::cout << Found_points[i][j] << endl;
+        //     }
+        //     std::cout << endl;
+        // }
+
+
+        // ---DOUBLING RANGE---
+        R *=2;
     }
-        //
     
 
     return cluster;

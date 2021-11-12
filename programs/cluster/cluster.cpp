@@ -89,6 +89,7 @@ Cluster_of_points cluster_data(Vector_of_points &data , string method , string c
             break;
         case 3:
             cluster = cluster_Hypercube(data, cluster, kmedians, M_of_hypercube, k_of_hypercube);
+            break;
     }
 
     //Return said data
