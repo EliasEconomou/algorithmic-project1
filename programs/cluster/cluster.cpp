@@ -160,6 +160,12 @@ int main(int argc, char** argv) {
 
 
     std::cout << "Operation Successfull. \n";
+
+    for (int i = 0; i < Cluster.centroids.size(); i++)
+    {
+        cout << "Cluster #" << i+1 << "     size:" << Cluster.points[i].points.size() << "      centroid_id:" << Cluster.centroids[i].itemID << endl;
+    }
+    
     
     //  ---DATABASE PRINT---
     // for (int i=0 ; i < Data.points.size() ; i++){

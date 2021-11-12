@@ -301,8 +301,8 @@ Cluster_of_points cluster_LSH(Vector_of_points &Data, Cluster_of_points &cluster
 
     bool stopflag=false;
     double R;
-    unordered_map <int, int> Data_Found_map;
-    vector<unordered_map<int,double>> Found_maps;
+    unordered_map<int,int> Data_Found_map;
+    unordered_map<int,int>::iterator it1;
     unordered_map<int,double> PointsInR;
     unordered_map<int,double>::iterator it2;
 
@@ -319,49 +319,88 @@ Cluster_of_points cluster_LSH(Vector_of_points &Data, Cluster_of_points &cluster
 
     //INITIALIZE CLUSTERS / PREALLOCATE STRUCTURES
     for (int i = 0 ; i < Data.points.size() ; i++){
-        Data_Found_map.insert(make_pair(Data.points[i].itemID, 0));
+        Data_Found_map.insert(make_pair(Data.points[i].itemID, -1));
     }
 
-
+    int turns_inactive = 0;
+    bool first_action=false;
     while (!stopflag){
-
+        bool tookaction=false;
         //FOR EVERY CENTROID
         for (int i=0 ; i < cluster.centroids.size() ; i++){
-            
-            std::cout << "Searching from centroid #" << i+1 << " in range=" << R << endl;
+
+            // std::cout << "Searching from centroid #" << i+1 << " in range=" << R << endl;
             PointsInR = lsh_approximate_range_search(cluster.centroids[i], R, hashTables, &hInfo);
-            std::cout << "Range Search result size: " << PointsInR.size() << endl;
-            // for (it2 = PointsInR.begin(); it2 != PointsInR.end(); it2++){
-            //     std::cout << it2->first << endl;
-            // }
+            // std::cout << "Range Search result size: " << PointsInR.size() << endl;
             
             for (it2 = PointsInR.begin(); it2 != PointsInR.end(); it2++){
-                if ( Data_Found_map.find(it2->first) != end(Data_Found_map) ){
-                    Data_Found_map.find(it2->first)->second=i;
+                int point_cluster_num = Data_Found_map.find(it2->first)->second;
+                if ( point_cluster_num == -1){
+                    Data_Found_map.find(it2->first)->second = i;
+                    tookaction=true;
+                    first_action=true;
+                    turns_inactive=0;
+                    continue;
                 }
-                Data_Found_map.find(it2->first)->second=i;
+                if ( point_cluster_num != i ){
+                    //find point
+                    int point_it = -1;
+                    for (int j = 0 ; j < Data.points.size() ; j++){
+                        if (Data.points[j].itemID == it2->first){
+                            point_it = j;
+                            break;
+                        }
+                    }
+                    double min_dist = MAXFLOAT;
+                    if ( distance( Data.points[point_it].vpoint, cluster.centroids[i].vpoint , 2 ) < distance(Data.points[point_it].vpoint, cluster.centroids[point_cluster_num].vpoint , 2 ) ){
+                        it2->second = i;
+                        tookaction=true;
+                        turns_inactive=0;
+                    }
+                }
             }
-
-
-            Found_maps.push_back(PointsInR);
             PointsInR.clear();
         }
+        if (!tookaction)turns_inactive++;
 
-        // //PRINT STUFF
-        // for ( int i = 0 ; i < Found_points.size() ; i++){
-        //     cout << "Cluster #" << i+1 << endl;
-        //     for ( int j = 0 ; j < Found_points[i].size() ; j++){
-        //         std::cout << Found_points[i][j] << endl;
-        //     }
-        //     std::cout << endl;
-        // }
-
+        if (turns_inactive > 1 && first_action)stopflag=true;
 
         // ---DOUBLING RANGE---
         R *=2;
+        if (R > 100000){
+            stopflag=true;
+        }
     }
-    
 
+    Vector_of_points newvec;
+    for (int i = 0 ; i < cluster.centroids.size() ; i++){
+        cluster.points.push_back(newvec);
+    }
+
+    //---ARRANGE CLUSTER FROM MADE DATA---
+    for (it1 = Data_Found_map.begin(); it1 != Data_Found_map.end(); it1++){
+        for (int i=0 ; i < Data.points.size() ; i++){
+            if (it1->first == Data.points[i].itemID){
+                if (it1->second == -1){
+                    //arrange it
+                    double min_dist = MAXFLOAT;
+                    double dist;
+                    int min_dist_it = -1;
+                    for (int j=0 ; j < cluster.centroids.size() ; j++){
+                        dist = distance( Data.points[i].vpoint , cluster.centroids[j].vpoint, 2 );
+                        if ( dist < min_dist ){
+                            min_dist = dist;
+                            min_dist_it=j;
+                        }
+                    }
+                    cluster.points[min_dist_it].points.push_back(Data.points[i]);
+                }
+                else{
+                    cluster.points[it1->second].points.push_back(Data.points[i]);
+                }
+            }
+        }
+    }
     return cluster;
 }
 
