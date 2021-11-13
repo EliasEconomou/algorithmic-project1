@@ -5,6 +5,7 @@
 #include <string>
 #include <string.h>
 #include <vector>
+#include <ctime>
 #include "unistd.h"
 #include "../../include/cluster_methods.hpp"
 
@@ -12,7 +13,7 @@
 
 using namespace std;
 
-Cluster_of_points cluster_data(Vector_of_points &data , string method , string config_file , bool complete){
+Cluster_of_points cluster_data(Vector_of_points &data , string method , string config_file){
     Cluster_of_points cluster;
 
     //---First check method---
@@ -153,18 +154,57 @@ int main(int argc, char** argv) {
     //..
 
     // ---Cluster the data---
-    Cluster_of_points Cluster = cluster_data(Data, method , config_file , complete);
-
-    // ---Print desired results to output file---
-    //..
+    clock_t begin = clock();
+    Cluster_of_points Cluster = cluster_data(Data, method , config_file);
+    clock_t end = clock();
+    double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
 
 
     std::cout << "Operation Successfull. \n";
 
+    // for (int i = 0; i < Cluster.centroids.size(); i++)
+    // {
+    //     cout << "Cluster #" << i+1 << "     size:" << Cluster.points[i].points.size() << "      centroid_id:" << Cluster.centroids[i].itemID << endl;
+    // }
+
+    // ---Print desired results to output file---
+    string method_name;
+    if (method=="Classic")method_name="Lloyds";
+    else if(method=="LSH")method_name="Range search LSH";
+    else if(method=="Hypercube")method_name="Range search Hypercube";
+    
+    ofstream out_file;
+    out_file.open (output_file);
+    out_file << "Algorithm: " << method_name << endl;
     for (int i = 0; i < Cluster.centroids.size(); i++)
     {
-        cout << "Cluster #" << i+1 << "     size:" << Cluster.points[i].points.size() << "      centroid_id:" << Cluster.centroids[i].itemID << endl;
+        out_file << "CLUSTER-" << i+1 << " {size: " << Cluster.points[i].points.size() << ", centroid: [";
+        for (int j = 0; j < Cluster.centroids[i].vpoint.size(); j++)
+        {
+            if (j==0)out_file << Cluster.centroids[i].vpoint[j];
+            else out_file << ", " << Cluster.centroids[i].vpoint[j];
+        }
+        out_file << "] }" << endl;
     }
+    out_file << "clustering_time: " << elapsed_secs << " seconds." << endl;
+    out_file << "Silhuette: -not done" << endl << endl;
+
+    if(complete){
+        out_file << "Complete option additional data:" << endl;
+        for (int i = 0; i < Cluster.centroids.size(); i++)
+        {
+            out_file << "CLUSTER-" << i+1 << " {";
+            out_file << Cluster.centroids[i].itemID;
+            for (int j = 0; j < Cluster.points[i].points.size() ; j++)
+            {
+                out_file <<  ", " << Cluster.points[i].points[j].itemID;
+            }
+            out_file << "}" << endl;
+        }
+    }
+    
+
+    out_file.close();
     
     
     //  ---DATABASE PRINT---
@@ -175,12 +215,5 @@ int main(int argc, char** argv) {
     //     }
     //     cout << endl;
     // }
-    
-
-
-
-
-
-
-
+    return 0;
 }

@@ -2,6 +2,10 @@
 
 using namespace std;
 
+//---------------------------------------------------------------------------//
+//                 CENTROID FUNCTION USED BY LLOYD'S ALGORYTHM               //
+//---------------------------------------------------------------------------//
+
 void calculate_centroids(Cluster_of_points &cluster){
     Point new_centroid;
     vector<Point> new_centroids;
@@ -47,6 +51,10 @@ void calculate_centroids(Cluster_of_points &cluster){
 
    
 }
+
+//---------------------------------------------------------------------------//
+//           K++ INITIALIZING FUNCTION ON CLUSTER OF POINTS                  //
+//---------------------------------------------------------------------------//
 
 Cluster_of_points initialize_kplusplus(Vector_of_points &Data, Cluster_of_points &cluster, int number_of_clusters){
     // ---Creating Kplusplus iteam with data structures to help---
@@ -161,6 +169,10 @@ Cluster_of_points initialize_kplusplus(Vector_of_points &Data, Cluster_of_points
     return cluster;
 }
 
+//---------------------------------------------------------------------------//
+//                 LLOYDS FUNCTION ON CLUSTER OF POINTS                      //
+//---------------------------------------------------------------------------//
+
 Cluster_of_points lloyds(Vector_of_points &Data, Cluster_of_points &cluster, int iter_num_input){
 
     int iter_num = iter_num_input;
@@ -176,7 +188,7 @@ Cluster_of_points lloyds(Vector_of_points &Data, Cluster_of_points &cluster, int
     while (iter_num > 0){
         // ---ASSIGN EACH POINT TO A CENTROID---
         int min_centroid_iterator;
-        double min_centroid_distance;
+        double min_centroid_distance=MAXFLOAT;
         double dist;
         bool is_centroid;
 
@@ -215,14 +227,14 @@ Cluster_of_points lloyds(Vector_of_points &Data, Cluster_of_points &cluster, int
         }
 
 
-        std::cout << "Iteration #" << iter_num_input - iter_num+1 << " of Lloyd's algorythm." << endl;
-        for (int i=0 ; i<cluster.centroids.size() ; i++){
-            std::cout << "Cluster #" << i+1 << ": Centroid ID - " << cluster.centroids[i].itemID << ", Size - " << cluster.points[i].points.size() << endl;
-        }
+        // std::cout << "Iteration #" << iter_num_input - iter_num+1 << " of Lloyd's algorythm." << endl;
+        // for (int i=0 ; i<cluster.centroids.size() ; i++){
+        //     std::cout << "Cluster #" << i+1 << ": Centroid ID - " << cluster.centroids[i].itemID << ", Size - " << cluster.points[i].points.size() << endl;
+        // }
 
         iter_num--;
 
-        // ---IF NOT OVER , CLEANING UP FOR NEXT ITEARATION---
+        // ---IF NOT OVER , CLEANING UP FOR NEXT ITERATION---
         if (iter_num > 0){
             // ---ASSIGNING NEW CENTROIDS-- 
             calculate_centroids(cluster);
@@ -237,16 +249,19 @@ Cluster_of_points lloyds(Vector_of_points &Data, Cluster_of_points &cluster, int
     return cluster;
 }
 
+//---------------------------------------------------------------------------//
+//    CLUSTER 'CLASSIC' FUNCTION USING LLOYDS ON CLUSTER OF POINTS           //
+//---------------------------------------------------------------------------//
 
 Cluster_of_points cluster_Classic(Vector_of_points &Data, Cluster_of_points &cluster, int number_of_clusters){
-    std::cout << "CLUSTER CLASSIC - LLOYD'S ALGORYTHM.\n";
-    std::cout << "Number of clusters: " << number_of_clusters << endl;
+    // std::cout << "CLUSTER CLASSIC - LLOYD'S ALGORYTHM.\n";
+    // std::cout << "Number of clusters: " << number_of_clusters << endl;
 
-    //INITIALISE WITH K++
+    //INITIALIZE WITH K++
     cluster = initialize_kplusplus(Data, cluster, number_of_clusters);
 
 
-    //CALCULATE LLOYDS ITERATIONS
+    //CALCULATE LLOYDS ITERATIONS AS Log<database_size>
     int iter_lloyd=0;
     int datasize = Data.points.size();
     while (datasize/2 > 1){
@@ -257,19 +272,24 @@ Cluster_of_points cluster_Classic(Vector_of_points &Data, Cluster_of_points &clu
     // ---LLOYDS ALGORYTHM---
     cluster = lloyds(Data, cluster, iter_lloyd);
 
-    // ---PRINT FINAL PRODUCT---
-    std::cout << "---FINAL PRODUCT OF LLOYDS CLUSTERING---" << endl;
-    for (int i=0 ; i<cluster.centroids.size() ; i++){
-        std::cout << "Cluster #" << i+1 << ": Centroid ID - " << cluster.centroids[i].itemID << ", Size - " << cluster.points[i].points.size() << endl;
-    }
+    //// ---PRINT FINAL PRODUCT---
+    // std::cout << "---FINAL PRODUCT OF LLOYDS CLUSTERING---" << endl;
+    // for (int i=0 ; i<cluster.centroids.size() ; i++){
+    //     std::cout << "Cluster #" << i+1 << ": Centroid ID - " << cluster.centroids[i].itemID << ", Size - " << cluster.points[i].points.size() << endl;
+    // }
+
     return cluster;
 }
 
+//---------------------------------------------------------------------------//
+//              CLUSTER LSH FUNCTION ON CLUSTER OF POINTS                    //
+//---------------------------------------------------------------------------//
+
 Cluster_of_points cluster_LSH(Vector_of_points &Data, Cluster_of_points &cluster, int number_of_clusters, int L_of_LSH, int k_of_LSH){
-    std::cout << "CLUSTER LSH.\n";
-    std::cout << "Number of clusters: " << number_of_clusters << endl;
-    std::cout << "L of LSH: " << L_of_LSH << endl;
-    std::cout << "k of LSH: " << k_of_LSH << endl;
+    // std::cout << "CLUSTER LSH.\n";
+    // std::cout << "Number of clusters: " << number_of_clusters << endl;
+    // std::cout << "L of LSH: " << L_of_LSH << endl;
+    // std::cout << "k of LSH: " << k_of_LSH << endl;
 
     cluster = initialize_kplusplus(Data, cluster, number_of_clusters);
 
@@ -306,7 +326,7 @@ Cluster_of_points cluster_LSH(Vector_of_points &Data, Cluster_of_points &cluster
     unordered_map<int,double> PointsInR;
     unordered_map<int,double>::iterator it2;
 
-    //Claculate starting R
+    //CALCULATING STARTING RANGE OF RANGE SEARCH AS HALF OF MINIMUM DISTANCE BETWEEN CENTROIDS
     double min_dist = MAXFLOAT;
     for (int i=0 ; i < cluster.centroids.size() ; i++){
          for (int j=0 ; j < cluster.centroids.size() ; j++){
@@ -317,7 +337,7 @@ Cluster_of_points cluster_LSH(Vector_of_points &Data, Cluster_of_points &cluster
     }
     R = min_dist / 2;
 
-    //INITIALIZE CLUSTERS / PREALLOCATE STRUCTURES
+    // ---INITIALIZE CLUSTERS / PREALLOCATE STRUCTURES---
     for (int i = 0 ; i < Data.points.size() ; i++){
         Data_Found_map.insert(make_pair(Data.points[i].itemID, -1));
     }
@@ -329,12 +349,12 @@ Cluster_of_points cluster_LSH(Vector_of_points &Data, Cluster_of_points &cluster
         //FOR EVERY CENTROID
         for (int i=0 ; i < cluster.centroids.size() ; i++){
 
-            // std::cout << "Searching from centroid #" << i+1 << " in range=" << R << endl;
             PointsInR = lsh_approximate_range_search(cluster.centroids[i], R, hashTables, &hInfo);
-            // std::cout << "Range Search result size: " << PointsInR.size() << endl;
             
+            //FOR ALL POINTS FOUND BY RANGE SEARCH
             for (it2 = PointsInR.begin(); it2 != PointsInR.end(); it2++){
                 int point_cluster_num = Data_Found_map.find(it2->first)->second;
+                //IF POINT IS NOT YET FOUND, MAP IT TO CLUSTER
                 if ( point_cluster_num == -1){
                     Data_Found_map.find(it2->first)->second = i;
                     tookaction=true;
@@ -342,8 +362,8 @@ Cluster_of_points cluster_LSH(Vector_of_points &Data, Cluster_of_points &cluster
                     turns_inactive=0;
                     continue;
                 }
+                //IF POINT IS FOUND IN ANOTHER CLUSTER, COMPARE DISTANCES FROM CENTROIDS AND KEEP THE ONE WITH THE SMALLEST DISTANCE
                 if ( point_cluster_num != i ){
-                    //find point
                     int point_it = -1;
                     for (int j = 0 ; j < Data.points.size() ; j++){
                         if (Data.points[j].itemID == it2->first){
@@ -361,12 +381,15 @@ Cluster_of_points cluster_LSH(Vector_of_points &Data, Cluster_of_points &cluster
             }
             PointsInR.clear();
         }
-        if (!tookaction)turns_inactive++;
 
+        //CHECKING IF ANY ACTION WAS TAKEN THIS TURN
+        if (!tookaction)turns_inactive++;
+        //CHECKING IF NO POINTS HAVE BEEN ADDED IN 2 ITERATIONS, IF SO STOPPING
         if (turns_inactive > 1 && first_action)stopflag=true;
 
-        // ---DOUBLING RANGE---
+        //DOUBLING RANGE FOR EACH ITERATION
         R *=2;
+        //IF R HAS REACHED MORE THAN 100K STOP
         if (R > 100000){
             stopflag=true;
         }
@@ -377,12 +400,12 @@ Cluster_of_points cluster_LSH(Vector_of_points &Data, Cluster_of_points &cluster
         cluster.points.push_back(newvec);
     }
 
-    //---ARRANGE CLUSTER FROM MADE DATA---
+    //---ARRANGE CLUSTER DATA ACCORDING TO MAP OF IDS TO CLUSTERS---
     for (it1 = Data_Found_map.begin(); it1 != Data_Found_map.end(); it1++){
         for (int i=0 ; i < Data.points.size() ; i++){
             if (it1->first == Data.points[i].itemID){
+                //IF POINT NOT MAPPED TO ANY CLUSTER, FIND CLOSEST CENTROID AND ADD IT TO THAT CLUSTER
                 if (it1->second == -1){
-                    //arrange it
                     double min_dist = MAXFLOAT;
                     double dist;
                     int min_dist_it = -1;
@@ -395,6 +418,7 @@ Cluster_of_points cluster_LSH(Vector_of_points &Data, Cluster_of_points &cluster
                     }
                     cluster.points[min_dist_it].points.push_back(Data.points[i]);
                 }
+                //OTHERWISE ADD IT TO MAPPED CLUSTER
                 else{
                     cluster.points[it1->second].points.push_back(Data.points[i]);
                 }
@@ -404,16 +428,140 @@ Cluster_of_points cluster_LSH(Vector_of_points &Data, Cluster_of_points &cluster
     return cluster;
 }
 
+//---------------------------------------------------------------------------//
+//              CLUSTER HYPERCUBE FUNCTION ON CLUSTER OF POINTS              //
+//---------------------------------------------------------------------------//
+
 Cluster_of_points cluster_Hypercube(Vector_of_points &Data, Cluster_of_points &cluster, int number_of_clusters, int M_of_Hypercube, int k_of_Hypercube){
-    std::cout << "CLUSTER HYPERCUBE.\n";
-    std::cout << "Number of clusters: " << number_of_clusters << endl;
-    std::cout << "M of Hypercube: " << M_of_Hypercube << endl;
-    std::cout << "k of Hypercube: " << k_of_Hypercube << endl;
+    // std::cout << "CLUSTER HYPERCUBE.\n";
+    // std::cout << "Number of clusters: " << number_of_clusters << endl;
+    // std::cout << "M of Hypercube: " << M_of_Hypercube << endl;
+    // std::cout << "k of Hypercube: " << k_of_Hypercube << endl;
 
     cluster = initialize_kplusplus(Data, cluster, number_of_clusters);
 
-    //DO STUFF
-    //..
+    // ---INITIALISE HASH TABLES FOR LSH---
 
+    int vectorsNumber = Data.points.size();
+    int dimension = Data.points[0].vpoint.size();
+    int bucketsNumber = pow(2,k_of_Hypercube);
+    CUBE_hash_info hInfo(k_of_Hypercube, dimension, M_of_Hypercube, 2, 5);
+
+    CubeTable cubeTable(bucketsNumber);
+    cubeTable.v = compute_v(k_of_Hypercube,dimension);
+    cubeTable.t = compute_t(k_of_Hypercube);
+    for (int i = 0; i < vectorsNumber; i++)
+    {
+        cubeTable.CTinsert(&Data.points[i], &hInfo);
+    }
+
+
+
+    bool stopflag=false;
+    double R;
+    unordered_map<int,int> Data_Found_map;
+    unordered_map<int,int>::iterator it1;
+    unordered_map<int,double> PointsInR;
+    unordered_map<int,double>::iterator it2;
+
+    //CALCULATING STARTING RANGE OF RANGE SEARCH AS HALF OF MINIMUM DISTANCE BETWEEN CENTROIDS
+    double min_dist = MAXFLOAT;
+    for (int i=0 ; i < cluster.centroids.size() ; i++){
+         for (int j=0 ; j < cluster.centroids.size() ; j++){
+             if (double dist = distance( cluster.centroids[i].vpoint , cluster.centroids[j].vpoint, 2 ) < min_dist ){
+                 min_dist = dist;
+             }
+         }
+    }
+    R = min_dist / 2;
+
+    // ---INITIALIZE CLUSTERS / PREALLOCATE STRUCTURES---
+    for (int i = 0 ; i < Data.points.size() ; i++){
+        Data_Found_map.insert(make_pair(Data.points[i].itemID, -1));
+    }
+
+    int turns_inactive = 0;
+    bool first_action=false;
+    while (!stopflag){
+        bool tookaction=false;
+        //FOR EVERY CENTROID
+        for (int i=0 ; i < cluster.centroids.size() ; i++){
+
+            PointsInR = cube_approximate_range_search(cluster.centroids[i], R, cubeTable, &hInfo);
+            
+            //FOR ALL POINTS FOUND BY RANGE SEARCH
+            for (it2 = PointsInR.begin(); it2 != PointsInR.end(); it2++){
+                int point_cluster_num = Data_Found_map.find(it2->first)->second;
+                //IF POINT IS NOT YET FOUND, MAP IT TO CLUSTER
+                if ( point_cluster_num == -1){
+                    Data_Found_map.find(it2->first)->second = i;
+                    tookaction=true;
+                    first_action=true;
+                    turns_inactive=0;
+                    continue;
+                }
+                //IF POINT IS FOUND IN ANOTHER CLUSTER, COMPARE DISTANCES FROM CENTROIDS AND KEEP THE ONE WITH THE SMALLEST DISTANCE
+                if ( point_cluster_num != i ){
+                    int point_it = -1;
+                    for (int j = 0 ; j < Data.points.size() ; j++){
+                        if (Data.points[j].itemID == it2->first){
+                            point_it = j;
+                            break;
+                        }
+                    }
+                    double min_dist = MAXFLOAT;
+                    if ( distance( Data.points[point_it].vpoint, cluster.centroids[i].vpoint , 2 ) < distance(Data.points[point_it].vpoint, cluster.centroids[point_cluster_num].vpoint , 2 ) ){
+                        it2->second = i;
+                        tookaction=true;
+                        turns_inactive=0;
+                    }
+                }
+            }
+            PointsInR.clear();
+        }
+
+        //CHECKING IF ANY ACTION WAS TAKEN THIS TURN
+        if (!tookaction)turns_inactive++;
+        //CHECKING IF NO POINTS HAVE BEEN ADDED IN 2 ITERATIONS, IF SO STOPPING
+        if (turns_inactive > 1 && first_action)stopflag=true;
+
+        //DOUBLING RANGE FOR EACH ITERATION
+        R *=2;
+        //IF R HAS REACHED MORE THAN 100K STOP
+        if (R > 100000){
+            stopflag=true;
+        }
+    }
+
+    Vector_of_points newvec;
+    for (int i = 0 ; i < cluster.centroids.size() ; i++){
+        cluster.points.push_back(newvec);
+    }
+
+    //---ARRANGE CLUSTER DATA ACCORDING TO MAP OF IDS TO CLUSTERS---
+    for (it1 = Data_Found_map.begin(); it1 != Data_Found_map.end(); it1++){
+        for (int i=0 ; i < Data.points.size() ; i++){
+            if (it1->first == Data.points[i].itemID){
+                //IF POINT NOT MAPPED TO ANY CLUSTER, FIND CLOSEST CENTROID AND ADD IT TO THAT CLUSTER
+                if (it1->second == -1){
+                    double min_dist = MAXFLOAT;
+                    double dist;
+                    int min_dist_it = -1;
+                    for (int j=0 ; j < cluster.centroids.size() ; j++){
+                        dist = distance( Data.points[i].vpoint , cluster.centroids[j].vpoint, 2 );
+                        if ( dist < min_dist ){
+                            min_dist = dist;
+                            min_dist_it=j;
+                        }
+                    }
+                    cluster.points[min_dist_it].points.push_back(Data.points[i]);
+                }
+                //OTHERWISE ADD IT TO MAPPED CLUSTER
+                else{
+                    cluster.points[it1->second].points.push_back(Data.points[i]);
+                }
+            }
+        }
+    }
     return cluster;
 }
