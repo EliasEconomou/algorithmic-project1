@@ -16,6 +16,8 @@
 
 using namespace std;
 
+double silhuette(Cluster_of_points cluster, int i);
+
 void calculate_centroids(Cluster_of_points &cluster);
 
 Cluster_of_points initialize_kplusplus(Vector_of_points &Data, Cluster_of_points &cluster, int number_of_clusters);

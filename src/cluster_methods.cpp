@@ -2,6 +2,58 @@
 
 using namespace std;
 
+double silhuette(Cluster_of_points cluster, int i){
+    double si=1;
+    double sp;
+    double sum_of_sps;
+    for (int j = 0; j < cluster.points[i].points.size(); j++)
+    {
+        //FINDING SECOND CLOSEST CENTROID
+        double sec_min_dist = MAXFLOAT;
+        int sec_min_dist_it = -1;
+        for (int k = 0; k < cluster.centroids.size(); k++)
+        {
+            if ( k == i )continue;
+            double dist = distance(cluster.points[i].points[j].vpoint , cluster.centroids[k].vpoint , 2);
+            if ( dist < sec_min_dist ){
+                sec_min_dist = dist;
+                sec_min_dist_it = k;
+            }
+        }
+        double ai = 0;
+        double dist = 0;
+        for (int k = 0; k < cluster.points[i].points.size() ; k++)
+        {
+            if (k==j)continue;
+            dist = distance(cluster.points[i].points[j].vpoint , cluster.points[i].points[k].vpoint , 2);
+            ai += dist;
+        }
+        ai = ai / cluster.points[i].points.size();
+
+        double bi = 0;
+        for (int k = 0; k < cluster.points[sec_min_dist_it].points.size() ; k++)
+        {
+            if (k==j)continue;
+            double dist = distance(cluster.points[i].points[j].vpoint , cluster.points[sec_min_dist_it].points[k].vpoint , 2);
+            bi += dist;
+        }
+
+        if( cluster.points[sec_min_dist_it].points.size() != 0 )bi = bi / cluster.points[sec_min_dist_it].points.size();
+
+        double max;
+        if (ai>bi)max=bi;
+        else max=ai;
+
+        if (max!=0)sp = bi - ai / max;
+        else sp=1;
+        cout << sp << endl;
+        sum_of_sps += sp;
+    }
+    if ( cluster.points[i].points.size() != 0 )si = sum_of_sps / cluster.points[i].points.size();
+    return si;
+    
+}
+
 //---------------------------------------------------------------------------//
 //                 CENTROID FUNCTION USED BY LLOYD'S ALGORYTHM               //
 //---------------------------------------------------------------------------//
@@ -326,7 +378,7 @@ Cluster_of_points cluster_LSH(Vector_of_points &Data, Cluster_of_points &cluster
     unordered_map<int,double> PointsInR;
     unordered_map<int,double>::iterator it2;
 
-    //CALCULATING STARTING RANGE OF RANGE SEARCH AS HALF OF MINIMUM DISTANCE BETWEEN CENTROIDS
+    // ---CALCULATING STARTING RANGE OF RANGE SEARCH AS HALF OF MINIMUM DISTANCE BETWEEN CENTROIDS--- 
     double min_dist = MAXFLOAT;
     for (int i=0 ; i < cluster.centroids.size() ; i++){
          for (int j=0 ; j < cluster.centroids.size() ; j++){
@@ -400,7 +452,7 @@ Cluster_of_points cluster_LSH(Vector_of_points &Data, Cluster_of_points &cluster
         cluster.points.push_back(newvec);
     }
 
-    //---ARRANGE CLUSTER DATA ACCORDING TO MAP OF IDS TO CLUSTERS---
+    // ---ARRANGE CLUSTER DATA ACCORDING TO MAP OF IDS TO CLUSTERS---
     for (it1 = Data_Found_map.begin(); it1 != Data_Found_map.end(); it1++){
         for (int i=0 ; i < Data.points.size() ; i++){
             if (it1->first == Data.points[i].itemID){
