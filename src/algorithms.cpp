@@ -283,7 +283,6 @@ pair<Point,double> cube_approximate_NN(Point q, CubeTable cubeTable, CUBE_hash_i
                 }
                 if (currentM == M) //maximum points to check reached
                 {
-                    cout << "M completed" << endl;
                     return best;
                 }   
             }
@@ -292,7 +291,6 @@ pair<Point,double> cube_approximate_NN(Point q, CubeTable cubeTable, CUBE_hash_i
             // If no more probes to check return.
             if (currentProbes == 0)
             {
-                cout << "probes depleted" << endl;
                 return best;
             }
         }
@@ -388,7 +386,6 @@ set<pair<Point,double>, CompDist> cube_approximate_nNN(Point q, int N, CubeTable
                 }
                 if (currentM == M) //maximum points to check reached
                 {
-                    // cout << "M completed" << endl;
                     high_resolution_clock::time_point end = high_resolution_clock::now();
                     duration<double> time_span = duration_cast<duration<double>>(end - start);
                     time = time_span.count();
@@ -400,7 +397,6 @@ set<pair<Point,double>, CompDist> cube_approximate_nNN(Point q, int N, CubeTable
             // If no more probes to check return.
             if (currentProbes == 0)
             {
-                // cout << "probes depleted" << endl;
                 high_resolution_clock::time_point end = high_resolution_clock::now();
                 duration<double> time_span = duration_cast<duration<double>>(end - start);
                 time = time_span.count();
@@ -492,7 +488,6 @@ std::unordered_map<int,double> cube_approximate_range_search(Point q, double R, 
                 }
                 if (currentM == M) //maximum points to check reached
                 {
-                    cout << "M completed" << endl;
                     return rPoints;
                 }   
             }
@@ -501,7 +496,6 @@ std::unordered_map<int,double> cube_approximate_range_search(Point q, double R, 
             // If no more probes to check return.
             if (currentProbes == 0)
             {
-                cout << "probes depleted" << endl;
                 return rPoints;
             }
         }

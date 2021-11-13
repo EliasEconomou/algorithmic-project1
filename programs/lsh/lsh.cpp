@@ -141,7 +141,7 @@ int main(int argc, char** argv) {
 
     ofstream out (outputFile);
 
-
+    std::cout << "Writing to output file..." << endl;
     for (int i = 0; i < queryData.points.size(); i++)
     {
         out << "Query: " << queryData.points[i].itemID << endl;
@@ -162,14 +162,17 @@ int main(int argc, char** argv) {
         }
         out << "tLSH: " << lshTime << endl;
         out << "tTrue: " << trueTime << endl;
+        unordered_map<int,double> PointsInR = lsh_approximate_range_search(queryData.points[i], R, hashTables, &hInfo);
+        out << "R-near neighbors:" << endl;
+        for (auto it = PointsInR.begin(); it != PointsInR.end(); ++it)
+        {
+            out << it->first << endl;
+        }
     }
-    cout << endl << endl;
-
-
-    unordered_map<int,double> PointsInR = lsh_approximate_range_search(queryData.points[0], R, hashTables, &hInfo);
-
-
+    out << endl;
     out.close();
+
+    std::cout << "Operation completed successfully." << endl << "Exiting." << endl;
 
     return 0;
 

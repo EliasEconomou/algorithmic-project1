@@ -144,7 +144,7 @@ int main(int argc, char** argv) {
 
     ofstream out (outputFile);
 
-
+    std::cout << "Writing to output file..." << endl;
     for (int i = 0; i < queryData.points.size(); i++)
     {
         out << "Query: " << queryData.points[i].itemID << endl;
@@ -165,20 +165,17 @@ int main(int argc, char** argv) {
         }
         out << "tHypercube: " << cubeTime << endl;
         out << "tTrue: " << trueTime << endl;
+        unordered_map<int,double> PointsInR = cube_approximate_range_search(queryData.points[i], R, cubeTable, &hInfo);
+        out << "R-near neighbors:" << endl;
+        for (auto it = PointsInR.begin(); it != PointsInR.end(); ++it)
+        {
+            out << it->first << endl;
+        }
     }
-    cout << endl;
-
-
-    // unordered_map<int,double> PointsInR = cube_approximate_range_search(queryData.points[0], R, cubeTable, &hInfo);
-    // cout << "Points inside radius: " << R << "." << endl;
-    // for (auto it = PointsInR.begin(); it != PointsInR.end(); ++it)
-    // {
-    //     cout << it->first << " - " << it->second << endl;
-    // }
-    // cout << endl << endl;
-
-
+    out << endl;
     out.close();
+
+    std::cout << "Operation completed successfully." << endl << "Exiting." << endl;
 
     return 0;
 
