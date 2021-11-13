@@ -3,7 +3,7 @@
 using namespace std;
 
 double silhuette(Cluster_of_points cluster, int i){
-    double si=1;
+    double si=0;
     double sp;
     double sum_of_sps;
     for (int j = 0; j < cluster.points[i].points.size(); j++)
@@ -29,27 +29,33 @@ double silhuette(Cluster_of_points cluster, int i){
             ai += dist;
         }
         ai = ai / cluster.points[i].points.size();
+        // cout << "ai = " << ai << endl;
 
         double bi = 0;
         for (int k = 0; k < cluster.points[sec_min_dist_it].points.size() ; k++)
         {
-            if (k==j)continue;
             double dist = distance(cluster.points[i].points[j].vpoint , cluster.points[sec_min_dist_it].points[k].vpoint , 2);
             bi += dist;
         }
 
         if( cluster.points[sec_min_dist_it].points.size() != 0 )bi = bi / cluster.points[sec_min_dist_it].points.size();
+        else bi=0;
+        // cout << "bi = " << bi << endl;
 
         double max;
-        if (ai>bi)max=bi;
-        else max=ai;
+        if (ai>bi)max=ai;
+        else max=bi;
+        // cout << "max = " << max << endl;
 
-        if (max!=0)sp = bi - ai / max;
-        else sp=1;
-        cout << sp << endl;
+        if (max != 0 ){
+            sp = (bi - ai) / max;
+        }
+        else sp=0;
+        // cout << "sp = " << sp << endl;
         sum_of_sps += sp;
     }
     if ( cluster.points[i].points.size() != 0 )si = sum_of_sps / cluster.points[i].points.size();
+    // cout << "si = " <<si << endl;
     return si;
     
 }
