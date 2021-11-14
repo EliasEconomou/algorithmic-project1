@@ -30,7 +30,6 @@ double silhuette(Cluster_of_points cluster, int i){
             ai += dist;
         }
         ai = ai / cluster.points[i].points.size();
-        // cout << "ai = " << ai << endl;
 
         double bi = 0;
         for (int k = 0; k < cluster.points[sec_min_dist_it].points.size() ; k++)
@@ -41,22 +40,19 @@ double silhuette(Cluster_of_points cluster, int i){
 
         if( cluster.points[sec_min_dist_it].points.size() != 0 )bi = bi / cluster.points[sec_min_dist_it].points.size();
         else bi=0;
-        // cout << "bi = " << bi << endl;
 
         double max;
         if (ai>bi)max=ai;
         else max=bi;
-        // cout << "max = " << max << endl;
 
         if (max != 0 ){
             sp = (bi - ai) / max;
         }
         else sp=0;
-        // cout << "sp = " << sp << endl;
         sum_of_sps += sp;
     }
     if ( cluster.points[i].points.size() != 0 )si = sum_of_sps / cluster.points[i].points.size();
-    // cout << "si = " <<si << endl;
+
     return si;
     
 }
@@ -71,7 +67,7 @@ void calculate_centroids(Cluster_of_points &cluster){
     vector<double> sum_of_dimention;
     int centroid_count = cluster.centroids.size();
     
-    //Set new centroids for cluster
+    // ---Set new centroids for cluster---
 
     //FOR EVERY CLUSTER OF POINTS
     for (int i = 0 ; i < cluster.centroids.size() ; i++ ){
@@ -90,7 +86,6 @@ void calculate_centroids(Cluster_of_points &cluster){
             }
             for (int k = 0 ; k < new_centroid.vpoint.size() ; k++){
                 new_centroid.vpoint[k] = new_centroid.vpoint[k] / cluster.points[i].points.size(); 
-                // std::cout << new_centroid.vpoint[k] << " ";
             }
             new_centroid.itemID=0;
             new_centroids.push_back(new_centroid);
@@ -187,7 +182,6 @@ Cluster_of_points initialize_kplusplus(Vector_of_points &Data, Cluster_of_points
             else{
                 Kplusplus.Additive_Square_Sums.push_back(norm_dist_squared + Kplusplus.Additive_Square_Sums[i-1]);
             }
-            // std::cout << Additive_Square_Sums[i] << endl;
         }
 
         // ---Calculating the probabilities to be centroids---
@@ -195,8 +189,6 @@ Cluster_of_points initialize_kplusplus(Vector_of_points &Data, Cluster_of_points
         
         uniform_rand_possibility = random_double(0.0 , Kplusplus.Additive_Square_Sums[Kplusplus.Additive_Square_Sums.size()-1]);
 
-        
-        // std::cout << "Random possibility number chosen:" << uniform_rand_possibility << endl; //PRINT RANDOM NUMBER CHOSEN
 
         // ---Searching for next centroid according to random number taken---
         int next_centroid_index;
@@ -285,12 +277,6 @@ Cluster_of_points lloyds(Vector_of_points &Data, Cluster_of_points &cluster, int
 
         }
 
-
-        // std::cout << "Iteration #" << iter_num_input - iter_num+1 << " of Lloyd's algorythm." << endl;
-        // for (int i=0 ; i<cluster.centroids.size() ; i++){
-        //     std::cout << "Cluster #" << i+1 << ": Centroid ID - " << cluster.centroids[i].itemID << ", Size - " << cluster.points[i].points.size() << endl;
-        // }
-
         iter_num--;
 
         // ---IF NOT OVER , CLEANING UP FOR NEXT ITERATION---
@@ -313,8 +299,6 @@ Cluster_of_points lloyds(Vector_of_points &Data, Cluster_of_points &cluster, int
 //---------------------------------------------------------------------------//
 
 Cluster_of_points cluster_Classic(Vector_of_points &Data, Cluster_of_points &cluster, int number_of_clusters){
-    // std::cout << "CLUSTER CLASSIC - LLOYD'S ALGORYTHM.\n";
-    // std::cout << "Number of clusters: " << number_of_clusters << endl;
 
     //INITIALIZE WITH K++
     cluster = initialize_kplusplus(Data, cluster, number_of_clusters);
@@ -331,12 +315,6 @@ Cluster_of_points cluster_Classic(Vector_of_points &Data, Cluster_of_points &clu
     // ---LLOYDS ALGORYTHM---
     cluster = lloyds(Data, cluster, iter_lloyd);
 
-    //// ---PRINT FINAL PRODUCT---
-    // std::cout << "---FINAL PRODUCT OF LLOYDS CLUSTERING---" << endl;
-    // for (int i=0 ; i<cluster.centroids.size() ; i++){
-    //     std::cout << "Cluster #" << i+1 << ": Centroid ID - " << cluster.centroids[i].itemID << ", Size - " << cluster.points[i].points.size() << endl;
-    // }
-
     return cluster;
 }
 
@@ -345,10 +323,6 @@ Cluster_of_points cluster_Classic(Vector_of_points &Data, Cluster_of_points &clu
 //---------------------------------------------------------------------------//
 
 Cluster_of_points cluster_LSH(Vector_of_points &Data, Cluster_of_points &cluster, int number_of_clusters, int L_of_LSH, int k_of_LSH){
-    // std::cout << "CLUSTER LSH.\n";
-    // std::cout << "Number of clusters: " << number_of_clusters << endl;
-    // std::cout << "L of LSH: " << L_of_LSH << endl;
-    // std::cout << "k of LSH: " << k_of_LSH << endl;
 
     cluster = initialize_kplusplus(Data, cluster, number_of_clusters);
 
@@ -492,10 +466,6 @@ Cluster_of_points cluster_LSH(Vector_of_points &Data, Cluster_of_points &cluster
 //---------------------------------------------------------------------------//
 
 Cluster_of_points cluster_Hypercube(Vector_of_points &Data, Cluster_of_points &cluster, int number_of_clusters, int M_of_Hypercube, int k_of_Hypercube){
-    // std::cout << "CLUSTER HYPERCUBE.\n";
-    // std::cout << "Number of clusters: " << number_of_clusters << endl;
-    // std::cout << "M of Hypercube: " << M_of_Hypercube << endl;
-    // std::cout << "k of Hypercube: " << k_of_Hypercube << endl;
 
     cluster = initialize_kplusplus(Data, cluster, number_of_clusters);
 
