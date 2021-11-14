@@ -158,7 +158,8 @@ int main(int argc, char** argv) {
     double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
 
 
-    std::cout << "Operation Successfull. \n";
+    std::cout << "Operation Successfull. \n \n";
+    std::cout << "Writing to output file... \n";
 
     // ---PRINT RESULTS TO OUTPUT FILE---
     string method_name;
@@ -195,7 +196,6 @@ int main(int argc, char** argv) {
 
 
     if(complete){
-        // out_file << "Complete option additional data:" << endl;
         for (int i = 0; i < Cluster.centroids.size(); i++)
         {
             out_file << "CLUSTER-" << i+1 << " {";
