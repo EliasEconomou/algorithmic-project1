@@ -89,7 +89,7 @@ Cluster_of_points cluster_data(Vector_of_points &data , string method , string c
             cluster = cluster_LSH(data, cluster, kmedians , Lfactor, k_of_LSH);
             break;
         case 3:
-            cluster = cluster_Hypercube(data, cluster, kmedians, M_of_hypercube, k_of_hypercube);
+            cluster = cluster_Hypercube(data, cluster, kmedians, M_of_hypercube, k_of_hypercube, probes_of_hypercube);
             break;
     }
 

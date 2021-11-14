@@ -11,7 +11,7 @@ EXEC = cluster.out
 
 # Arguments for make run / make valgrind
 # Το complete στις παραμέτρους του cluster είναι "optional" για το αν το αρχείο θα τυπώνει τα διανύσματα του κάθε cluster η όχι
-ARGS = -i ../../input_small_id -c ../../cluster.conf -o ../../outputfileHypercube -complete -m Hypercube
+ARGS = -i ../../input_small_id -c ../../cluster.conf -o ../../outputfileLSH -complete -m LSH
 
 $(EXEC): $(OBJS) $(LIBS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(EXEC) $(LDFLAGS)

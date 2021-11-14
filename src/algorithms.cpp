@@ -481,7 +481,7 @@ std::unordered_map<int,double> cube_approximate_range_search(Point q, double R, 
                 currentM++;
                 for (current = listToSearch.begin() ; current != listToSearch.end() ; ++current ) {
                     double dist = distance(q.vpoint,current->point->vpoint, 2);
-                    if (dist < R)
+                    if (dist < R && dist !=0)
                     {
                         rPoints.insert(make_pair(current->point->itemID,dist));
                     }
