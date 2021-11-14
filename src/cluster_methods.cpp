@@ -1,6 +1,8 @@
 #include "../include/cluster_methods.hpp"
+#define MAX_HD 6
 
 using namespace std;
+
 
 
 double silhuette(Cluster_of_points cluster, int i){
@@ -363,9 +365,12 @@ Cluster_of_points cluster_LSH(Vector_of_points &Data, Cluster_of_points &cluster
     double min_dist = MAXFLOAT;
     for (int i=0 ; i < cluster.centroids.size() ; i++){
          for (int j=0 ; j < cluster.centroids.size() ; j++){
-             if (double dist = distance( cluster.centroids[i].vpoint , cluster.centroids[j].vpoint, 2 ) < min_dist ){
-                 min_dist = dist;
-             }
+            if (i!=j){
+                double dist = distance( cluster.centroids[i].vpoint , cluster.centroids[j].vpoint, 2 );
+                if (dist < min_dist ){
+                    min_dist = dist;
+                }
+            }
          }
     }
     R = min_dist / 2;
@@ -465,7 +470,7 @@ Cluster_of_points cluster_LSH(Vector_of_points &Data, Cluster_of_points &cluster
 //              CLUSTER HYPERCUBE FUNCTION ON CLUSTER OF POINTS              //
 //---------------------------------------------------------------------------//
 
-Cluster_of_points cluster_Hypercube(Vector_of_points &Data, Cluster_of_points &cluster, int number_of_clusters, int M_of_Hypercube, int k_of_Hypercube){
+Cluster_of_points cluster_Hypercube(Vector_of_points &Data, Cluster_of_points &cluster, int number_of_clusters, int M_of_Hypercube, int k_of_Hypercube, int probes_of_Hypercube){
 
     cluster = initialize_kplusplus(Data, cluster, number_of_clusters);
 
@@ -474,7 +479,7 @@ Cluster_of_points cluster_Hypercube(Vector_of_points &Data, Cluster_of_points &c
     int vectorsNumber = Data.points.size();
     int dimension = Data.points[0].vpoint.size();
     int bucketsNumber = pow(2,k_of_Hypercube);
-    CUBE_hash_info hInfo(k_of_Hypercube, dimension, M_of_Hypercube, 2, 5);
+    CUBE_hash_info hInfo(k_of_Hypercube, dimension, M_of_Hypercube, probes_of_Hypercube, MAX_HD);
 
     CubeTable cubeTable(bucketsNumber);
     cubeTable.v = compute_v(k_of_Hypercube,dimension);
@@ -497,12 +502,16 @@ Cluster_of_points cluster_Hypercube(Vector_of_points &Data, Cluster_of_points &c
     double min_dist = MAXFLOAT;
     for (int i=0 ; i < cluster.centroids.size() ; i++){
          for (int j=0 ; j < cluster.centroids.size() ; j++){
-             if (double dist = distance( cluster.centroids[i].vpoint , cluster.centroids[j].vpoint, 2 ) < min_dist ){
-                 min_dist = dist;
+             if (i!=j){
+                double dist = distance( cluster.centroids[i].vpoint , cluster.centroids[j].vpoint, 2 );
+                if (dist < min_dist ){
+                    min_dist = dist;
+                }
              }
          }
     }
     R = min_dist / 2;
+    
 
     // ---INITIALIZE CLUSTERS / PREALLOCATE STRUCTURES---
     for (int i = 0 ; i < Data.points.size() ; i++){
@@ -551,11 +560,13 @@ Cluster_of_points cluster_Hypercube(Vector_of_points &Data, Cluster_of_points &c
 
         //CHECKING IF ANY ACTION WAS TAKEN THIS TURN
         if (!tookaction)turns_inactive++;
+        
         //CHECKING IF NO POINTS HAVE BEEN ADDED IN 2 ITERATIONS, IF SO STOPPING
         if (turns_inactive > 1 && first_action)stopflag=true;
 
         //DOUBLING RANGE FOR EACH ITERATION
         R *=2;
+
         //IF R HAS REACHED MORE THAN 100K STOP
         if (R > 100000){
             stopflag=true;
