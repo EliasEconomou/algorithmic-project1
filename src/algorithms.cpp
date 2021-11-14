@@ -94,6 +94,11 @@ pair<Point,double> lsh_approximate_NN(Point q, vector<HashTable> hashTables, LSH
         list<HashNode> listToSearch = hashTables[i].get_bucketList(g);
         typename list<HashNode>::iterator current;
         for (current = listToSearch.begin() ; current != listToSearch.end() ; ++current ) {
+            if (ID != current->ID)
+            {
+                continue;
+            }
+
             double dist = distance(q.vpoint,current->point->vpoint, 2);
             if (dist < best.second)
             {
@@ -135,6 +140,11 @@ set<pair<Point,double>, CompDist> lsh_approximate_nNN(Point q, int N, vector<Has
         list<HashNode> listToSearch = hashTables[i].get_bucketList(g);
         typename list<HashNode>::iterator current;
         for (current = listToSearch.begin() ; current != listToSearch.end() ; ++current ) {
+            if (ID != current->ID)
+            {
+                continue;
+            }
+            
             double dist = distance(q.vpoint,current->point->vpoint, 2);
             if (bestPointsDists.size()==N) //if set is full
             {
@@ -182,6 +192,11 @@ unordered_map<int,double> lsh_approximate_range_search(Point q, double R, vector
         list<HashNode> listToSearch = hashTables[i].get_bucketList(g);
         typename list<HashNode>::iterator current;
         for (current = listToSearch.begin() ; current != listToSearch.end() ; ++current ) {
+            if (ID != current->ID)
+            {  
+                continue;
+            }
+
             double dist = distance(q.vpoint,current->point->vpoint, 2);
             if (dist < R && dist != 0)
             {
