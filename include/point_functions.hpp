@@ -25,7 +25,6 @@ public:
     std::vector<Point> points; //vector of points
 };
 
-//----Clusters_of_points----
 
 class Cluster_of_points // class to implement clusters easier
 {
@@ -43,8 +42,6 @@ class kplusplus_helper{
     std::vector<Point> Centroids;
     std::vector<bool> IsCentroid;
 };
-
-//-------------------------------------------------
 
 
 

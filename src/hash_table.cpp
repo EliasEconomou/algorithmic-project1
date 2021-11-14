@@ -10,13 +10,11 @@ HashNode::HashNode(Point *p, long int ID)
 }
 
 
-
 HashTable::HashTable(int bucketsNumber)
 {
   this->bucketsNumber = bucketsNumber;
   this->lists.resize(this->bucketsNumber);
 }
-
 
 
 void HashTable::HTinsert(Point *p, LSH_hash_info *hInfo)
@@ -38,7 +36,6 @@ void HashTable::HTinsert(Point *p, LSH_hash_info *hInfo)
 }
 
 
-
 void HashTable::HTdisplay() 
 {
   for (int k=0 ; k < bucketsNumber ; k++){
@@ -56,12 +53,10 @@ void HashTable::HTdisplay()
 }
 
 
-
 int HashTable::get_bucketsNumber()
 {
   return this->bucketsNumber;
 }
-
 
 
 list<HashNode> HashTable::get_bucketList(int g)

@@ -2,6 +2,7 @@
 
 using namespace std;
 
+
 double silhuette(Cluster_of_points cluster, int i){
     double si=0;
     double sp;

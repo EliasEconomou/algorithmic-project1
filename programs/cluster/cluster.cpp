@@ -10,8 +10,8 @@
 #include "../../include/cluster_methods.hpp"
 
 
-
 using namespace std;
+
 
 Cluster_of_points cluster_data(Vector_of_points &data , string method , string config_file){
     Cluster_of_points cluster;

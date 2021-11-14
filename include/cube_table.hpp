@@ -7,7 +7,6 @@
 #include "hash_functions.hpp"
 #include "point_functions.hpp"
 
-class Point;
 
 class Vertice
 {
@@ -26,13 +25,9 @@ public:
     std::vector<std::vector<double> > v; //k vectors to use to compute every h
 
     CubeTable(int bucketsNumber);
-    //~CubeTable();
     
     // Insert item in cube table
     void CTinsert(Point *p, CUBE_hash_info *hInfo);
-
-    // Display cube table (debug)
-    void CTdisplay();
 
     int get_bucketsNumber();
 

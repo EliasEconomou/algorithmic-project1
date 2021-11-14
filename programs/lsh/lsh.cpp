@@ -135,9 +135,6 @@ int main(int argc, char** argv) {
     queryData = parsing(queryFile);
 
 
-    pair<Point,double> lshResult = lsh_approximate_NN(queryData.points[0],hashTables, &hInfo);
-    pair<Point,double> trueResult = true_NN(queryData.points[0], inputData);
-
 
     ofstream out (outputFile);
 
@@ -176,5 +173,4 @@ int main(int argc, char** argv) {
 
     return 0;
 
-    
 }

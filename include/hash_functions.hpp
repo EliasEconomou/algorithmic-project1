@@ -12,6 +12,7 @@
 #include <functional>
 #include "point_functions.hpp"
 
+
 class LSH_hash_info
 {
 private:

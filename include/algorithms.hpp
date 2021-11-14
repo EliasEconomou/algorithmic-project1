@@ -14,6 +14,7 @@
 #include "cube_table.hpp"
 #include "hash_functions.hpp"
 
+
 // Compare function to use in set.
 struct CompDist
 {
@@ -48,5 +49,6 @@ std::pair<Point,double> cube_approximate_NN(Point q, CubeTable cubeTable, CUBE_h
 std::set<std::pair<Point,double>, CompDist> cube_approximate_nNN(Point q, int N, CubeTable cubeTable, CUBE_hash_info *hInfo, double &time);
 
 std::unordered_map<int,double> cube_approximate_range_search(Point q, double R, CubeTable cubeTable, CUBE_hash_info *hInfo);
+
 
 #endif

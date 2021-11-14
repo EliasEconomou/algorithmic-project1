@@ -10,6 +10,7 @@
 
 #define MAX_HAMMING_DIST 5 //maximum hamming distance to use when searching neighbor-vertices
 
+
 using namespace std;
 
 
@@ -137,9 +138,6 @@ int main(int argc, char** argv) {
     Vector_of_points queryData;
     queryData = parsing(queryFile);
 
-
-    // pair<Point,double> cubeResult = cube_approximate_NN(queryData.points[0],cubeTable, &hInfo);
-    // pair<Point,double> trueResult = true_NN(queryData.points[0], inputData);
     
 
     ofstream out (outputFile);
